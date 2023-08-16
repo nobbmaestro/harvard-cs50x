@@ -9,13 +9,14 @@ int get_input(void)
 
 void generate_left_at_index(int row, int height)
 {
-    char output[height];
     int chr;
+    char output[height];
 
     for (chr = 0; chr < height; chr++)
     {
         output[chr] = ((chr <= row)) ? '#' : ' ';
     }
+
     printf("%s\n", output);
 }
 
