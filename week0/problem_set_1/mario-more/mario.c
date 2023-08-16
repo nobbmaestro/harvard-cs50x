@@ -14,7 +14,7 @@ void generate_left_at_index(int row, int height)
 
     for (chr = 0; chr < height; chr++)
     {
-        output[chr] = ((chr >= row) && (chr >= height)) ? '#' : ' ';
+        output[chr] = ((row < height)) ? '#' : ' ';
     }
     printf("%s\n", output);
 }
