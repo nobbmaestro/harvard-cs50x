@@ -7,9 +7,17 @@ int get_input(void)
     return n;
 }
 
-void generat
-int main(void) 
+void generate_output(int height)
+{
+    string output;
+    for (int index = 1, index < height, index++)
+    {
+        
+    }
+}
+
+int main(void)
 {
     printf("-> %d\n", get_input());
-    
+
 }
