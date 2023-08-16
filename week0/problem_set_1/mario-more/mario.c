@@ -9,10 +9,11 @@ int get_input(void)
 
 void generate_output(int height)
 {
-    for (row = 1, row < height, row++)
+    int row, chr;
+    for (row = 1; row < height; row++);
     {
         string output;
-        for (int chr = 1, chr < height, chr++)
+        for (chr = 1; chr < height; chr++)
         {
             output[chr] = (chr < row) ? "#" : " ";
         }
