@@ -10,9 +10,12 @@ int get_input(void)
 void generate_output(int height)
 {
     string output;
-    for (int index = 1, index < height, index++)
+    for (int row = 1, row < height, row++)
     {
-        
+        for (int chr = 1, chr < height, chr++)
+        {
+            output[chr] = row < 
+        }
     }
 }
 
