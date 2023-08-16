@@ -13,12 +13,24 @@ void generate_output(int height)
     for (row = 0; row < height; row++)
     {
         char output[height];
-        for (chr = 0; chr < height; chr++)
+        chr = 0;
+
+        while (chr <= ((height*2) + 1))
         {
-            output[chr] = (chr <= row) ? '#' : ' ';
+            if (chr <= height)
+            {
+                output[chr] = (chr <= row) ? '#' : ' ';
+            }
+            else if ()
+            {
+                output[chr] = (chr <= row) ? '#' : ' ';
+            }
+            else
+            {
+                output[++chr] = ' ';
+            }
         }
-        output[++chr] = ' ';
-        
+
         printf("%s\n", output);
     }
 }
