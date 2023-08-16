@@ -17,6 +17,8 @@ void generate_output(int height)
         {
             output[chr] = (chr <= row) ? '#' : ' ';
         }
+        output[++chr] = ' ';
+        
         printf("%s\n", output);
     }
 }
