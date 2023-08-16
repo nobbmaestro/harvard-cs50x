@@ -15,21 +15,12 @@ void generate_output(int height)
         char output[height];
         chr = 0;
 
-        while (chr <= ((height*2) + 1))
+        while (chr <= height)
         {
-            if (chr <= height)
-            {
-                output[chr] = (chr <= row) ? '#' : ' ';
-            }
-            else if ()
-            {
-                output[chr] = (chr <= row) ? '#' : ' ';
-            }
-            else
-            {
-                output[++chr] = ' ';
-            }
+           output[chr] = (chr > row) ? '0' : '#';
+           chr++;
         }
+        output[++chr] = ' ';
 
         printf("%s\n", output);
     }
