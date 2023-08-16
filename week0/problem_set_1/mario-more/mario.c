@@ -14,7 +14,7 @@ void generate_left_at_index(int row, int height)
 
     for (chr = 0; chr < height; chr++)
     {
-        output[chr] = ((chr <= row)) ? '#' : ' ';
+        output[chr] = (chr >= (height - row - 1)) ? '#' : ' ';
     }
 
     printf("%s\n", output);
@@ -22,20 +22,6 @@ void generate_left_at_index(int row, int height)
 
 void generate_output(int height)
 {
-    // int row, chr;
-    // for (row = 0; row < height; row++)
-    // {
-    //     char output[height];
-    //     chr = 0;
-
-    //     while (chr <= height)
-    //     {
-    //        output[chr] = (chr > row) ? '0' : '#';
-    //        chr++;
-    //     }
-    //     output[++chr] = ' ';
-
-    // }
     int row;
     for (row=0; row<height; row++)
     {
