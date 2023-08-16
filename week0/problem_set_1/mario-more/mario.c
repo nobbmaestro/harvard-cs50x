@@ -10,12 +10,12 @@ int get_input(void)
 void generate_output(int height)
 {
     int row, chr;
-    for (row = 1; row < height; row++);
+    for (row = 1; row < height; row++)
     {
-        string output;
+        char output[] = "";
         for (chr = 1; chr < height; chr++)
         {
-            output[chr] = (chr < row) ? "#" : " ";
+            output[chr] = (chr < row) ? '#' : ' ';
         }
         printf("%s", output);
     }
