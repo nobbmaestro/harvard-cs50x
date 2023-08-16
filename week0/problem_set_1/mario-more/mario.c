@@ -15,9 +15,9 @@ void generate_output(int height)
         char output[height];
         for (chr = 0; chr < height; chr++)
         {
-            output[chr] = (chr < row) ? '#' : '0';
+            output[chr] = (chr <= row) ? '#' : ' ';
         }
-        printf("%s", output);
+        printf("%s\n", output);
     }
 }
 
