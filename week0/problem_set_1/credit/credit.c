@@ -48,10 +48,9 @@ int get_first_digits(int *p_arr_num, int n_digits)
 
     for (int i = 0; i <= n_digits; i++)
     {
-        int scale = pow(10, n_digits-i);
+        int scale = pow(10, n_digits-i-1);
         digits = digits + (p_arr_num[i]*scale);
     }
-    printf("n_digits : %d, digits: %d\n", n_digits, digits);
 
     return digits;
 }
@@ -99,13 +98,11 @@ bool check_digits_helper(int *p_arr_num, const int *p_valid_digits, int size)
     {
         int digits = get_first_digits(p_arr_num, get_int_length(p_valid_digits[i]));
 
-        printf("checking: %d == %d\n", digits, p_valid_digits[i]);
         /* Check if first digits matches the expected digits */
         match = (digits == p_valid_digits[i]) ? true : false;
 
         if (match)
         {
-            printf("matches!\n");
             break;
         }
     }
@@ -143,23 +140,7 @@ bool check_card_number_mastercard(int *p_arr_num)
     match = get_array_length(p_arr_num) == expected_len;
 
     /* On matched length, evaluate further */
-    if (match)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            int digits = get_first_digits(p_arr_num, get_int_length(valid_digits[i]));
-
-            /* Check if first digits matches the expected digits */
-            if (digits != valid_digits[i])
-            {
-                match = false;
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
+    match = (match) ? check_digits_helper(p_arr_num, &valid_digits[0], size) : false;
 
     return match;
 }
@@ -178,23 +159,7 @@ bool check_card_number_visa(int *p_arr_num)
     match = (tmp >= expected_len_lo) && (tmp <= expected_len_hi);
 
     /* On matched length, evaluate further */
-    if (match)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            int digits = get_first_digits(p_arr_num, get_int_length(valid_digits[i]));
-
-            /* Check if first digits matches the expected digits */
-            if (digits != valid_digits[i])
-            {
-                match = false;
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
+    match = (match) ? check_digits_helper(p_arr_num, &valid_digits[0], size) : false;
 
     return match;
 }
