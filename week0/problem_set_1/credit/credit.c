@@ -122,7 +122,7 @@ bool check_valid_card_number(int *p_arr_num)
             sum = sum + sum_digit_helper(p_arr_num[i]);
         }
     }
-
+    printf("sum = %d, last_total = %d\n", sum, last_total);
     return (sum % 10 == last_total);
 }
 
