@@ -69,10 +69,10 @@ int validate_card_number(int num)
     return state;
 }
 
-char * convert_int_into_array(unsigned int num)
+void convert_int_into_array(unsigned int num)
 {
     int len = (int)floor(log10((float)num)) + 1;
-    char * arr = char[len];
+    int arr[len];
     int i = 0;
 
     do {
@@ -81,7 +81,10 @@ char * convert_int_into_array(unsigned int num)
         i++;
     } while (num != 0);
 
-    return arr;
+    for (i = len; i < len; i++)
+    {
+        printf("%d\n", arr[i]);
+    }
 }
 
 const char* get_state_name(enum CardState state)
@@ -103,8 +106,7 @@ int main(void)
 
     num = get_card_number();
 
-    int arr = convert_int_into_array(num);
-    printf("%d\n", arr);
+    convert_int_into_array(num);
 
     state = validate_card_number(num);
 
