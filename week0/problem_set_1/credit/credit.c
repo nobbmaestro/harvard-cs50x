@@ -90,6 +90,28 @@ bool check_valid_card_number(int *p_arr_num)
     return true;
 }
 
+bool check_digits_helper(int *p_arr_num, const int *p_valid_digits, int size)
+{
+    bool match = false;
+
+    for (int i = 0; i < size; i++)
+    {
+        int digits = get_first_digits(p_arr_num, get_int_length(p_valid_digits[i]));
+
+        /* Check if first digits matches the expected digits */
+        if (digits != p_valid_digits[i])
+        {
+            match = false;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return match;
+}
+
 bool check_card_number_amex(int *p_arr_num)
 {
 
@@ -105,20 +127,7 @@ bool check_card_number_amex(int *p_arr_num)
     /* On matched length, evaluate further */
     if (match)
     {
-        for (int i = 0; i < size; i++)
-        {
-            int digits = get_first_digits(p_arr_num, get_int_length(valid_digits[i]));
-
-            /* Check if first digits matches the expected digits */
-            if (digits != valid_digits[i])
-            {
-                match = false;
-            }
-            else
-            {
-                break;
-            }
-        }
+        match = check_digits_helper(p_arr_num, &valid_digits[0], size);
     }
 
     return match;
