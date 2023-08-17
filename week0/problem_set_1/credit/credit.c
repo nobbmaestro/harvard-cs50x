@@ -128,7 +128,8 @@ bool check_card_number_amex(int *p_arr_num)
 bool check_card_number_mastercard(int *p_arr_num)
 {
     const int expected_len = 16;
-    const int valid_digits[] = {51, 52, 53, 54, 55};
+    const int size = 5;
+    const int valid_digits[size] = {51, 52, 53, 54, 55};
 
     bool match = false;
 
