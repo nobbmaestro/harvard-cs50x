@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 
+define MAX_CARD_NUMBER_LEN 16
+
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
 long get_card_number(void)
