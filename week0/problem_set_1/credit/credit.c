@@ -101,7 +101,7 @@ bool check_valid_card_number(int *p_arr_num)
             }
             else
             {
-                total[j++] = 
+                total[j++] = p_arr_num[i];
             }
         }
         else
