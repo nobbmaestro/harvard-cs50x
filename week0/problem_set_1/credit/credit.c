@@ -39,19 +39,19 @@ bool check_valid_card_number(int *p_arr_num)
     return false;
 }
 
-bool check_card_number_amex(int num)
+bool check_card_number_amex(int *p_arr_num)
 {
     /* Do nothing */
     return false;
 }
 
-bool check_card_number_mastercard(int num)
+bool check_card_number_mastercard(int *p_arr_num)
 {
     /* Do nothing */
     return false;
 }
 
-bool check_card_number_visa(int num)
+bool check_card_number_visa(int *p_arr_num)
 {
     /* Do nothing */
     return false;
