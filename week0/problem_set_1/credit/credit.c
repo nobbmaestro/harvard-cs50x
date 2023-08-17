@@ -71,7 +71,7 @@ int validate_card_number(int num)
 
 int * convert_int_into_array(unsigned int num)
 {
-    int len = (int)floor(log10((float)number)) + 1;
+    int len = (int)floor(log10((float)num)) + 1;
     int num_array[len];
 }
 
