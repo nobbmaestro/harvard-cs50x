@@ -15,11 +15,16 @@ void generate_left_at_index(int row, int height)
     char solid = '#';
     char empty = ' ';
 
+    /* Generate the left-side half */
     for (i = 0; i < height; i++)
     {
         output[i] = (i >= (height - row - 1)) ? solid : empty;
     }
+
+    /* Add the middle space */
     output[i++] = empty;
+
+    /* Generate the right-side half */
     for (j = i-1; j >= 0; j--)
     {
         output[i++] = output[j];
