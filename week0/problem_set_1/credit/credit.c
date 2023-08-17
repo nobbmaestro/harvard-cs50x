@@ -126,6 +126,7 @@ bool check_valid_card_number(int *p_arr_num)
         }
     }
     printf("sum = %d, last_total = %d\n", sum, last_total);
+    printf("%d\n", sum % 10);
     return (sum % 10 == last_total);
 }
 
