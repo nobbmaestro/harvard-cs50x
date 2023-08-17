@@ -9,7 +9,7 @@ enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
 long get_card_number(void)
 {
-    unsigned long num = 0;
+    unsigned long long num = 0;
     while (num <= 0)
     {
         num = get_long("Number: ");
@@ -69,7 +69,7 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
-    #if 0
+    #if 1
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -95,24 +95,17 @@ bool check_valid_card_number(int *p_arr_num)
     {
         printf("i = %d, value = %d\n", i, p_arr_num[i]);
 
-        if (p_arr_num[i] != NULL_TERMINATION)
+        if (i % 2 != 0)
         {
-            if (i % 2 != 0)
-            {
-                sum = sum + (p_arr_num[i]*2);
-            }
-            else
-            {
-                if (last_total == -1)
-                {
-                    last_total = p_arr_num[i];
-                }
-                // sum = sum + p_arr_num[i];
-            }
+            sum = sum + (p_arr_num[i]*2);
         }
         else
         {
-            break;
+            if (last_total == -1)
+            {
+                last_total = p_arr_num[i];
+            }
+            // sum = sum + p_arr_num[i];
         }
     }
     printf("sum = %d, last = %d\n", sum, last_total);
