@@ -17,7 +17,7 @@ long get_card_number(void)
     return num;
 }
 
-int get_array_len(int *p_arr_num)
+int get_array_length(int *p_arr_num)
 {
     int len = 0;
 
@@ -29,7 +29,7 @@ int get_array_len(int *p_arr_num)
         }
         else
         {
-            /* Do nothing */
+            break;
         }
     }
 
@@ -49,7 +49,7 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
     /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
-    #if 1
+    #if 0
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -78,8 +78,8 @@ bool check_card_number_amex(int *p_arr_num)
     bool match = false;
 
     /* Check for expected card number length */
-    match = get_array_len(p_arr_num) == expected_len;
-    printf("len = %d\n", get_array_len(p_arr_num));
+    match = get_array_length(p_arr_num) == expected_len;
+    printf("len = %d\n", get_array_length(p_arr_num));
 
     return match;
 }
@@ -92,7 +92,7 @@ bool check_card_number_mastercard(int *p_arr_num)
     bool match = false;
 
     /* Check for expected card number length */
-    match = get_array_len(p_arr_num) == expected_len;
+    match = get_array_length(p_arr_num) == expected_len;
 
     return match;
 }
