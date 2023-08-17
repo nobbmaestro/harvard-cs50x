@@ -106,7 +106,6 @@ bool check_valid_card_number(int *p_arr_num)
     const int last_idx = get_array_length(p_arr_num) - 1;
 
     int sum = 0;
-    int last_total;
 
     /* Perform Luhn's Algorithm */
     int second_to_last_idx = last_idx - 1;
@@ -118,14 +117,9 @@ bool check_valid_card_number(int *p_arr_num)
         }
         else
         {
-            /* Store the last total */
-            last_total = p_arr_num[i];
-
             sum = sum + sum_digit_helper(p_arr_num[i]);
         }
     }
-    // printf("sum = %d, last_total = %d\n", sum, last_total);
-    // printf("%d\n", sum % 10);
     return (sum % 10 == 0);
 }
 
