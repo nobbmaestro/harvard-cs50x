@@ -19,6 +19,25 @@ int validate_card_number(void)
     return INVALID;
 }
 
+void generate_printout(int state)
+{
+    switch (state)
+    {
+        case AMEX:
+            printf()
+            break;
+
+        case MASTERCARD:
+            break;
+
+        case VISA:
+            break;
+
+        case INVALID:
+            break;
+    }
+}
+
 int main(void)
 {
     int card_num, card_state;
