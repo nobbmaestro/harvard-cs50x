@@ -67,7 +67,6 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     } while (num != 0);
 
     /* Append null termination at last used index */
-    printf("len = %d\n", len);
     p_arr_num[len] = NULL_TERMINATION;
 
     #if 0
