@@ -84,6 +84,14 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     #endif
 }
 
+int sum_helper(int num)
+{
+    if (num > 9)
+    {
+        
+    }
+}
+
 bool check_valid_card_number(int *p_arr_num)
 {
     const int last_idx = get_array_length(p_arr_num) - 1;
