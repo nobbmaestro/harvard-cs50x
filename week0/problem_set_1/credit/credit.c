@@ -35,7 +35,7 @@ int get_array_length(int *p_arr_num)
 
     return len;
 }
-void convert_int_into_array(int *p_arr_num, unsigned int num)
+void convert_int_into_array(int *p_arr_num, unsigned long num)
 {
     long len = (long)floor(log10((float)num)) + 1;
     int i = len - 1;
@@ -50,7 +50,7 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
     p_arr_num[len] = NULL_TERMINATION;
 
     #if 1
-    printf("card number: %d\n", num);
+    printf("card number: %lu\n", num);
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
