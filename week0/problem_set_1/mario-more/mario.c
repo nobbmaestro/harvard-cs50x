@@ -4,7 +4,7 @@
 int get_input(void)
 {
     int n = 0;
-    while (n <= 0)
+    while ((n <= 0) || (n > 8))
     {
         n = get_int("Height: ");
     }
