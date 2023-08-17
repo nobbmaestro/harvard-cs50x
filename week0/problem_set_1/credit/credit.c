@@ -49,7 +49,7 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
     /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
-    #if 0
+    #if 1
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
