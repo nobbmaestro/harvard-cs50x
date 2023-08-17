@@ -42,8 +42,9 @@ int get_first_digits(int *p_arr_num, int n_digits)
 
     for (int i = 0; i < n_digits; i++)
     {
-        int scale = pow10(digits-i);
+        int scale = pow(10, n_digits-i);
         digits = digits + (p_arr_num[i]*scale);
+        printf("%d %d\n", digits, scale);
     }
 
     return digits;
