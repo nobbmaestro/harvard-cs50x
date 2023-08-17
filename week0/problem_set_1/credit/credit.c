@@ -36,11 +36,11 @@ int get_array_length(int *p_arr_num)
     return len;
 }
 
-int get_first_digits(int *p_arr_num, int digits)
+int get_first_digits(int *p_arr_num, int n_digits)
 {
     int digits = 0;
 
-    for (int i = 0; i < digits; i++)
+    for (int i = 0; i < n_digits; i++)
     {
         digits = digits + p_arr_num[i]*pow10(digits-i);
     }
