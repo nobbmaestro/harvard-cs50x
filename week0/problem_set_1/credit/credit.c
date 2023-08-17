@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define MAX_CARD_NUMBER_LEN 16
+#define MAX_CARD_NUMBER_LEN 20
 #define NULL_TERMINATION -1
 
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
