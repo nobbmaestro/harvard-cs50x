@@ -1,6 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
+define MAX_CARD_NUMBER_LEN 16
+
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
 long get_card_number(void)
@@ -84,6 +86,7 @@ int main(void)
 {
     long num;
     int state;
+    int num_array[MAX_CARD_NUMBER_LEN];
 
     num = get_card_number();
     state = validate_card_number(num);
