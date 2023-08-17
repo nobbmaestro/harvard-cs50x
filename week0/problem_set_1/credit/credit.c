@@ -73,10 +73,10 @@ bool check_valid_card_number(int *p_arr_num)
 
 bool check_card_number_amex(int *p_arr_num)
 {
-    bool match = false;
-
     const int expected_len = 15;
     const int valid_digits[] = {31, 37};
+
+    bool match = false;
 
     /* Check for expected card number length */
     match = get_array_len(p_arr_num) == expected_len;
@@ -88,6 +88,11 @@ bool check_card_number_mastercard(int *p_arr_num)
 {
     const int expected_len = 16;
     const int valid_digits[] = {51, 52, 53, 54, 55};
+
+    bool match = false;
+
+    /* Check for expected card number length */
+    match = get_array_len(p_arr_num) == expected_len;
 
     return false;
 }
