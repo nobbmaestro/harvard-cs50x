@@ -86,10 +86,11 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
 
 bool check_valid_card_number(int *p_arr_num)
 {
-    int sum = 0;
-    int total[];
+    const int last_idx = get_array_length(p_arr_num);
 
-    int last_idx = get_array_length(p_arr_num);
+    int sum = 0;
+    int total[last_idx];
+    int j = 0;
     for (int i = last_idx - 1; i >= 0; i--)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -100,7 +101,7 @@ bool check_valid_card_number(int *p_arr_num)
             }
             else
             {
-                total
+                total[j++] = 
             }
         }
         else
