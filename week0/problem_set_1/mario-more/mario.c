@@ -12,19 +12,20 @@ void generate_left_at_index(int row, int height)
     int i, j;
     int size = (2*height) + 1;
     char output[size];
-    char 
+    char solid = '#';
+    char empty = ' ';
 
     for (i = 0; i < height; i++)
     {
-        output[i] = (i >= (height - row - 1)) ? '#' : ' ';
+        output[i] = (i >= (height - row - 1)) ? solid : empty;
     }
-    output[i++] = ' ';
+    output[i++] = empty;
     for (j = i-1; j >= 0; j--)
     {
         output[i++] = output[j];
     }
 
-    printf("--> %s\n", output);
+    printf("%s\n", output);
 }
 
 void generate_output(int height)
