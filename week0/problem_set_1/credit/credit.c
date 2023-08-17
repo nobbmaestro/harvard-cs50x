@@ -3,6 +3,7 @@
 #include <math.h>
 
 #define MAX_CARD_NUMBER_LEN 16
+#define NULL_TERMINATION -1
 
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
@@ -26,22 +27,25 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
         num /= 10;
         i--;
     } while (num != 0);
-    p_arr_num[len] = '\0';
+
+    /* Append 'null' termination at last used index */
+    p_arr_num[len] = NULL_TERMINATION;
 
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
-        if (p_arr_num[i] != '\0')
+        if (p_arr_num[i] != NULL_TERMINATION)
         {
             printf("index: %d - value: %d\n", i, p_arr_num[i]);
         }
         else
         {
+            printf("Break\n");
             break;
         }
     }
 }
 
-bool check_valid_card_number(int *p_arr_num, int len)
+bool check_valid_card_number(int *p_arr_num)
 {
     /* Do nothing */
     return false;
