@@ -13,18 +13,30 @@ long get_card_number(void)
     return num;
 }
 
-int validate_card_number(int num)
+bool validate_card_number(int num)
 {
     /* Do nothing */
-    return INVALID;
+    return false;
 }
 
-int check_num_for_amex(int num)
+bool check_card_number_amex(int num)
 {
-
+    /* Do nothing */
+    return false;
 }
 
-int check_num_
+bool check_card_number_mastercard(int num)
+{
+    /* Do nothing */
+    return false;
+}
+
+bool check_card_number_visa(int num)
+{
+    /* Do nothing */
+    return false;
+}
+
 const char* get_state_name(enum CardState state)
 {
     switch (state)
@@ -33,6 +45,7 @@ const char* get_state_name(enum CardState state)
         case MASTERCARD:    return "MASTERCARD";
         case VISA:          return "VISA";
         case INVALID:       return "INVALID";
+        default:            return "N/A";
     }
 }
 
