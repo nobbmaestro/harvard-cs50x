@@ -1,6 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
+enum card_state{'AMEX', 'MASTERCARD', 'VISA', 'INVALID'}
+
 int get_card_number(void)
 {
     int num = 0;
@@ -11,10 +13,10 @@ int get_card_number(void)
     return num;
 }
 
-bool validate_card_number(void)
+card_state validate_card_number(void)
 {
     /* Do nothing */
-    return false;
+    return card_state.INVALID;
 }
 
 int main(void)
