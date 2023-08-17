@@ -3,12 +3,12 @@
 
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
-int get_card_number(void)
+long get_card_number(void)
 {
-    int num = 0;
+    long num = 0;
     while (num <= 0)
     {
-        num = get_int("Number: ");
+        num = get_long("Number: ");
     }
     return num;
 }
@@ -19,6 +19,12 @@ int validate_card_number(int num)
     return INVALID;
 }
 
+int check_num_for_amex(int num)
+{
+
+}
+
+int check_num_
 const char* get_state_name(enum CardState state)
 {
     switch (state)
@@ -32,7 +38,9 @@ const char* get_state_name(enum CardState state)
 
 int main(void)
 {
-    int num, state;
+    long num;
+    int state;
+
     num = get_card_number();
     state = validate_card_number(num);
 
