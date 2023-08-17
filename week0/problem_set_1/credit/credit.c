@@ -80,6 +80,7 @@ bool check_card_number_amex(int *p_arr_num)
 
     /* Check for expected card number length */
     match = get_array_len(p_arr_num) == expected_len;
+    printf("len = %d\n", get_array_len(p_arr_num));
 
     return match;
 }
