@@ -36,10 +36,9 @@ int get_array_length(int *p_arr_num)
     return len;
 }
 
-int get_int_length(int num)
+int get_int_length(unsigned long num)
 {
     int len = (int)floor(log10((float)num)) + 1;
-
     return len;
 }
 
