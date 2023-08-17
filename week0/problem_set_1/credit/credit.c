@@ -86,7 +86,22 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
 
 bool check_valid_card_number(int *p_arr_num)
 {
-    /* Do nothing */
+    int sum = 0;
+
+    for (int i = 0; i < MAX_CARD_NUMBER_LEN; i++)
+    {
+        if (p_arr_num[i] != NULL_TERMINATION)
+        {
+            if (i % 2 == 0)
+            {
+                sum = sum + (p_arr_num[i]*2);
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
     return true;
 }
 
