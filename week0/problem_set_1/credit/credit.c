@@ -98,6 +98,7 @@ bool check_digits_helper(int *p_arr_num, const int *p_valid_digits, int size)
     {
         int digits = get_first_digits(p_arr_num, get_int_length(p_valid_digits[i]));
 
+        printf("checking: %d == %d\n", digits, p_valid_digits[i]);
         /* Check if first digits matches the expected digits */
         if (digits != p_valid_digits[i])
         {
