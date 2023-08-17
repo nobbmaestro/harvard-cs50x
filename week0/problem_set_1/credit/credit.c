@@ -69,7 +69,7 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
-    #if 1
+    #if 0
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -95,7 +95,7 @@ bool check_valid_card_number(int *p_arr_num)
     {
         printf("i = %d, value = %d\n", i, p_arr_num[i]);
 
-        if (i % 2 != 0)
+        if (i % 2 == 0)
         {
             sum = sum + (p_arr_num[i]*2);
         }
