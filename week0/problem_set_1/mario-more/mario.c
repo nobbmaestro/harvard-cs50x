@@ -3,7 +3,11 @@
 
 int get_input(void)
 {
-    int n = get_int("Height: ");
+    int n = 0;
+    while (n <= 0)
+    {
+        n = get_int("Height: ");
+    }
     return n;
 }
 
@@ -40,7 +44,7 @@ void generate_output(int height)
     int row;
     for (row=0; row<height; row++)
     {
-        generate_left_at_index(row, height);
+        generate_row(row, height);
     }
 }
 
