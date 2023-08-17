@@ -26,10 +26,18 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
         num /= 10;
         i--;
     } while (num != 0);
+    p_arr_num[len] = '\0';
 
-    for (i = 0; i < len; i++)
+    for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
-        printf("index: %d - value: %d\n", i, p_arr_num[i]);
+        if (p_arr_num[i] != '\0')
+        {
+            printf("index: %d - value: %d\n", i, p_arr_num[i]);
+        }
+        else
+        {
+            break;
+        }
     }
 }
 
@@ -64,17 +72,17 @@ int validate_card_number(int num)
 
     convert_int_into_array(&arr_num[0], num);
 
-    if (check_valid_card_number(num))
+    if (check_valid_card_number(&arr_num[0]))
     {
-        if (check_card_number_amex(num))
+        if (check_card_number_amex(&arr_num[0]))
         {
             state = AMEX;
         }
-        else if (check_card_number_mastercard(num))
+        else if (check_card_number_mastercard(&arr_num[0]))
         {
             state = MASTERCARD;
         }
-        else if (check_card_number_visa(num))
+        else if (check_card_number_visa(&arr_num[0]))
         {
             state = VISA;
         }
