@@ -33,7 +33,10 @@ void generate_row(int row, int height)
     /* Generate the right-side half */
     for (j = i - 1; j >= 0; j--)
     {
-        output[i++] = output[j];
+        if (output[j] == solid)
+        {
+            output[i++] = output[j];
+        }
     }
 
     printf("%s\n", output);
