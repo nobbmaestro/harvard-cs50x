@@ -35,6 +35,19 @@ int get_array_length(int *p_arr_num)
 
     return len;
 }
+
+int get_first_digits(int *p_arr_num, int digits)
+{
+    int digits = 0;
+
+    for (int i = 0; i < digits; i++)
+    {
+        digits = digits + p_arr_num[i]
+    }
+
+    return digits;
+}
+
 void convert_int_into_array(int *p_arr_num, unsigned long num)
 {
     long len = (long)floor(log10((float)num)) + 1;
@@ -83,7 +96,7 @@ bool check_card_number_amex(int *p_arr_num)
     /* On matched length, evaluate further */
     if (match)
     {
-        
+
     }
 
     return match;
