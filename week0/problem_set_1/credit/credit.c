@@ -101,7 +101,7 @@ bool check_card_number_amex(int *p_arr_num)
     bool match = false;
 
     /* Check for expected card number length */
-    match = get_array_length(p_arr_num) == expected_len;
+    match = expected_len == get_array_length(p_arr_num);
 
     /* On matched length, evaluate further */
     if (match)
