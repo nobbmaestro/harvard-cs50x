@@ -49,8 +49,7 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
-    #if 1
-    printf("card number: %lu\n", num);
+    #if 0
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -107,7 +106,7 @@ bool check_card_number_visa(int *p_arr_num)
     return false;
 }
 
-int validate_card_number(int num)
+int validate_card_number(unsigned long num)
 {
     int state;
     int arr_num[MAX_CARD_NUMBER_LEN];
@@ -155,7 +154,7 @@ const char* get_state_name(enum CardState state)
 
 int main(void)
 {
-    long num;
+    unsigned long num;
     int state;
 
     num = get_card_number();
