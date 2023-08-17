@@ -16,7 +16,8 @@ void generate_left_at_index(int row, int height)
     {
         output[chr] = (chr >= (height - row - 1)) ? '#' : ' ';
     }
-
+    output[++chr] = ' ';
+    
     printf("%s\n", output);
 }
 
