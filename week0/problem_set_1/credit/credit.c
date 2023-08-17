@@ -135,6 +135,28 @@ bool check_card_number_mastercard(int *p_arr_num)
     /* Check for expected card number length */
     match = get_array_length(p_arr_num) == expected_len;
 
+    /* Check for expected card number length */
+    match = expected_len == get_array_length(p_arr_num);
+
+    /* On matched length, evaluate further */
+    if (match)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            int digits = get_first_digits(p_arr_num, get_int_length(valid_digits[i]));
+
+            /* Check if first digits matches the expected digits */
+            if (digits != valid_digits[i])
+            {
+                match = false;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
     return match;
 }
 
