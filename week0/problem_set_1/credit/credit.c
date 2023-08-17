@@ -96,6 +96,11 @@ bool check_valid_card_number(int *p_arr_num)
             {
                 sum = sum + (p_arr_num[i]*2);
             }
+            else
+            {
+                sum = sum + (p_arr_num[i]);
+            }
+            printf("sum = %d\n", sum);
         }
         else
         {
