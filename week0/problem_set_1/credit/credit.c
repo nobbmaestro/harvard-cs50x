@@ -1,7 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 
-enum card_state {AMEX, MASTERCARD, VISA, INVALID};
+enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
 int get_card_number(void)
 {
@@ -19,30 +19,22 @@ int validate_card_number(void)
     return INVALID;
 }
 
-void generate_printout(int state)
+const char* get_state_name(enum CardState state)
 {
     switch (state)
     {
-        case AMEX:
-            printf()
-            break;
-
-        case MASTERCARD:
-            break;
-
-        case VISA:
-            break;
-
-        case INVALID:
-            break;
+        case AMEX:          return "AMEX";
+        case MASTERCARD:    return "MASTERCARD";
+        case VISA:          return "VISA";
+        case INVALID:       return "INVALID";
     }
 }
 
 int main(void)
 {
-    int card_num, card_state;
-    card_num = get_card_number();
-    card_state = validate_card_number(card_num);
+    int num, state;
+    num = get_card_number();
+    state = validate_card_number(num);
 
-    printf()
+    printf("%s\n", get_state_name(state));
 }
