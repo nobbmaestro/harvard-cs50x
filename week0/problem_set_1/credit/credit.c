@@ -17,6 +17,24 @@ long get_card_number(void)
     return num;
 }
 
+int get_array_len(int *p_arr_num)
+{
+    int len = 0;
+
+    for (int i = 0; i < MAX_CARD_NUMBER_LEN; i++)
+    {
+        if (p_arr_num[i] != NULL_TERMINATION)
+        {
+            len++;
+        }
+        else
+        {
+            /* Do nothing */
+        }
+    }
+
+    return len;
+}
 void convert_int_into_array(int *p_arr_num, unsigned int num)
 {
     int len = (int)floor(log10((float)num)) + 1;
@@ -55,10 +73,15 @@ bool check_valid_card_number(int *p_arr_num)
 
 bool check_card_number_amex(int *p_arr_num)
 {
+    bool match = false;
+
     const int expected_len = 15;
     const int valid_digits[] = {31, 37};
 
-    return false;
+    /* Check for expected card number length */
+    match = get_array_len(p_arr_num) == expected_len;
+
+    return match;
 }
 
 bool check_card_number_mastercard(int *p_arr_num)
