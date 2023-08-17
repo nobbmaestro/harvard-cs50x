@@ -109,9 +109,10 @@ bool check_valid_card_number(int *p_arr_num)
     int last_total;
 
     /* Perform Luhn's Algorithm */
+    int second_to_last_idx = last_idx - 1;
     for (int i = last_idx; i >= 0; i--)
     {
-        if (i % 2 == 0)
+        if ((i % 2) == (second_to_last_idx % 2))
         {
             sum = sum + sum_digit_helper(p_arr_num[i] * 2);
         }
