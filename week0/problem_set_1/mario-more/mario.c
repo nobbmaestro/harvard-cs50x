@@ -9,15 +9,22 @@ int get_input(void)
 
 void generate_left_at_index(int row, int height)
 {
-    int chr;
+    int i, j;
     char output[height];
 
-    for (chr = 0; chr < height; chr++)
+    for (i = 0; i < height; i++)
     {
-        output[chr] = (chr >= (height - row - 1)) ? '#' : ' ';
+        output[i] = (i >= (height - row - 1)) ? '#' : ' ';
     }
-    output[++chr] = ' ';
-    
+    output[++i] = ' ';
+    for (j = i; j > 0; j--)
+    {
+        printf("i = %d, j = %d\n", j);
+        // output[i] = output[j];
+        i++;
+    }
+
+
     printf("%s\n", output);
 }
 
