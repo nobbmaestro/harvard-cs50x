@@ -86,8 +86,9 @@ bool check_valid_card_number(int *p_arr_num)
 
 bool check_card_number_amex(int *p_arr_num)
 {
+    const int last_idx = 2;
     const int expected_len = 15;
-    const int valid_digits[] = {31, 37};
+    const int valid_digits[last_idx] = {31, 37};
 
     bool match = false;
 
