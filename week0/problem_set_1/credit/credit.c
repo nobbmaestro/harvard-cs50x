@@ -76,7 +76,7 @@ int * convert_int_into_array(unsigned int num)
     int i = 0;
 
     do {
-        arr[i] = num % 10;
+        arr[i] = (unsigned)num % 10;
         num /= 10;
         i++;
     } while (num != 0);
