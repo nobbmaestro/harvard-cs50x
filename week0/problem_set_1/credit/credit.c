@@ -79,7 +79,12 @@ bool check_card_number_amex(int *p_arr_num)
 
     /* Check for expected card number length */
     match = get_array_length(p_arr_num) == expected_len;
-    printf("len = %d\n", get_array_length(p_arr_num));
+
+    /* On matched length, evaluate further */
+    if (match)
+    {
+        
+    }
 
     return match;
 }
@@ -103,7 +108,13 @@ bool check_card_number_visa(int *p_arr_num)
     const int expected_len_hi = 16;
     const int valid_digits[] = {4};
 
-    return false;
+    bool match = false;
+
+    /* Check for expected card number length */
+    const int tmp = get_array_length(p_arr_num);
+    match = (tmp >= expected_len_lo) && (tmp <= expected_len_hi);
+
+    return match;
 }
 
 int validate_card_number(unsigned long num)
