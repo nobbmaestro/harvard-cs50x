@@ -110,6 +110,7 @@ bool check_digits_helper(int *p_arr_num, const int *p_valid_digits, int size)
         }
     }
 
+    printf(")
     return match;
 }
 
@@ -126,10 +127,7 @@ bool check_card_number_amex(int *p_arr_num)
     match = expected_len == get_array_length(p_arr_num);
 
     /* On matched length, evaluate further */
-    if (match)
-    {
-        match = check_digits_helper(p_arr_num, &valid_digits[0], size);
-    }
+    match = (match) ? check_digits_helper(p_arr_num, &valid_digits[0], size) : false;
 
     return match;
 }
