@@ -7,9 +7,9 @@
 
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
-long get_card_number(void)
+unsigned long get_card_number(void)
 {
-    unsigned long long num = 0;
+    unsigned long num = 0;
     while (num <= 0)
     {
         num = get_long("Number: ");
