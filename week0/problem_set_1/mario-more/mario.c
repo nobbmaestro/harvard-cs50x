@@ -10,8 +10,10 @@ int get_input(void)
 void generate_row(int row, int height)
 {
     int i, j;
+
     int size = (2*height) + 1;
     char output[size];
+
     char solid = '#';
     char empty = ' ';
 
