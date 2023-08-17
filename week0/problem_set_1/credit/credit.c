@@ -73,17 +73,17 @@ void convert_int_into_array(unsigned int num)
 {
     int len = (int)floor(log10((float)num)) + 1;
     int arr[len];
-    int i = 0;
+    int i = len - 1;
 
     do {
         arr[i] = (unsigned)num % 10;
         num /= 10;
-        i++;
+        i--;
     } while (num != 0);
 
-    for (i = len-1; i >= 0; i--)
+    for (i = 0; i < len; i++)
     {
-        printf("%d\n", arr[i]);
+        printf("index: %d - value: %d\n", i, arr[i]);
     }
 }
 
