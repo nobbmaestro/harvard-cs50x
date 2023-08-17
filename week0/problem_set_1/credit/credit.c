@@ -16,24 +16,24 @@ long get_card_number(void)
     return num;
 }
 
-void convert_int_into_array(int *p_dst_buffer, unsigned int num)
+void convert_int_into_array(int *p_arr_num, unsigned int num)
 {
     int len = (int)floor(log10((float)num)) + 1;
     int i = len - 1;
 
     do {
-        p_dst_buffer[i] = (unsigned)num % 10;
+        p_arr_num[i] = (unsigned)num % 10;
         num /= 10;
         i--;
     } while (num != 0);
 
     for (i = 0; i < len; i++)
     {
-        printf("index: %d - value: %d\n", i, p_dst_buffer[i]);
+        printf("index: %d - value: %d\n", i, p_arr_num[i]);
     }
 }
 
-bool check_valid_card_number(int *arr_num)
+bool check_valid_card_number(int *p_arr_num)
 {
     /* Do nothing */
     return false;
