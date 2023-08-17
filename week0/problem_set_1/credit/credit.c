@@ -86,27 +86,26 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
 
 bool check_valid_card_number(int *p_arr_num)
 {
-    const int last_idx = get_array_length(p_arr_num);
+    const int last_idx = get_array_length(p_arr_num) - 1;
 
     int sum = 0;
     int last_total = -1;
 
-    for (int i = last_idx - 1; i >= 0; i--)
+    for (int i = last_idx; i >= 0; i--)
     {
-        printf("i = %d, value = %d\n", i, p_arr_num[i]);
-
         if (i % 2 == 0)
         {
             sum = sum + (p_arr_num[i]*2);
         }
         else
         {
-            if (last_total == -1)
+            if ((i != last_idx ) && (last_total == -1))
             {
                 last_total = p_arr_num[i];
             }
             // sum = sum + p_arr_num[i];
         }
+        printf("i = %d, value = %d, sum = %d, last_total = %d\n", i, p_arr_num[i], sum, last_total);
     }
     printf("sum = %d, last = %d\n", sum, last_total);
     return (sum % 10 == last_total);
