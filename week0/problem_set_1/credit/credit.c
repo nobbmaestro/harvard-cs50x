@@ -37,7 +37,7 @@ int get_array_length(int *p_arr_num)
 }
 void convert_int_into_array(int *p_arr_num, unsigned int num)
 {
-    int len = (int)floor(log10((float)num)) + 1;
+    long len = (long)floor(log10((float)num)) + 1;
     int i = len - 1;
 
     do {
