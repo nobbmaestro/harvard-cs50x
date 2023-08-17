@@ -13,14 +13,17 @@ int get_card_number(void)
     return num;
 }
 
-card_state validate_card_number(void)
+int validate_card_number(void)
 {
     /* Do nothing */
-    return card_state.INVALID;
+    return INVALID;
 }
 
 int main(void)
 {
-    int num;
-    num = get_card_number();
+    int card_num, card_state;
+    card_num = get_card_number();
+    card_state = validate_card_number(card_num);
+
+    printf()
 }
