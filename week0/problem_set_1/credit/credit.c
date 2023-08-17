@@ -94,7 +94,7 @@ bool check_card_number_mastercard(int *p_arr_num)
     /* Check for expected card number length */
     match = get_array_len(p_arr_num) == expected_len;
 
-    return false;
+    return match;
 }
 
 bool check_card_number_visa(int *p_arr_num)
