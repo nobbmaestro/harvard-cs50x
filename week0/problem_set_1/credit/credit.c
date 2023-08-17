@@ -223,7 +223,7 @@ int validate_card_number(unsigned long num)
         }
         else
         {
-            state = -1;
+            state = INVALID;
         }
     }
     else
