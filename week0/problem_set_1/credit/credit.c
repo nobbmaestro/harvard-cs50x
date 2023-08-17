@@ -69,10 +69,10 @@ int validate_card_number(int num)
     return state;
 }
 
-int * convert_int_into_array(unsigned int num)
+char * convert_int_into_array(unsigned int num)
 {
     int len = (int)floor(log10((float)num)) + 1;
-    int * arr[len];
+    char * arr = char[len];
     int i = 0;
 
     do {
