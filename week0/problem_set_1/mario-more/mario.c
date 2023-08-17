@@ -29,6 +29,7 @@ void generate_row(int row, int height)
 
     /* Add the middle space */
     output[i++] = empty;
+    output[i++] = empty;
 
     /* Generate the right-side half */
     for (j = i - 1; j >= 0; j--)
