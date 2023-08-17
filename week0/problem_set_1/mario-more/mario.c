@@ -18,10 +18,9 @@ void generate_left_at_index(int row, int height)
         output[i] = (i >= (height - row - 1)) ? '#' : ' ';
     }
     output[++i] = ' ';
-    for (j = i; j > 0; j--)
+    for (j = i; j >= 0; j--)
     {
         output[i++] = output[j];
-        i++;
         // printf("i = %d, output[i] = %d --- j = %d, output[j] = %d\n", i, j, output[i], output[j]);
         printf("i = %d, j = %d\n", i, j);
         printf("output[i] = %c, output[j] = %c\n", output[i], output[j]);
