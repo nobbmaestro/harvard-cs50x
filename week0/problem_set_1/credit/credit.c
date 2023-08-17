@@ -41,7 +41,7 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
     }
 }
 
-bool check_valid_card_number(int *p_arr_num)
+bool check_valid_card_number(int *p_arr_num, int len)
 {
     /* Do nothing */
     return false;
