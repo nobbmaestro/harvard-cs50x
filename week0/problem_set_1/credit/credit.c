@@ -86,9 +86,10 @@ bool check_valid_card_number(int *p_arr_num)
 
 bool check_card_number_amex(int *p_arr_num)
 {
-    const int last_idx = 2;
+
     const int expected_len = 15;
-    const int valid_digits[last_idx] = {31, 37};
+    const int size = 2;
+    const int valid_digits[size] = {31, 37};
 
     bool match = false;
 
@@ -98,6 +99,11 @@ bool check_card_number_amex(int *p_arr_num)
     /* On matched length, evaluate further */
     if (match)
     {
+        digits = get_first_digits(p_arr_num, )
+        for (int i = 0; i < size; i++)
+        {
+
+        }
         printf("first digits: %d\n", get_first_digits(p_arr_num, 2));
     }
 
