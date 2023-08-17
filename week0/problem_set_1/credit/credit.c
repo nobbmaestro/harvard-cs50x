@@ -124,9 +124,9 @@ bool check_valid_card_number(int *p_arr_num)
             sum = sum + sum_digit_helper(p_arr_num[i]);
         }
     }
-    printf("sum = %d, last_total = %d\n", sum, last_total);
-    printf("%d\n", sum % 10);
-    return (sum % 10 == last_total);
+    // printf("sum = %d, last_total = %d\n", sum, last_total);
+    // printf("%d\n", sum % 10);
+    return (sum % 10 == 0);
 }
 
 bool check_digits_helper(int *p_arr_num, const int *p_valid_digits, int size)
@@ -212,7 +212,6 @@ int validate_card_number(unsigned long num)
 
     if (check_valid_card_number(&arr_num[0]))
     {
-        printf("passed valud card number\n");
         if (check_card_number_amex(&arr_num[0]))
         {
             state = AMEX;
