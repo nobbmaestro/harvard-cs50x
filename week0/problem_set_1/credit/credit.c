@@ -1,7 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 
-enum card_state{'AMEX', 'MASTERCARD', 'VISA', 'INVALID'}
+enum card_state {AMEX, MASTERCARD, VISA, INVALID};
 
 int get_card_number(void)
 {
