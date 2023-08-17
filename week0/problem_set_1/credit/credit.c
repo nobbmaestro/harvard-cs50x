@@ -13,7 +13,7 @@ long get_card_number(void)
     return num;
 }
 
-bool validate_card_number(int num)
+bool check_valid_card_number(int num)
 {
     /* Do nothing */
     return false;
@@ -35,6 +35,22 @@ bool check_card_number_visa(int num)
 {
     /* Do nothing */
     return false;
+}
+
+int validate_card_number(int num)
+{
+    int state;
+
+    if (check_valid_card_number())
+    {
+        
+    }
+    else
+    {
+        state = INVALID;
+    }
+
+    return state;
 }
 
 const char* get_state_name(enum CardState state)
