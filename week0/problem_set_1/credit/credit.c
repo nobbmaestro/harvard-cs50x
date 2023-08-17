@@ -13,7 +13,7 @@ int get_card_number(void)
     return num;
 }
 
-int validate_card_number(void)
+int validate_card_number(int num)
 {
     /* Do nothing */
     return INVALID;
