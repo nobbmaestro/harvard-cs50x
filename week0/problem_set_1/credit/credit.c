@@ -41,9 +41,24 @@ int validate_card_number(int num)
 {
     int state;
 
-    if (check_valid_card_number())
+    if (check_valid_card_number(num))
     {
-        
+        if (check_card_number_amex(num))
+        {
+            state = AMEX;
+        }
+        else if (check_card_number_mastercard(num))
+        {
+            state = MASTERCARD;
+        }
+        else if (check_card_number_visa(num))
+        {
+            state = VISA;
+        }
+        else
+        {
+            state = -1;
+        }
     }
     else
     {
