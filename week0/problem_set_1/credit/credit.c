@@ -89,8 +89,8 @@ bool check_valid_card_number(int *p_arr_num)
     const int last_idx = get_array_length(p_arr_num);
 
     int sum = 0;
-    int total[last_idx];
-    int j = 0;
+    int last_total = -1;
+
     for (int i = last_idx - 1; i >= 0; i--)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -101,7 +101,11 @@ bool check_valid_card_number(int *p_arr_num)
             }
             else
             {
-                total[j++] = p_arr_num[i];
+                if (last_total == -1)
+                {
+                    last_total = p_arr_num[i];
+                }
+                sum = sum + p_arr_num[i];
             }
         }
         else
@@ -109,7 +113,8 @@ bool check_valid_card_number(int *p_arr_num)
             break;
         }
     }
-    return true;
+    printf("sum = %d, last = %d\n", sum, last_total);
+    return (sum % 10 == last_total);
 }
 
 bool check_digits_helper(int *p_arr_num, const int *p_valid_digits, int size)
