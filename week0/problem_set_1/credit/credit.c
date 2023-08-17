@@ -106,10 +106,10 @@ bool check_card_number_amex(int *p_arr_num)
     /* On matched length, evaluate further */
     if (match)
     {
-        digits = get_first_digits(p_arr_num, get_int_legnth())
         for (int i = 0; i < size; i++)
         {
-
+            int digits = get_first_digits(p_arr_num, get_int_legnth(valid_digits[i]));
+            match = digits == valid_digits[i];
         }
         printf("first digits: %d\n", get_first_digits(p_arr_num, 2));
     }
