@@ -7,7 +7,7 @@ int get_input(void)
     return n;
 }
 
-void generate_left_at_index(int row, int height)
+void generate_row(int row, int height)
 {
     int i, j;
     int size = (2*height) + 1;
