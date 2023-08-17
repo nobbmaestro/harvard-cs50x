@@ -209,6 +209,7 @@ int validate_card_number(unsigned long num)
 
     if (check_valid_card_number(&arr_num[0]))
     {
+        printf("passed valud card number\n");
         if (check_card_number_amex(&arr_num[0]))
         {
             state = AMEX;
