@@ -28,9 +28,10 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
         i--;
     } while (num != 0);
 
-    /* Append 'null' termination at last used index */
+    /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
+    #if 0
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -43,6 +44,7 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
             break;
         }
     }
+    #endif
 }
 
 bool check_valid_card_number(int *p_arr_num)
