@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-define MAX_CARD_NUMBER_LEN 16
+#define MAX_CARD_NUMBER_LEN 16
 
 enum CardState {AMEX, MASTERCARD, VISA, INVALID};
 
@@ -16,7 +16,7 @@ long get_card_number(void)
     return num;
 }
 
-void convert_int_into_array(unsigned int num)
+void convert_int_into_array(char *p_dst_buffer, unsigned int num)
 {
     int len = (int)floor(log10((float)num)) + 1;
     int arr[len];
@@ -61,6 +61,7 @@ bool check_card_number_visa(int num)
 int validate_card_number(int num)
 {
     int state;
+    int arr_num[MAX_CARD_NUMBER_LEN];
 
     convert_int_into_array(num);
 
