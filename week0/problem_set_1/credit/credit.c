@@ -84,7 +84,7 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     #endif
 }
 
-int sum_helper(int num)
+int sum_digit_helper(int num)
 {
     int sum = 0;
     int tmp = num;
@@ -110,15 +110,16 @@ bool check_valid_card_number(int *p_arr_num)
     {
         if (i % 2 == 0)
         {
-            sum = sum + sum_helper(p_arr_num[i]*2);
+            sum = sum + sum_digit_helper(p_arr_num[i]*2);
         }
         else
         {
+            /* Store the last total */
             if ((i != last_idx ) && (last_total == -1))
             {
                 last_total = p_arr_num[i];
             }
-            sum = sum + sum_helper(p_arr_num[i]);
+            sum = sum + sum_digit_helper(p_arr_num[i]);
         }
     }
 
