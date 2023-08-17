@@ -93,6 +93,8 @@ bool check_valid_card_number(int *p_arr_num)
 
     for (int i = last_idx - 1; i >= 0; i--)
     {
+        printf("i = %d, value = %d\n", i, p_arr_num[i]);
+
         if (p_arr_num[i] != NULL_TERMINATION)
         {
             if (i % 2 != 0)
