@@ -81,7 +81,7 @@ void convert_int_into_array(unsigned int num)
         i++;
     } while (num != 0);
 
-    for (i = len; i < len; i++)
+    for (i = len-1; i >= 0; i--)
     {
         printf("%d\n", arr[i]);
     }
