@@ -14,6 +14,24 @@ long get_card_number(void)
     return num;
 }
 
+void convert_int_into_array(unsigned int num)
+{
+    int len = (int)floor(log10((float)num)) + 1;
+    int arr[len];
+    int i = len - 1;
+
+    do {
+        arr[i] = (unsigned)num % 10;
+        num /= 10;
+        i--;
+    } while (num != 0);
+
+    for (i = 0; i < len; i++)
+    {
+        printf("index: %d - value: %d\n", i, arr[i]);
+    }
+}
+
 bool check_valid_card_number(int num)
 {
     /* Do nothing */
@@ -42,6 +60,8 @@ int validate_card_number(int num)
 {
     int state;
 
+    convert_int_into_array(num);
+
     if (check_valid_card_number(num))
     {
         if (check_card_number_amex(num))
@@ -69,24 +89,6 @@ int validate_card_number(int num)
     return state;
 }
 
-void convert_int_into_array(unsigned int num)
-{
-    int len = (int)floor(log10((float)num)) + 1;
-    int arr[len];
-    int i = len - 1;
-
-    do {
-        arr[i] = (unsigned)num % 10;
-        num /= 10;
-        i--;
-    } while (num != 0);
-
-    for (i = 0; i < len; i++)
-    {
-        printf("index: %d - value: %d\n", i, arr[i]);
-    }
-}
-
 const char* get_state_name(enum CardState state)
 {
     switch (state)
@@ -105,9 +107,6 @@ int main(void)
     int state;
 
     num = get_card_number();
-
-    convert_int_into_array(num);
-
     state = validate_card_number(num);
 
     printf("%s\n", get_state_name(state));
