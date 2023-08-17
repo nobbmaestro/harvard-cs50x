@@ -108,15 +108,17 @@ bool check_card_number_amex(int *p_arr_num)
     {
         for (int i = 0; i < size; i++)
         {
-            int digits = get_first_digits(p_arr_num, get_int_legnth(valid_digits[i]));
-            if (digits == valid_digits[i])
-            {
-                break;
-            }
-            else
-            {
-                match = false;
-            }
+            // int digits = get_first_digits(p_arr_num, get_int_length(valid_digits[i]));
+
+            // /* Check if first digits matches the expected digits */
+            // if (digits != valid_digits[i])
+            // {
+            //     match = false;
+            // }
+            // else
+            // {
+            //     break;
+            // }
         }
     }
 
