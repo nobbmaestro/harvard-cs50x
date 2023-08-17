@@ -1,11 +1,11 @@
 #include <cs50.h>
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 #define MAX_CARD_NUMBER_LEN 20
 #define NULL_TERMINATION -1
 
-enum CardState {AMEX, MASTERCARD, VISA, INVALID};
+enum CardState { AMEX, MASTERCARD, VISA, INVALID };
 
 unsigned long get_card_number(void)
 {
@@ -38,7 +38,7 @@ int get_array_length(int *p_arr_num)
 
 int get_int_length(unsigned long num)
 {
-    int len = (int)floor(log10((float)num)) + 1;
+    int len = (int) floor(log10((float) num)) + 1;
     return len;
 }
 
@@ -48,8 +48,8 @@ int get_first_digits(int *p_arr_num, int n_digits)
 
     for (int i = 0; i <= n_digits; i++)
     {
-        int scale = pow(10, n_digits-i-1);
-        digits = digits + (p_arr_num[i]*scale);
+        int scale = pow(10, n_digits - i - 1);
+        digits = digits + (p_arr_num[i] * scale);
     }
 
     return digits;
@@ -60,16 +60,18 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     int len = get_int_length(num);
     int i = len - 1;
 
-    do {
+    do
+    {
         p_arr_num[i] = num % 10;
         num /= 10;
         i--;
-    } while (num != 0);
+    }
+    while (num != 0);
 
     /* Append null termination at last used index */
     p_arr_num[len] = NULL_TERMINATION;
 
-    #if 0
+#if 0
     for (i = 0; i < MAX_CARD_NUMBER_LEN; i++)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
@@ -81,7 +83,7 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
             break;
         }
     }
-    #endif
+#endif
 }
 
 int sum_digit_helper(int num)
@@ -93,7 +95,8 @@ int sum_digit_helper(int num)
     {
         sum = sum + (num % 10);
         num /= 10;
-    }   while (num != 0);
+    }
+    while (num != 0);
 
     return sum;
 }
@@ -110,12 +113,12 @@ bool check_valid_card_number(int *p_arr_num)
     {
         if (i % 2 == 0)
         {
-            sum = sum + sum_digit_helper(p_arr_num[i]*2);
+            sum = sum + sum_digit_helper(p_arr_num[i] * 2);
         }
         else
         {
             /* Store the last total */
-            if ((i != last_idx ) && (last_total == -1))
+            if ((i != last_idx) && (last_total == -1))
             {
                 last_total = p_arr_num[i];
             }
@@ -235,15 +238,20 @@ int validate_card_number(unsigned long num)
     return state;
 }
 
-const char* get_state_name(enum CardState state)
+const char *get_state_name(enum CardState state)
 {
     switch (state)
     {
-        case AMEX:          return "AMEX";
-        case MASTERCARD:    return "MASTERCARD";
-        case VISA:          return "VISA";
-        case INVALID:       return "INVALID";
-        default:            return "N/A";
+        case AMEX:
+            return "AMEX";
+        case MASTERCARD:
+            return "MASTERCARD";
+        case VISA:
+            return "VISA";
+        case INVALID:
+            return "INVALID";
+        default:
+            return "N/A";
     }
 }
 
