@@ -86,10 +86,16 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
 
 int sum_helper(int num)
 {
-    if (num > 9)
+    int sum = 0;
+    int tmp = num;
+
+    do
     {
-        
-    }
+        sum = sum + (num % 10);
+        num /= 10;
+    }   while (num != 0);
+
+    return sum;
 }
 
 bool check_valid_card_number(int *p_arr_num)
@@ -99,11 +105,12 @@ bool check_valid_card_number(int *p_arr_num)
     int sum = 0;
     int last_total = -1;
 
+    /* Perform Luhn's Algorithm */
     for (int i = last_idx; i >= 0; i--)
     {
         if (i % 2 == 0)
         {
-            sum = sum + (p_arr_num[i]*2);
+            sum = sum + sum_helper(p_arr_num[i]*2);
         }
         else
         {
@@ -111,11 +118,10 @@ bool check_valid_card_number(int *p_arr_num)
             {
                 last_total = p_arr_num[i];
             }
-            // sum = sum + p_arr_num[i];
+            sum = sum + sum_helper(p_arr_num[i]);
         }
-        printf("i = %d, value = %d, sum = %d, last_total = %d\n", i, p_arr_num[i], sum, last_total);
     }
-    printf("sum = %d, last = %d\n", sum, last_total);
+
     return (sum % 10 == last_total);
 }
 
