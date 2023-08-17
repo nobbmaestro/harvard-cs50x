@@ -50,24 +50,31 @@ void convert_int_into_array(int *p_arr_num, unsigned int num)
 bool check_valid_card_number(int *p_arr_num)
 {
     /* Do nothing */
-    return false;
+    return true;
 }
 
 bool check_card_number_amex(int *p_arr_num)
 {
-    /* Do nothing */
+    const int expected_len = 15;
+    const int valid_digits[] = {31, 37};
+
     return false;
 }
 
 bool check_card_number_mastercard(int *p_arr_num)
 {
-    /* Do nothing */
+    const int expected_len = 16;
+    const int valid_digits[] = {51, 52, 53, 54, 55};
+
     return false;
 }
 
 bool check_card_number_visa(int *p_arr_num)
 {
-    /* Do nothing */
+    const int expected_len_lo = 13;
+    const int expected_len_hi = 16;
+    const int valid_digits[] = {4};
+
     return false;
 }
 
