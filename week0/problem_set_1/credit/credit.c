@@ -95,7 +95,7 @@ bool check_valid_card_number(int *p_arr_num)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
         {
-            if (i % 2 == 0)
+            if (i % 2 != 0)
             {
                 sum = sum + (p_arr_num[i]*2);
             }
@@ -105,7 +105,7 @@ bool check_valid_card_number(int *p_arr_num)
                 {
                     last_total = p_arr_num[i];
                 }
-                sum = sum + p_arr_num[i];
+                // sum = sum + p_arr_num[i];
             }
         }
         else
