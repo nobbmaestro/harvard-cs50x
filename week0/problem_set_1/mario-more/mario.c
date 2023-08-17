@@ -15,7 +15,7 @@ void generate_row(int row, int height)
 {
     int i, j;
 
-    int size = (2*height) + 1;
+    int size = (2 * height) + 1;
     char output[size];
 
     char solid = '#';
@@ -31,7 +31,7 @@ void generate_row(int row, int height)
     output[i++] = empty;
 
     /* Generate the right-side half */
-    for (j = i-1; j >= 0; j--)
+    for (j = i - 1; j >= 0; j--)
     {
         output[i++] = output[j];
     }
@@ -42,7 +42,7 @@ void generate_row(int row, int height)
 void generate_output(int height)
 {
     int row;
-    for (row=0; row<height; row++)
+    for (row = 0; row < height; row++)
     {
         generate_row(row, height);
     }
