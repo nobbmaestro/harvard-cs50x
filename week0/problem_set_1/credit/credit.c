@@ -61,7 +61,7 @@ void convert_int_into_array(int *p_arr_num, unsigned long num)
     int i = len - 1;
 
     do {
-        p_arr_num[i] = (unsigned)num % 10;
+        p_arr_num[i] = num % 10;
         num /= 10;
         i--;
     } while (num != 0);
