@@ -42,7 +42,7 @@ int get_first_digits(int *p_arr_num, int digits)
 
     for (int i = 0; i < digits; i++)
     {
-        digits = digits + p_arr_num[i]
+        digits = digits + p_arr_num[i]*pow10(digits-i);
     }
 
     return digits;
@@ -96,7 +96,7 @@ bool check_card_number_amex(int *p_arr_num)
     /* On matched length, evaluate further */
     if (match)
     {
-
+        printf("first digits: %d\n", get_first_digits(p_arr_num, 2));
     }
 
     return match;
