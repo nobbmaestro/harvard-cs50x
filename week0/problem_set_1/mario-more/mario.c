@@ -10,7 +10,8 @@ int get_input(void)
 void generate_left_at_index(int row, int height)
 {
     int i, j;
-    char output[height];
+    int size = (2*height) + 1;
+    char output[size];
 
     for (i = 0; i < height; i++)
     {
@@ -19,9 +20,9 @@ void generate_left_at_index(int row, int height)
     output[++i] = ' ';
     for (j = i; j > 0; j--)
     {
-        printf("i = %d, j = %d\n", j);
-        // output[i] = output[j];
+        output[i] = output[j];
         i++;
+        printf("i = %d, output[i] = %d --- j = %d, output[j] = %d", i, j, output[i], output[j]);
     }
 
 
