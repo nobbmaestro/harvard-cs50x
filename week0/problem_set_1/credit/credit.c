@@ -136,9 +136,6 @@ bool check_card_number_mastercard(int *p_arr_num)
     /* Check for expected card number length */
     match = get_array_length(p_arr_num) == expected_len;
 
-    /* Check for expected card number length */
-    match = expected_len == get_array_length(p_arr_num);
-
     /* On matched length, evaluate further */
     if (match)
     {
@@ -165,13 +162,33 @@ bool check_card_number_visa(int *p_arr_num)
 {
     const int expected_len_lo = 13;
     const int expected_len_hi = 16;
-    const int valid_digits[] = {4};
+    const int size = 1;
+    const int valid_digits[size] = {4};
 
     bool match = false;
 
     /* Check for expected card number length */
     const int tmp = get_array_length(p_arr_num);
     match = (tmp >= expected_len_lo) && (tmp <= expected_len_hi);
+
+    /* On matched length, evaluate further */
+    if (match)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            int digits = get_first_digits(p_arr_num, get_int_length(valid_digits[i]));
+
+            /* Check if first digits matches the expected digits */
+            if (digits != valid_digits[i])
+            {
+                match = false;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
 
     return match;
 }
