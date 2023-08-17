@@ -63,7 +63,7 @@ int validate_card_number(int num)
     int state;
     int arr_num[MAX_CARD_NUMBER_LEN];
 
-    convert_int_into_array(num);
+    convert_int_into_array(&arr_num);
 
     if (check_valid_card_number(num))
     {
