@@ -88,14 +88,19 @@ bool check_valid_card_number(int *p_arr_num)
 {
     int sum = 0;
     int total[];
-    
-    for (int i = 0; i < MAX_CARD_NUMBER_LEN; i++)
+
+    int last_idx = get_array_length(p_arr_num);
+    for (int i = last_idx - 1; i >= 0; i--)
     {
         if (p_arr_num[i] != NULL_TERMINATION)
         {
             if (i % 2 == 0)
             {
                 sum = sum + (p_arr_num[i]*2);
+            }
+            else
+            {
+                total
             }
         }
         else
