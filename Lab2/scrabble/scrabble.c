@@ -19,9 +19,12 @@ int main(void)
     int score2 = compute_score(word2);
 
     // TODO: Print the winner
+    int winner = (score1 > score2) ? 2 : 1;
+    printf("Player %d wins!\n", winner);
 }
 
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
+    return 1;
 }
