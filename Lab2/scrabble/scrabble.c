@@ -42,10 +42,11 @@ int compute_score(string word)
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         char c = (int)word[i];
-        int index = isupper(c) ? (c - low - comp + 1) : (c - low + 1);
+        int index = isupper(c) ? (c - low - comp) : (c - low);
         if ((c > low) && (c < high))
         {
             sum += POINTS[index];
+            sum++;
         }
     }
     return sum;
