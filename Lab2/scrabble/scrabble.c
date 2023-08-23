@@ -46,13 +46,7 @@ int compute_score(string word)
 
         value += isupper(word[i]) ? comp : 0;
         index = value - low;
-
-        if ((value >= low) && (value <= high))
-        {
-            sum += POINTS[index];
-            sum++;
-        }
-        printf("letter: %c, value: %d, index: %d\n", value, value, index);
+        sum += ((value >= low) && (value <= high)) ? POINTS[index] : 0;
     }
     return sum;
 }
