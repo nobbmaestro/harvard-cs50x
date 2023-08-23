@@ -49,7 +49,7 @@ int get_first_digits(int *p_arr_num, int n_digits)
     for (int i = 0; i <= n_digits; i++)
     {
         int scale = pow(10, n_digits - i - 1);
-        digits = digits + (p_arr_num[i] * scale);
+        digits += (p_arr_num[i] * scale);
     }
 
     return digits;
@@ -79,7 +79,7 @@ int sum_digit_helper(int num)
 
     do
     {
-        sum = sum + (num % 10);
+        sum += (num % 10);
         num /= 10;
     }
     while (num != 0);
@@ -99,11 +99,11 @@ bool check_valid_card_number(int *p_arr_num)
     {
         if ((i % 2) == (second_to_last_idx % 2))
         {
-            sum = sum + sum_digit_helper(p_arr_num[i] * 2);
+            sum += sum_digit_helper(p_arr_num[i] * 2);
         }
         else
         {
-            sum = sum + sum_digit_helper(p_arr_num[i]);
+            sum += sum_digit_helper(p_arr_num[i]);
         }
     }
     return (sum % 10 == 0);
