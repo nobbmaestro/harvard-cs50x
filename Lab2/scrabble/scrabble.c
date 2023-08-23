@@ -42,9 +42,10 @@ int compute_score(string word)
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         char c = (int)word[i];
-        if ((c > l_offset) && (c < max_range))
+        int index = isupper(c) ? (c - low - comp + 1) : (c - low + 1);
+        if ((c > low) && (c < high))
         {
-            sum += isupper(c) ? (c - u_offset + 1) : (c - l_offset + 1);
+            sum += POINTS[index];
         }
     }
     return sum;
