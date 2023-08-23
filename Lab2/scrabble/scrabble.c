@@ -36,5 +36,11 @@ int main(void)
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
-    return 1;
+    int sum = 0;
+    while word[i] != '\n'
+    {
+
+        i++;
+    }
+    return sum;
 }
