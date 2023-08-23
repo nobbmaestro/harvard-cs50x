@@ -36,7 +36,7 @@ int main(void)
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
-    int l_offset = 97, u_offset = 65, max_range = 122;
+    int low = 97, high = 122, comp = 25;
 
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
