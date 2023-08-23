@@ -36,7 +36,7 @@ int main(void)
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
-    int low = 97, high = 122, comp = 33;
+    int low = 97, high = 122, comp = 32;
 
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
@@ -48,7 +48,6 @@ int compute_score(string word)
             sum += POINTS[index];
             sum++;
         }
-        printf("letter: %c, value: %d, points: %d, sum: %d\n", value, index, POINTS[index], sum);
     }
     return sum;
 }
