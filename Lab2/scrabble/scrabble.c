@@ -43,7 +43,7 @@ int compute_score(string word)
     {
         char value = (int)word[i];
         int index = value - low;
-        int index += isupper(word[i]) ? comp : 0;
+        index += isupper(word[i]) ? comp : 0;
         if ((value > low) && (value < high))
         {
             sum += POINTS[index];
