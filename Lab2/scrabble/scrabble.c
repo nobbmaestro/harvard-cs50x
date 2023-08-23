@@ -47,14 +47,15 @@ int compute_score(string word)
         {
             value += comp;
         }
+
         int index = value - low;
 
         if ((value > low) && (value < high))
         {
             sum += POINTS[index];
             sum++;
+            printf("letter: %c, value: %d, index: %d\n", value, value, index);
         }
-        printf("letter: %c, value: %d, index: %d, points: %d, sum: %d\n", value, value, index, POINTS[index], sum);
     }
     return sum;
 }
