@@ -41,8 +41,8 @@ int compute_score(string word)
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        char c = word[i];
-        sum += isupper(c) ? (chr(c) - u_offset) : (chr(c) - l_offset);
+        char c = (int)word[i];
+        sum += isupper(c) ? (c - u_offset) : (c - l_offset);
     }
     return sum;
 }
