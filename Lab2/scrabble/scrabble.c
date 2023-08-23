@@ -41,16 +41,13 @@ int compute_score(string word)
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        char value = (int)word[i];
+        int index;
+        int value = (int)word[i];
 
-        if (isupper(word[i]))
-        {
-            value += comp;
-        }
+        value += isupper(word[i]) ? comp : 0;
+        index = value - low;
 
-        int index = value - low;
-
-        if ((value > low) && (value < high))
+        if ((value >= low) && (value <= high))
         {
             sum += POINTS[index];
             sum++;
