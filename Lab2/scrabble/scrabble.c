@@ -41,14 +41,14 @@ int compute_score(string word)
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        char c = (int)word[i];
-        int index = isupper(c) ? (c - low - comp) : (c - low);
-        if ((c > low) && (c < high))
+        char value = (int)word[i];
+        int index = isupper(word[i]) ? (value - low - comp) : (value - low);
+        if ((value > low) && (value < high))
         {
             sum += POINTS[index];
             sum++;
-            printf("letter: %c, points: %d, sum: %d\n", c, POINTS[index], sum);
         }
+        printf("letter: %c, points: %d, sum: %d\n", value, POINTS[index], sum);
     }
     return sum;
 }
