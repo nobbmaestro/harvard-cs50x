@@ -42,7 +42,7 @@ int compute_score(string word)
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         char c = (int)word[i];
-        sum += isupper(c) ? (c - u_offset) : (c - l_offset);
+        sum += isupper(c) ? (c - u_offset + 1) : (c - l_offset + 1);
     }
     return sum;
 }
