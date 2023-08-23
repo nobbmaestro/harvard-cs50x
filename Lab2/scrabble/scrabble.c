@@ -36,11 +36,13 @@ int main(void)
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
-    
-    int sum = 0;
-    for (int i = 0, int n = strlen(word); i < n; i++)
-    {
+    int l_offset = 93, u_offset = 65;
 
+    int sum = 0;
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        char c = word[i];
+        sum += isupper(c) ? (chr(c) - u_offset) : (chr(c) - l_offset);
     }
     return sum;
 }
