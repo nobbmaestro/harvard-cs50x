@@ -36,14 +36,16 @@ int main(void)
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
-    int l_offset = 97, u_offset = 65;
+    int l_offset = 97, u_offset = 65, max_range = 122;
 
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         char c = (int)word[i];
-        if 
-        sum += isupper(c) ? (c - u_offset + 1) : (c - l_offset + 1);
+        if ((c >= l_offset) && (c <= max_range))
+        {
+            sum += isupper(c) ? (c - u_offset + 1) : (c - l_offset + 1);
+        }
     }
     return sum;
 }
