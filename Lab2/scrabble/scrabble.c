@@ -47,6 +47,7 @@ int compute_score(string word)
         {
             sum += POINTS[index];
             sum++;
+            printf("letter: %c, points: %d, sum: %d\n", c, POINTS[index], sum);
         }
     }
     return sum;
