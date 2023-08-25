@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 #define KEY_LEN 26
 
@@ -36,7 +37,7 @@ bool validate_key(string key)
 {
     bool valid;
 
-    valid = (key != NULL);
+    valid = (strlen(key) == KEY_LEN);
 
-    return ;
+    return valid;
 }
