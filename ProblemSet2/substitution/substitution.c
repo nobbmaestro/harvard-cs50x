@@ -6,8 +6,8 @@
 
 /* Function prototypes */
 bool validate_key(string key);
-bool validate_key_length(string key);
-bool validate_key_chars(string key);
+bool check_key_alphabetic(string key);
+bool check_key_unique(string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -45,12 +45,12 @@ bool validate_key(string key)
     return valid;
 }
 
-bool validate_key_length(string key)
+bool check_key_length(string key)
 {
     return strlen(key) == KEY_LEN;
 }
 
-bool validate_key_chars(string key)
+bool check_key_alphabetic(string key)
 {
     bool valid;
     int u_low = 65, u_high = 90;
@@ -78,4 +78,9 @@ bool validate_key_chars(string key)
         }
     }
     return valid;
+}
+
+bool check_key_unique(string key)
+{
+    return false;
 }
