@@ -37,7 +37,25 @@ bool validate_key(string key)
 {
     bool valid;
 
-    valid = (strlen(key) == KEY_LEN);
+    valid = validate_key_length(key);
+
+
+    return valid;
+}
+
+bool validate_key_length(string key)
+{
+    return strlen(key) == KEY_LEN;
+}
+
+bool validate_key_chars(string key)
+{
+    bool valid;
+
+    for (int i = 0; i < KEY_LEN; i++)
+    {
+
+    }
 
     return valid;
 }
