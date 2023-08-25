@@ -46,11 +46,14 @@ bool check_for_multiple_spaces(string text)
 
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        char curr_char = text[i];
-        if (curr_char == ' ')
+        bool is_space = text[i] == ' ';
+
+        if ((i - cache == 1) && is_space)
         {
-            cache = i;
+            valid = false;
         }
+
+        cache = (is_space) ? i : cache;
     }
 
     return valid;
