@@ -163,11 +163,13 @@ int main(void)
 {
     const string text = get_text_input();
 
+#if 0
     int letters, words, sentences;
     letters = count_letters(text);
     words = count_words(text);
     sentences = count_sentences(text);
     printf("letters: %d, words: %d, senteces: %d\n", letters, words, sentences);
+#endif
 
     printf("-> %s\n", text);
 }
