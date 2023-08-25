@@ -37,9 +37,9 @@ int main(int argc, string argv[])
 /* Helpers */
 bool validate_key(string key)
 {
-    bool valid;
+    bool valid = true;
 
-    valid = validate_key_length(key);
+    valid = (valid) ? validate_key_length(key) : false;
     valid = (valid) ? validate_key_chars(key) : false;
 
     return valid;
