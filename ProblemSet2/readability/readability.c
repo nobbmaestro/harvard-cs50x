@@ -111,9 +111,13 @@ int count_words(string text)
     int sum = 0;
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        else if (text[i] == ' ')
+        if (text[i] == ' ')
         {
             sum++;
+        }
+        else if ((text[i] == '\0') && (n > 1))
+        {
+            sum ++;
         }
         else
         {
