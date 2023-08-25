@@ -49,7 +49,6 @@ bool check_for_multiple_spaces(string text)
         char curr_char = text[i];
         if (curr_char == ' ')
         {
-
             cache = i;
         }
     }
