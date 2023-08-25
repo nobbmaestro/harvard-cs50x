@@ -42,13 +42,14 @@ bool check_for_start_end_space(string text)
 bool check_for_multiple_spaces(string text)
 {
     bool valid;
-    int cache;
+    int cache = 0;
 
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
         char curr_char = text[i];
         if (curr_char == ' ')
         {
+
             cache = i;
         }
     }
