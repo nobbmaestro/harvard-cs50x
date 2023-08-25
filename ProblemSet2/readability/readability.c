@@ -66,9 +66,13 @@ bool check_for_multiple_spaces(string text)
         {
             valid = true;
         }
-        cache = (is_space) ? i : cache;
 
-        if (!valid)
+        /* If valid, update cache if necessary. Quit if not valid */
+        if (valid)
+        {
+            cache = (is_space) ? i : cache;
+        }
+        else
         {
             break;
         }
