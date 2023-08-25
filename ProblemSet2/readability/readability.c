@@ -58,7 +58,7 @@ bool check_for_multiple_spaces(string text)
 {
     bool valid;
     bool first_entry = true;
-    int cache = 0;
+    int cache = -1;
 
     for (int i = 0, n = strlen(text); i < n; i++)
     {
