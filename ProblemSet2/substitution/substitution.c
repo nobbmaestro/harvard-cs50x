@@ -10,6 +10,9 @@ bool check_key_length(string key);
 bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
 
+string encrypt_text(string text);
+string decrypt_text(string text);
+
 /* Main function */
 int main(int argc, string argv[])
 {
@@ -30,6 +33,11 @@ int main(int argc, string argv[])
     {
         key = argv[1];
         printf("key: %s\n", key);
+
+        plain = get_string("plaintext: ");
+        cipher = encrypt_text(plain);
+        printf("ciphertext: %s\n", cipher);
+
         exit_status = 1;
     }
     return exit_status;
@@ -130,4 +138,14 @@ bool check_key_unique(string key)
     }
 
     return unique;
+}
+
+string encrypt_text(string text)
+{
+    return text;
+}
+
+char apply_char_encryption(void)
+{
+    
 }
