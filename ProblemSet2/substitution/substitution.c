@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define KEY_LEN 2
+#define KEY_LEN 3
 
 /* Function prototypes */
 bool validate_key(string key);
@@ -90,6 +90,11 @@ bool check_key_unique(string key)
     int key_map[KEY_LEN];
     int u_low = 65, u_high = 90;
     int l_low = 97, l_high = 122;
+
+    for (int i = 0; i < KEY_LEN; i++)
+    {
+        printf("%c: %d\n", i + u_low, key_map[i]);
+    }
 
     for (int i = 0; i < KEY_LEN; i++)
     {
