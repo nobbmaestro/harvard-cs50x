@@ -189,18 +189,6 @@ int grade_text(string text)
     avg_sentences = calculate_avg_num_sentences_per_words(sentences, words);
     grade = calculate_coleman_liau_index(avg_letters, avg_sentences);
 
-#if 0
-    printf("\n");
-    printf("letters: \t%d\n", letters);
-    printf("words: \t\t%d\n", words);
-    printf("sentences: \t%d\n", sentences);
-    printf("\n");
-    printf("AVG letters: \t%f\n", avg_letters);
-    printf("AVG sentences: \t%f\n", avg_sentences);
-    printf("\n");
-    printf("GRADE: \t%f\n", grade);
-#endif
-
     return round(grade);
 }
 
