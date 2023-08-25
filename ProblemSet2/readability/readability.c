@@ -39,8 +39,8 @@ string get_input(void)
 
 bool check_for_start_end_spaces(string text)
 {
-    int last_idx = strlen(text);
-    return (text[0] != ' ') || (text[last_idx] != ' ');
+    int last_chr = strlen(text) - 1;
+    return (text[0] != ' ') && (text[last_chr] != ' ');
 }
 
 bool check_for_multiple_spaces(string text)
@@ -74,8 +74,12 @@ bool validate_text_input(string text)
     bool valid = true;
     valid &= count_words(text) >= 1;
     printf("Checking for number of words: \t%d\n", valid);
+
     valid &= check_for_start_end_spaces(text);
     printf("Checking for stard/end spaces: \t%d\n", valid);
+
+    valid &= check_for_multiple_spaces(text);
+    printf("Checking for multiple spaces: \t%d\n", valid);
 
     return valid;
 }
