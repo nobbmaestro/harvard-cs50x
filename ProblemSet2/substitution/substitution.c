@@ -98,13 +98,15 @@ bool check_key_unique(string key)
 
         if ((value >= u_low) && (value <= u_high))
         {
-            index = value - u_high;
+            index = value - u_low;
             key_map[index]++;
+            printf("index: %d -> %d\n", index, key_map[index]);
         }
         else if ((value >= l_low) && (value <= l_high))
         {
-            index = value - u_high;
+            index = value - u_low;
             key_map[index]++;
+            printf("index: %d -> %d\n", index, key_map[index]);
         }
         else
         {
