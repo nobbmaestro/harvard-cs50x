@@ -46,13 +46,13 @@ bool check_for_start_end_spaces(string text)
 bool check_for_multiple_spaces(string text)
 {
     bool valid;
-    int cache = 0;
+    int cache = ;
 
-    for (int i = 0, n = strlen(text); i <= n; i++)
+    for (int i = 0, n = strlen(text); i < n; i++)
     {
         bool is_space = text[i] == ' ';
 
-        valid = ((i - cache == 1) && is_space);
+        valid = ((i - cache != 1) && is_space);
         cache = (is_space) ? i : cache;
 
         if (!valid)
