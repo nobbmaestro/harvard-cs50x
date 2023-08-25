@@ -106,13 +106,11 @@ bool check_key_unique(string key)
         {
             index = value - u_low;
             key_map[index]++;
-            printf("index: %d -> %d\n", index, key_map[index]);
         }
         else if ((value >= l_low) && (value <= l_high))
         {
             index = value - u_low;
             key_map[index]++;
-            printf("index: %d -> %d\n", index, key_map[index]);
         }
         else
         {
@@ -121,14 +119,11 @@ bool check_key_unique(string key)
     }
 
     /* Check key_map array for dublicated */
-    bool unique;
+    bool unique = true;
     for (int i = 0; i < KEY_LEN; i++)
     {
-        if ()
-        printf("%c: %d\n", i + u_low, key_map[i]);
+        unique &= key_map[i] == 1;
     }
-
-    unique = false;
 
     return unique;
 }
