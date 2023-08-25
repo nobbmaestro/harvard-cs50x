@@ -136,7 +136,7 @@ int count_sentences(string text)
         {
             sum++;
         }
-        else if ((text[i] == '.') || (text[i] == '!'))
+        else if ((text[i] == '.') || (text[i] == '!') || (text[i] == '?'))
         {
             sum++;
         }
