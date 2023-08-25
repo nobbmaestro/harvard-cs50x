@@ -48,12 +48,13 @@ bool check_for_multiple_spaces(string text)
     {
         bool is_space = text[i] == ' ';
 
-        if ((i - cache == 1) && is_space)
-        {
-            valid = false;
-        }
-
+        valid = ((i - cache == 1) && is_space);
         cache = (is_space) ? i : cache;
+
+        if (!valid)
+        {
+            break;
+        }
     }
 
     return valid;
