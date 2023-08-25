@@ -82,5 +82,7 @@ bool check_key_alphabetic(string key)
 
 bool check_key_unique(string key)
 {
+    bool uniqie;
+    int entries[KEY_LEN];
     return false;
 }
