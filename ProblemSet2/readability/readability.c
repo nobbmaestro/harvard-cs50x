@@ -2,11 +2,13 @@
 #include <stdio.h>
 
 /* Function prototypes */
-float get_coleman_liau_index(float L, float S);
-
+float calculate_coleman_liau_index(float L, float S);
+int calculate_num_sentences(string * p_text);
+int calculate_num_letters(string * p_text);
+int calculate_num_words(string * p_text);
 
 /* Main code */
-float get_coleman_liau_index(float L, float S)
+float calculate_coleman_liau_index(float L, float S)
 {
     /*
         L - average number of letters per 100 words
@@ -16,6 +18,10 @@ float get_coleman_liau_index(float L, float S)
     return index;
 }
 
+int calculate_num_sentences(void)
+{
+    return 0;
+}
 
 int main(void)
 {
