@@ -4,6 +4,7 @@
 #define KEY_LEN 26
 
 /* Function prototypes */
+bool validate_key(string_key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -31,3 +32,7 @@ int main(int argc, string argv[])
 }
 
 /* Helpers */
+bool validate_key(string key)
+{
+    
+}
