@@ -58,12 +58,13 @@ bool check_key_alphabetic(string key)
 
     for (int i = 0; i < KEY_LEN; i++)
     {
-        char c = key[i];
-        if ((c >= u_low) && (c <= u_high))
+        int value = (int)key[i];
+
+        if ((value >= u_low) && (value <= u_high))
         {
             valid = true;
         }
-        else if ((c >= l_low) && (c <= l_high))
+        else if ((value >= l_low) && (value <= l_high))
         {
             valid = true;
         }
@@ -83,11 +84,28 @@ bool check_key_alphabetic(string key)
 bool check_key_unique(string key)
 {
     bool unique;
-    int entries[KEY_LEN];
+    int key_map[KEY_LEN];
+    int u_low = 65, u_high = 90;
+    int l_low = 97, l_high = 122;
 
     for (int i = 0; i < KEY_LEN; i++)
     {
-        
+        int index;
+        int value = (int)key[i];
+
+        if (( >= u_low) && (value <= u_high))
+        {
+            index =
+            key_map[]
+        }
+        else if ((value >= l_low) && (value <= l_high))
+        {
+            valid = true;
+        }
+        else
+        {
+            valid = false;
+        }
     }
     return unique;
 }
