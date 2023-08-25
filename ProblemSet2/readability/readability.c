@@ -79,14 +79,16 @@ int count_words(string text)
 
 bool validate_text_input(string text)
 {
-    bool valid = true;
-    valid &= count_words(text) >= 1;
-    printf("Checking for number of words: \t%d\n", valid);
+    bool valid;
 
-    valid &= check_for_start_end_spaces(text);
-    printf("Checking for stard/end spaces: \t%d\n", valid);
+    valid = true;
+    // valid = count_words(text) >= 1;
+    // printf("Checking for number of words: \t%d\n", valid);
 
-    valid &= check_for_multiple_spaces(text);
+    // valid = (valid) ? check_for_start_end_spaces(text) : false;
+    // printf("Checking for stard/end spaces: \t%d\n", valid);
+
+    valid = (valid) ? check_for_multiple_spaces(text) : false;
     printf("Checking for multiple spaces: \t%d\n", valid);
 
     return valid;
