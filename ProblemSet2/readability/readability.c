@@ -27,21 +27,23 @@ string get_input(void)
     string text;
     do
     {
-        get_string("Text: ");
-    } while validate_text_input(text);
+        text = get_string("Text: ");
+    } while (!validate_text_input(text));
 
     return text;
 }
 
 bool validate_text_input(string text)
 {
+    bool valid;
+    valid = count_words(text) >= 1;
+    
     return true;
 }
 
 int main(void)
 {
-    const string text;
-    text = get_input();
+    const string text = get_input();
 
     printf("-> %s\n", text);
 }
