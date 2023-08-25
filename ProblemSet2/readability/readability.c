@@ -86,7 +86,7 @@ int count_words(string text)
     int sum = 0;
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        if ((sum == 0) && (n > 0))
+        if ((i == 0) && (n > 0))
         {
             sum ++;
         }
