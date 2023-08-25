@@ -22,15 +22,26 @@ float calculate_coleman_liau_index(float L, float S)
     return index;
 }
 
+string get_input(void)
+{
+    string text;
+    do
+    {
+        get_string("Text: ");
+    } while validate_text_input(text);
+
+    return text;
+}
+
 bool validate_text_input(string text)
 {
-
+    return true;
 }
 
 int main(void)
 {
-    string text;
-    text = get_string("Text: ");
+    const string text;
+    text = get_input();
 
     printf("-> %s\n", text);
 }
