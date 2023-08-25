@@ -102,11 +102,11 @@ bool validate_text_input(string text)
     bool valid;
 
     valid = count_words(text) >= 1;
-    printf("Valid word count: \t%d\n", valid);
+    // printf("Valid word count: \t%d\n", valid);
     valid = (valid) ? check_for_start_end_spaces(text) : false;
-    printf("Valid start/end: \t%d\n", valid);
+    // printf("Valid start/end: \t%d\n", valid);
     valid = (valid) ? check_for_multiple_spaces(text) : false;
-    printf("Valid spaces: \t\t%d\n", valid);
+    // printf("Valid spaces: \t\t%d\n", valid);
 
     return valid;
 }
@@ -192,6 +192,7 @@ int grade_text(string text)
     avg_sentences = calculate_avg_num_sentences_per_words(sentences, words);
     grade = calculate_coleman_liau_index(round(avg_letters), round(avg_sentences));
 
+#if 0
     printf("\n");
     printf("letters: \t%d\n", letters);
     printf("words: \t\t%d\n", words);
@@ -201,6 +202,7 @@ int grade_text(string text)
     printf("AVG sentences: \t%f\n", avg_sentences);
     printf("\n");
     printf("GRADE: \t%f\n", grade);
+#endif
 
     return round(grade);
 }
