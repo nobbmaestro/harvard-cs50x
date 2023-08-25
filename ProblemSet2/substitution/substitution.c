@@ -39,8 +39,8 @@ bool validate_key(string key)
 {
     bool valid = true;
 
-    valid = (valid) ? validate_key_length(key) : false;
-    valid = (valid) ? validate_key_chars(key) : false;
+    valid &= validate_key_length(key);
+    valid &= validate_key_chars(key);
 
     return valid;
 }
@@ -59,11 +59,11 @@ bool validate_key_chars(string key)
     for (int i = 0; i < KEY_LEN; i++)
     {
         char c = key[i];
-        if ((c >= u_low) || (c <= u_high))
+        if ((c >= u_low) && (c <= u_high))
         {
             valid = true;
         }
-        else if ((c >= l_low) || (c <= l_high))
+        else if ((c >= l_low) && (c <= l_high))
         {
             valid = true;
         }
