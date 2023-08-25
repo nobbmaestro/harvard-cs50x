@@ -23,7 +23,7 @@ int main(int argc, string argv[])
     }
     else if (!validate_key(argv[1]))
     {
-        printf("Key must contain 26 characters.\n");
+        printf("Invalid key.\n");
         exit_status = 1;
     }
     else
@@ -43,7 +43,6 @@ bool validate_key(string key)
     valid &= check_key_length(key);
     valid &= check_key_alphabetic(key);
     valid &= check_key_unique(key);
-
 
     return valid;
 }
@@ -123,6 +122,11 @@ bool check_key_unique(string key)
     for (int i = 0; i < KEY_LEN; i++)
     {
         unique &= key_map[i] == 1;
+
+        if (!unique)
+        {
+            break;
+        }
     }
 
     return unique;
