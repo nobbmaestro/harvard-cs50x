@@ -13,6 +13,7 @@ bool validate_text_input(string text);
 int count_letters(string text);
 int count_sentences(string text);
 int count_words(string text);
+int grade_text(string text);
 
 float calculate_avg_num_letters_per_words(int letters, int words);
 float calculate_avg_num_sentences_per_words(int senteces, int words);
@@ -29,21 +30,6 @@ string get_text_input(void)
     while (!validate_text_input(text));
 
     return text;
-}
-
-float calculate_coleman_liau_index(float L, float S)
-{
-    return (0.058 * L) - (0.296 * S) - 15.8;
-}
-
-float calculate_avg_num_letters_per_words(int letters, int words)
-{
-    return ((float)letters / (float)words) * 100.0F;
-}
-
-float calculate_avg_num_sentences_per_words(int sentences, int words)
-{
-    return ((float)sentences / (float)words) * 100.0F;
 }
 
 bool check_for_multiple_spaces(string text)
@@ -126,16 +112,16 @@ int count_letters(string text)
     return sum;
 }
 
-int count_words(string text)
+int count_sentences(string text)
 {
     int sum = 0;
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        if ((text[i] == '\0') && (n > 1))
+        if ((text[i] == '\0') && (sum == 0) && (n > 1))
         {
-            sum ++;
+            sum++;
         }
-        else if (text[i] == ' ')
+        else if ((text[i] == '.') || (text[i] == '!') || (text[i] == '?'))
         {
             sum++;
         }
@@ -147,16 +133,16 @@ int count_words(string text)
     return sum;
 }
 
-int count_sentences(string text)
+int count_words(string text)
 {
     int sum = 0;
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        if ((text[i] == '\0') && (sum == 0) && (n > 1))
+        if ((text[i] == '\0') && (n > 1))
         {
-            sum++;
+            sum ++;
         }
-        else if ((text[i] == '.') || (text[i] == '!') || (text[i] == '?'))
+        else if (text[i] == ' ')
         {
             sum++;
         }
@@ -191,6 +177,21 @@ int grade_text(string text)
     printf("\n");
 
     return round(grade);
+}
+
+float calculate_coleman_liau_index(float L, float S)
+{
+    return (0.058 * L) - (0.296 * S) - 15.8;
+}
+
+float calculate_avg_num_letters_per_words(int letters, int words)
+{
+    return ((float)letters / (float)words) * 100.0F;
+}
+
+float calculate_avg_num_sentences_per_words(int sentences, int words)
+{
+    return ((float)sentences / (float)words) * 100.0F;
 }
 
 int main(void)
