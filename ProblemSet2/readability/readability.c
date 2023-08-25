@@ -1,9 +1,12 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 /* Function prototypes */
 string get_input(void);
 bool validate_text_input(string text);
+bool check_for_start_end_space(string text);
+bool check_for_multiple_spaces(string text);
 
 int count_letters(string text);
 int count_sentences(string text);
@@ -28,7 +31,8 @@ string get_input(void)
     do
     {
         text = get_string("Text: ");
-    } while (!validate_text_input(text));
+    }
+    while (!validate_text_input(text));
 
     return text;
 }
@@ -60,11 +64,16 @@ bool check_for_multiple_spaces(string text)
     return valid;
 }
 
+int count_words(string text)
+{
+    return 1;
+}
+
 bool validate_text_input(string text)
 {
     bool valid;
     valid = count_words(text) >= 1;
-
+    valid = 
     return true;
 }
 
