@@ -16,10 +16,8 @@ float calculate_avg_num_sentences_per_words(int senteces, int words);
 /* Main code */
 float calculate_coleman_liau_index(float L, float S)
 {
-    /*
-        L - average number of letters per 100 words
-        S - average number of sentences per 100 words.
-    */
+    /*  L - average number of letters per 100 words
+        S - average number of sentences per 100 words.  */
     float index = (0.058 * L) - (0.296 * S) - 15.8;
     return index;
 }
