@@ -33,11 +33,17 @@ string get_input(void)
     return text;
 }
 
+bool check_for_spaces(string text)
+{
+    int index = strlen(text);
+    
+}
+
 bool validate_text_input(string text)
 {
     bool valid;
     valid = count_words(text) >= 1;
-    
+
     return true;
 }
 
