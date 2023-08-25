@@ -197,6 +197,7 @@ int grade_text(string text)
     printf("AVG letters: \t%f\n", avg_letters);
     printf("AVG sentences: \t%f\n", avg_sentences);
     printf("\n");
+    printf("GRADE: \t%f\n", grade);
 
     return round(grade);
 }
