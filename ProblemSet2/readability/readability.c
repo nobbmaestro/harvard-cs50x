@@ -33,10 +33,26 @@ string get_input(void)
     return text;
 }
 
-bool check_for_spaces(string text)
+bool check_for_start_end_space(string text)
 {
-    int index = strlen(text);
-    
+    int last_idx = strlen(text);
+    return (text[0] != ' ') || (text[last_idx] != ' ');
+}
+
+bool check_for_multiple_spaces(string text)
+{
+    bool valid;
+    int cache;
+
+    for (int i = 0, n = strlen(text); i <= n; i++)
+    {
+        if (text[i] == ' ')
+        {
+            cache = i;
+        }
+    }
+
+    return valid;
 }
 
 bool validate_text_input(string text)
