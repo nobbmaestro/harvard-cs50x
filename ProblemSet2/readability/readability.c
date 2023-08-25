@@ -25,9 +25,9 @@ float calculate_coleman_liau_index(float L, float S)
 
 float calculate_avg_num_letters_per_words(int letters, int words)
 {
-    int avg;
+    float avg;
 
-    avg = letters / words;
+    avg = (letters / words) * 100.0F;
 
     return avg;
 }
@@ -173,7 +173,8 @@ bool validate_text_input(string text)
 
 int grade_text(string text)
 {
-    int grade, words, letters, sentences, avg_letters, avg_sentences;
+    int words, letters, sentences;
+    float grade, avg_letters, avg_sentences;
 
     words = count_words(text);
     letters = count_letters(text);
@@ -187,8 +188,8 @@ int grade_text(string text)
     printf("letters: \t%d\n", letters);
     printf("words: \t\t%d\n", words);
     printf("sentences: \t%d\n", sentences);
-    printf("AVG letters: \t%d\n", avg_letters);
-    printf("AVG sentences: \t%d\n", avg_sentences);
+    printf("AVG letters: \t%f\n", avg_letters);
+    printf("AVG sentences: \t%f\n", avg_sentences);
     printf("\n");
 
     return round(grade);
