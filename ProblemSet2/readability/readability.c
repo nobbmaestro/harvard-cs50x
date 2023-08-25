@@ -16,10 +16,11 @@ float get_coleman_liau_index(float L, float S)
     return index;
 }
 
+
 int main(void)
 {
-    char text[];
+    string text;
+    text = get_string("Text: ");
 
-    scanf("Text: %s", &text);
     printf("-> %s\n", text);
 }
