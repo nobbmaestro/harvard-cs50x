@@ -5,7 +5,7 @@
 /* Function prototypes */
 string get_input(void);
 bool validate_text_input(string text);
-bool check_for_start_end_space(string text);
+bool check_for_start_end_spaces(string text);
 bool check_for_multiple_spaces(string text);
 
 int count_letters(string text);
@@ -37,7 +37,7 @@ string get_input(void)
     return text;
 }
 
-bool check_for_start_end_space(string text)
+bool check_for_start_end_spaces(string text)
 {
     int last_idx = strlen(text);
     return (text[0] != ' ') || (text[last_idx] != ' ');
@@ -71,10 +71,12 @@ int count_words(string text)
 
 bool validate_text_input(string text)
 {
-    bool valid;
-    valid = count_words(text) >= 1;
-    valid = 
-    return true;
+    bool valid = true;
+    valid &= count_words(text) >= 1;
+    printf("Checking for number of words: \t%d\n", valid);
+    valid &= check_for_start_end_spaces(text);
+
+    return valid;
 }
 
 int main(void)
