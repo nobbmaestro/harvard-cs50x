@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
-#define KEY_LEN 26
+#define KEY_LEN 2
 
 /* Function prototypes */
 bool validate_key(string key);
+bool validate_key_length(string key);
+bool validate_key_chars(string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -38,7 +40,7 @@ bool validate_key(string key)
     bool valid;
 
     valid = validate_key_length(key);
-
+    valid = (valid) ? validate_key_chars(key) : false;
 
     return valid;
 }
@@ -51,11 +53,29 @@ bool validate_key_length(string key)
 bool validate_key_chars(string key)
 {
     bool valid;
+    int u_low = 65, u_high = 90;
+    int l_low = 97, l_high = 122;
 
     for (int i = 0; i < KEY_LEN; i++)
     {
+        char c = key[i];
+        if ((c >= u_low) || (c <= u_high))
+        {
+            valid = true;
+        }
+        else if ((c >= l_low) || (c <= l_high))
+        {
+            valid = true;
+        }
+        else
+        {
+            valid = false;
+        }
 
+        if (!valid)
+        {
+            break;
+        }
     }
-
     return valid;
 }
