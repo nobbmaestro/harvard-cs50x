@@ -27,7 +27,18 @@ int main(void)
     const string text = get_text_input();
     grade = grade_text(text);
 
-    printf("Grade %d\n", grade);
+    if (grade < 1)
+    {
+        printf("Grade 1");
+    }
+    else if (grade >= 16)
+    {
+        printf("Grade 16+");
+    }
+    else
+    {
+        printf("Grade %d\n", grade);
+    }
 }
 
 /* Helpers */
