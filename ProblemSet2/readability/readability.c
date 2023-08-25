@@ -52,7 +52,15 @@ bool check_for_multiple_spaces(string text)
     {
         bool is_space = text[i] == ' ';
 
-        valid = ((i - cache != 1) && is_space);
+        if (is_space)
+        {
+            valid = (i - cache) > 1;
+        }
+        else
+        {
+            valid = true;
+        }
+        // valid = ((i - cache != 1) && is_space);
         cache = (is_space) ? i : cache;
 
         if (!valid)
