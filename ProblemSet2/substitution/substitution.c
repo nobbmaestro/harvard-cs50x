@@ -86,16 +86,17 @@ bool check_key_alphabetic(string key)
 
 bool check_key_unique(string key)
 {
-    bool unique;
     int key_map[KEY_LEN];
     int u_low = 65, u_high = 90;
     int l_low = 97, l_high = 122;
 
+    /* Reset key_map array */
     for (int i = 0; i < KEY_LEN; i++)
     {
-        printf("%c: %d\n", i + u_low, key_map[i]);
+        key_map[i] = 0;
     }
 
+    /* Populate key_map array */
     for (int i = 0; i < KEY_LEN; i++)
     {
         int index;
@@ -119,8 +120,11 @@ bool check_key_unique(string key)
         }
     }
 
+    /* Check key_map array for dublicated */
+    bool unique;
     for (int i = 0; i < KEY_LEN; i++)
     {
+        if ()
         printf("%c: %d\n", i + u_low, key_map[i]);
     }
 
