@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 /* Function prototypes */
+string get_input(void);
 bool validate_text_input(string text);
 
 int count_letters(string text);
