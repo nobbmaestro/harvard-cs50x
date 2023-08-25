@@ -102,11 +102,8 @@ bool validate_text_input(string text)
     bool valid;
 
     valid = count_words(text) >= 1;
-    // printf("Valid word count: \t%d\n", valid);
     valid = (valid) ? check_for_start_end_spaces(text) : false;
-    // printf("Valid start/end: \t%d\n", valid);
     valid = (valid) ? check_for_multiple_spaces(text) : false;
-    // printf("Valid spaces: \t\t%d\n", valid);
 
     return valid;
 }
