@@ -77,7 +77,6 @@ bool check_for_multiple_spaces(string text)
             break;
         }
     }
-
     return valid;
 }
 
