@@ -8,33 +8,26 @@
 /* Main function */
 int main(int argc, string argv[])
 {
-    bool valid_key;
+    int exit_status;
     string key, plain, cipher;
 
     if ((argc == 1) || (argc > 2))
     {
         printf("Usage: ./substitution key\n");
-        return 1;
+        exit_status = 1;
     }
     else if (argv[1] != KEY_LEN)
     {
         printf("Key must contain 26 characters.\n");
-        return 1;
+        exit_status = 1;
     }
     else
     {
         key = argv[1];
         printf("key: %s\n", key);
-        return 0;
+        exit_status = 1;
     }
+    return exit_status;
 }
 
 /* Helpers */
-bool validate_key(string key)
-{
-    bool valid = false;
-
-    // valid = strlen(key) != KEY_LEN;
-
-    return valid;
-}
