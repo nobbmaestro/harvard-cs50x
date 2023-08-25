@@ -1,6 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 /* Function prototypes */
 string get_text_input(void);
@@ -12,7 +13,7 @@ int count_letters(string text);
 int count_sentences(string text);
 int count_words(string text);
 
-float calculate_coleman_liau_index(float L, float S);
+int calculate_coleman_liau_index(float L, float S);
 float calculate_avg_num_letters_per_words(int letters, int words);
 float calculate_avg_num_sentences_per_words(int senteces, int words);
 
@@ -21,8 +22,8 @@ float calculate_coleman_liau_index(float L, float S)
 {
     /*  L - average number of letters per 100 words
         S - average number of sentences per 100 words.  */
-    float index = (0.058 * L) - (0.296 * S) - 15.8;
-    return index;
+    int index = (0.058 * L) - (0.296 * S) - 15.8;
+    return round(index);
 }
 
 string get_text_input(void)
@@ -157,6 +158,20 @@ bool validate_text_input(string text)
     valid = (valid) ? check_for_multiple_spaces(text) : false;
 
     return valid;
+}
+
+int grade_text(string text)
+{
+    int words, letters, sentences, avg_letters, avg_sentences;
+
+    words = count_words(text);
+    letters = count_letters(text);
+    sentences = count_senctences(text);
+
+    avg_letters = calculate_avg_num_letters_per_words(letters, words);
+    avg_sentences = calculate_avg_num_sentences_per_words(sentences, words);
+
+    return calculate_coleman_liau_index(avg_letters, avg_sentences);
 }
 
 int main(void)
