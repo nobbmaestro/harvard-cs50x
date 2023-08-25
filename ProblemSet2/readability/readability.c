@@ -75,6 +75,7 @@ bool validate_text_input(string text)
     valid &= count_words(text) >= 1;
     printf("Checking for number of words: \t%d\n", valid);
     valid &= check_for_start_end_spaces(text);
+    printf("Checking for stard/end spaces: \t%d\n", valid);
 
     return valid;
 }
