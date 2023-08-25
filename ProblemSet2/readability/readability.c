@@ -20,6 +20,6 @@ int main(void)
 {
     string text;
 
-    text = scanf("Text: ");
+    scanf("Text: ", &text);
     printf("-> %s\n", text);
 }
