@@ -206,7 +206,7 @@ int grade_text(string text)
 
 float calculate_coleman_liau_index(float L, float S)
 {
-    return (0.058 * L) - (0.296 * S) - 15.8;
+    return 0.058 * L - 0.296 * S - 15.8;
 }
 
 float calculate_avg_num_letters_per_words(int letters, int words)
