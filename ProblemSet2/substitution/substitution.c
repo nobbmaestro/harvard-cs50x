@@ -89,13 +89,13 @@ bool check_key_unique(string key)
     int u_low = 65, u_high = 90;
     int l_low = 97, l_high = 122;
 
-    /* Reset key_map array */
+    /* Set all key_map indexes to zero */
     for (int i = 0; i < KEY_LEN; i++)
     {
         key_map[i] = 0;
     }
 
-    /* Populate key_map array */
+    /* Populate the key_map array */
     for (int i = 0; i < KEY_LEN; i++)
     {
         int index;
@@ -117,7 +117,7 @@ bool check_key_unique(string key)
         }
     }
 
-    /* Check key_map array for dublicated */
+    /* Check the key_map array for dublicated */
     bool unique = true;
     for (int i = 0; i < KEY_LEN; i++)
     {
