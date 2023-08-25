@@ -4,7 +4,7 @@
 #define KEY_LEN 26
 
 /* Function prototypes */
-bool validate_key(string_key);
+bool validate_key(string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -17,7 +17,7 @@ int main(int argc, string argv[])
         printf("Usage: ./substitution key\n");
         exit_status = 1;
     }
-    else if (argv[1] != KEY_LEN)
+    else if (!validate_key(argv[1]))
     {
         printf("Key must contain 26 characters.\n");
         exit_status = 1;
@@ -34,5 +34,9 @@ int main(int argc, string argv[])
 /* Helpers */
 bool validate_key(string key)
 {
-    
+    bool valid;
+
+    valid = (key != NULL);
+
+    return ;
 }
