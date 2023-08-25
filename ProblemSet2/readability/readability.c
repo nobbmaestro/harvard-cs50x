@@ -3,7 +3,7 @@
 #include <string.h>
 
 /* Function prototypes */
-string get_input(void);
+string get_text_input(void);
 bool validate_text_input(string text);
 bool check_for_start_end_spaces(string text);
 bool check_for_multiple_spaces(string text);
@@ -25,7 +25,7 @@ float calculate_coleman_liau_index(float L, float S)
     return index;
 }
 
-string get_input(void)
+string get_text_input(void)
 {
     string text;
     do
@@ -114,7 +114,7 @@ bool validate_text_input(string text)
 
 int main(void)
 {
-    const string text = get_input();
+    const string text = get_text_input();
 
     printf("-> %s\n", text);
 }
