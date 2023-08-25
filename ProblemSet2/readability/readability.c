@@ -82,7 +82,9 @@ bool check_for_multiple_spaces(string text)
 
 int count_letters(string text)
 {
+    int low = 97, high = 122, comp = 32;
     int sum = 0;
+    
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         int n_char = (int)text[i];
