@@ -85,7 +85,8 @@ int count_letters(string text)
     int sum = 0;
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        if ((i == 0) && (n > 0))
+        int n_char = (int)text[i];
+        if (n_char >=)
         {
             sum ++;
         }
