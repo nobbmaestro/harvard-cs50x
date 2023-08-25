@@ -130,9 +130,9 @@ int count_words(string text)
 int count_sentences(string text)
 {
     int sum = 0;
-    for (int i = 0, n = strlen(text); i < n; i++)
+    for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        if ((i == 0) && (n > 0))
+        if ((text[i] == '\0') && (sum == 0) && (n > 0))
         {
             sum++;
         }
