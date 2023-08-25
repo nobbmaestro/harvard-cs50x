@@ -80,6 +80,18 @@ bool check_for_multiple_spaces(string text)
     return valid;
 }
 
+int count_letters(string text)
+{
+    int sum = 0;
+    for (int i = 0, n = strlen(text); i < n; i++)
+    {
+        if ((i == 0) && (n > 0))
+        {
+            sum ++;
+        }
+    }
+}
+
 int count_words(string text)
 {
     int sum = 0;
@@ -90,6 +102,27 @@ int count_words(string text)
             sum ++;
         }
         else if (text[i] == ' ')
+        {
+            sum++;
+        }
+        else
+        {
+            /* Do nothing */
+        }
+    }
+    return sum;
+}
+
+int count_sentences(string text)
+{
+    int sum = 0;
+    for (int i = 0, n = strlen(text); i < n; i++)
+    {
+        if ((i == 0) && (n > 0))
+        {
+            sum++;
+        }
+        else if (text[i] == '.')
         {
             sum++;
         }
