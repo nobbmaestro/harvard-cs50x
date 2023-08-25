@@ -25,7 +25,11 @@ float calculate_coleman_liau_index(float L, float S)
 
 float calculate_avg_num_letters_per_words(int letters, int words)
 {
-    return 0.0F;
+    int avg;
+
+    avg = letters / words;
+
+    return avg;
 }
 
 float calculate_avg_num_sentences_per_words(int letters, int words)
