@@ -53,7 +53,12 @@ bool check_for_multiple_spaces(string text)
     {
         bool is_space = text[i] == ' ';
 
-        if (is_space && !first_entry)
+        if (first_entry)
+        {
+            first_entry = false;
+            valid = true;
+        }
+        else if (is_space)
         {
             valid = (i - cache) > 1;
         }
