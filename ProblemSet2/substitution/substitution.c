@@ -93,13 +93,14 @@ bool check_key_unique(string key)
         int index;
         int value = (int)key[i];
 
-        if (( >= u_low) && (value <= u_high))
+        if ((value >= u_low) && (value <= u_high))
         {
-            index =
-            key_map[]
+            index = value - u_high;
+            key_map[index]++;
         }
         else if ((value >= l_low) && (value <= l_high))
         {
+            index = value - u_high;
             valid = true;
         }
         else
