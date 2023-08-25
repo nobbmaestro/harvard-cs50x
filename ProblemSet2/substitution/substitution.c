@@ -140,12 +140,12 @@ bool check_key_unique(string key)
     return unique;
 }
 
-string encrypt_text(string text)
+string encrypt_text(string text, string key)
 {
     return text;
 }
 
-char apply_char_encryption(void)
+char apply_char_encryption(char chr, string key)
 {
-    
+
 }
