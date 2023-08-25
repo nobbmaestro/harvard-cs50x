@@ -2,12 +2,15 @@
 #include <stdio.h>
 
 /* Function prototypes */
+bool validate_text_input(string text);
+
+int count_letters(string text);
+int count_sentences(string text);
+int count_words(string text);
+
 float calculate_coleman_liau_index(float L, float S);
-int calculate_num_sentences(string * p_text);
-int calculate_num_letters(string * p_text);
-int calculate_num_words(string * p_text);
-float calculate_avg_letters_per_words(int letters, int words);
-float calculate_avg_
+float calculate_avg_num_letters_per_words(int letters, int words);
+float calculate_avg_num_sentences_per_words(int senteces, int words);
 
 /* Main code */
 float calculate_coleman_liau_index(float L, float S)
@@ -20,9 +23,9 @@ float calculate_coleman_liau_index(float L, float S)
     return index;
 }
 
-int calculate_num_sentences(void)
+bool validate_text_input(string text)
 {
-    return 0;
+
 }
 
 int main(void)
