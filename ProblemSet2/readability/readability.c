@@ -18,7 +18,7 @@ float get_coleman_liau_index(float L, float S)
 
 int main(void)
 {
-    string text;
+    char text[];
 
     scanf("Text: %s", &text);
     printf("-> %s\n", text);
