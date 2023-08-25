@@ -166,7 +166,7 @@ int main(void)
     int letters, words, sentences;
     letters = count_letters(text);
     words = count_words(text);
-    sentences = count_words(text);
+    sentences = count_sentences(text);
     printf("letters: %d, words: %d, senteces: %d\n", letters, words, sentences);
 
     printf("-> %s\n", text);
