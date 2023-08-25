@@ -28,9 +28,9 @@ float calculate_avg_num_letters_per_words(int letters, int words)
     return ((float)letters / (float)words) * 100.0F;
 }
 
-float calculate_avg_num_sentences_per_words(int sentences, int words)
+float calculate_avg_num_sentences_per_words(int letters, int words)
 {
-    return ((float)sentences / (float)words) * 100.0F;
+    return 0.0F;
 }
 
 string get_text_input(void)
