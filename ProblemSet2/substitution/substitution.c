@@ -112,6 +112,11 @@ bool check_key_unique(string key)
         }
     }
 
+    for (int i = 0; i < KEY_LEN; i++)
+    {
+        printf("%c: %d\n", i + u_low, key_map[i]);
+    }
+
     unique = false;
 
     return unique;
