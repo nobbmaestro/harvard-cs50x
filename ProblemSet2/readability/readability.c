@@ -132,7 +132,7 @@ int count_sentences(string text)
     int sum = 0;
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        if ((text[i] == '\0') && (sum == 0) && (n > 0))
+        if ((text[i] == '\0') && (sum == 0) && (n > 1))
         {
             sum++;
         }
