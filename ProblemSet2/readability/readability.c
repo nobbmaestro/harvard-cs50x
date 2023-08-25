@@ -82,17 +82,28 @@ bool check_for_multiple_spaces(string text)
 
 int count_letters(string text)
 {
-    int low = 97, high = 122, comp = 32;
     int sum = 0;
-    
+    int u_low = 65, u_high = 90;
+    int l_low = 97, l_high = 122;
+
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        int n_char = (int)text[i];
-        if (n_char >=)
+        int value = (int)text[i];
+
+        if ((value >= u_low) && (value <= u_high))
         {
             sum ++;
         }
+        else if ((value >= l_low) && (value <= l_high))
+        {
+            sum ++;
+        }
+        else
+        {
+            /* Do nothing */
+        }
     }
+    return sum;
 }
 
 int count_words(string text)
