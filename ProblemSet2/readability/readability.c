@@ -90,15 +90,9 @@ bool validate_text_input(string text)
 {
     bool valid;
 
-    valid = true;
-    // valid = count_words(text) >= 1;
-    // printf("Checking for number of words: \t%d\n", valid);
-
-    // valid = (valid) ? check_for_start_end_spaces(text) : false;
-    // printf("Checking for stard/end spaces: \t%d\n", valid);
-
+    valid = count_words(text) >= 1;
+    valid = (valid) ? check_for_start_end_spaces(text) : false;
     valid = (valid) ? check_for_multiple_spaces(text) : false;
-    printf("Checking for multiple spaces: \t%d\n", valid);
 
     return valid;
 }
