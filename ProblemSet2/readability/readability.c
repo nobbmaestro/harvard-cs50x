@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /* Function prototypes */
-int get_coleman_liau_index(int L, int S);
+float get_coleman_liau_index(float L, float S);
 
 
 /* Main code */
@@ -18,5 +18,8 @@ float get_coleman_liau_index(float L, float S)
 
 int main(void)
 {
+    string text;
 
+    text = scanf("Text: ");
+    printf("-> %s\n", text);
 }
