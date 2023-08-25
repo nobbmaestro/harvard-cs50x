@@ -83,7 +83,15 @@ bool check_for_multiple_spaces(string text)
 
 int count_words(string text)
 {
-    return 1;
+    int sum = 0;
+    for (int i = 0, n = strlen(text); i < n; i++)
+    {
+        if (text[i] == ' ')
+        {
+            i++;
+        }
+    }
+    return sum;
 }
 
 bool validate_text_input(string text)
