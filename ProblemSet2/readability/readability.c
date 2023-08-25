@@ -6,6 +6,8 @@ float calculate_coleman_liau_index(float L, float S);
 int calculate_num_sentences(string * p_text);
 int calculate_num_letters(string * p_text);
 int calculate_num_words(string * p_text);
+float calculate_avg_letters_per_words(int letters, int words);
+float calculate_avg_
 
 /* Main code */
 float calculate_coleman_liau_index(float L, float S)
