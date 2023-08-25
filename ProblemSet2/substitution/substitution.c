@@ -6,6 +6,7 @@
 
 /* Function prototypes */
 bool validate_key(string key);
+bool check_key_length(string key);
 bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
 
@@ -39,8 +40,10 @@ bool validate_key(string key)
 {
     bool valid = true;
 
-    valid &= validate_key_length(key);
-    valid &= validate_key_chars(key);
+    valid &= check_key_length(key);
+    valid &= check_key_alphabetic(key);
+    valid &= check_key_unique(key);
+
 
     return valid;
 }
@@ -101,13 +104,15 @@ bool check_key_unique(string key)
         else if ((value >= l_low) && (value <= l_high))
         {
             index = value - u_high;
-            valid = true;
+            key_map[index]++;
         }
         else
         {
-            valid = false;
+            /* Do nothing */
         }
     }
+
+    unique = false;
 
     return unique;
 }
