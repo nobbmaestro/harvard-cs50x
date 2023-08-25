@@ -13,17 +13,24 @@ int count_letters(string text);
 int count_sentences(string text);
 int count_words(string text);
 
-int calculate_coleman_liau_index(float L, float S);
+float calculate_coleman_liau_index(float L, float S);
 float calculate_avg_num_letters_per_words(int letters, int words);
 float calculate_avg_num_sentences_per_words(int senteces, int words);
 
 /* Main code */
 float calculate_coleman_liau_index(float L, float S)
 {
-    /*  L - average number of letters per 100 words
-        S - average number of sentences per 100 words.  */
-    int index = (0.058 * L) - (0.296 * S) - 15.8;
-    return round(index);
+    return (0.058 * L) - (0.296 * S) - 15.8;
+}
+
+float calculate_avg_num_letters_per_words(int letters, int words)
+{
+    return 0.0F;
+}
+
+float calculate_avg_num_sentences_per_words(int letters, int words)
+{
+    return 0.0F;
 }
 
 string get_text_input(void)
@@ -162,29 +169,33 @@ bool validate_text_input(string text)
 
 int grade_text(string text)
 {
-    int words, letters, sentences, avg_letters, avg_sentences;
+    int grade, words, letters, sentences, avg_letters, avg_sentences;
 
     words = count_words(text);
     letters = count_letters(text);
-    sentences = count_senctences(text);
+    sentences = count_sentences(text);
 
     avg_letters = calculate_avg_num_letters_per_words(letters, words);
     avg_sentences = calculate_avg_num_sentences_per_words(sentences, words);
+    grade = calculate_coleman_liau_index(avg_letters, avg_sentences);
 
-    return calculate_coleman_liau_index(avg_letters, avg_sentences);
+    printf("\n");
+    printf("letters: \t%d\n", letters);
+    printf("words: \t\t%d\n", words);
+    printf("sentences: \t%d\n", sentences);
+    printf("AVG letters: \t%d\n", avg_letters);
+    printf("AVG sentences: \t%d\n", avg_sentences);
+    printf("\n");
+
+    return round(grade);
 }
 
 int main(void)
 {
+    int grade;
+
     const string text = get_text_input();
+    grade = grade_text(text);
 
-#if 0
-    int letters, words, sentences;
-    letters = count_letters(text);
-    words = count_words(text);
-    sentences = count_sentences(text);
-    printf("letters: %d, words: %d, senteces: %d\n", letters, words, sentences);
-#endif
-
-    printf("-> %s\n", text);
+    printf("Grade %d\n", grade);
 }
