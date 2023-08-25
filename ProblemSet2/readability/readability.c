@@ -29,7 +29,7 @@ int main(void)
 
     if (grade < 1)
     {
-        printf("Grade 1\n");
+        printf("Before Grade 1\n");
     }
     else if (grade >= 16)
     {
@@ -187,7 +187,7 @@ int grade_text(string text)
 
     avg_letters = calculate_avg_num_letters_per_words(letters, words);
     avg_sentences = calculate_avg_num_sentences_per_words(sentences, words);
-    grade = calculate_coleman_liau_index(round(avg_letters), round(avg_sentences));
+    grade = calculate_coleman_liau_index(avg_letters), round(avg_sentences));
 
 #if 0
     printf("\n");
