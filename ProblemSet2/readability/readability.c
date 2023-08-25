@@ -5,34 +5,20 @@
 
 /* Function prototypes */
 string get_text_input(void);
-bool validate_text_input(string text);
-bool check_for_start_end_spaces(string text);
+
 bool check_for_multiple_spaces(string text);
+bool check_for_start_end_spaces(string text);
+bool validate_text_input(string text);
 
 int count_letters(string text);
 int count_sentences(string text);
 int count_words(string text);
 
-float calculate_coleman_liau_index(float L, float S);
 float calculate_avg_num_letters_per_words(int letters, int words);
 float calculate_avg_num_sentences_per_words(int senteces, int words);
+float calculate_coleman_liau_index(float L, float S);
 
 /* Main code */
-float calculate_coleman_liau_index(float L, float S)
-{
-    return (0.058 * L) - (0.296 * S) - 15.8;
-}
-
-float calculate_avg_num_letters_per_words(int letters, int words)
-{
-    return ((float)letters / (float)words) * 100.0F;
-}
-
-float calculate_avg_num_sentences_per_words(int letters, int words)
-{
-    return 0.0F;
-}
-
 string get_text_input(void)
 {
     string text;
@@ -45,10 +31,19 @@ string get_text_input(void)
     return text;
 }
 
-bool check_for_start_end_spaces(string text)
+float calculate_coleman_liau_index(float L, float S)
 {
-    int last_chr = strlen(text) - 1;
-    return (text[0] != ' ') && (text[last_chr] != ' ');
+    return (0.058 * L) - (0.296 * S) - 15.8;
+}
+
+float calculate_avg_num_letters_per_words(int letters, int words)
+{
+    return ((float)letters / (float)words) * 100.0F;
+}
+
+float calculate_avg_num_sentences_per_words(int sentences, int words)
+{
+    return ((float)sentences / (float)words) * 100.0F;
 }
 
 bool check_for_multiple_spaces(string text)
@@ -85,6 +80,23 @@ bool check_for_multiple_spaces(string text)
             break;
         }
     }
+    return valid;
+}
+
+bool check_for_start_end_spaces(string text)
+{
+    int last_chr = strlen(text) - 1;
+    return (text[0] != ' ') && (text[last_chr] != ' ');
+}
+
+bool validate_text_input(string text)
+{
+    bool valid;
+
+    valid = count_words(text) >= 1;
+    valid = (valid) ? check_for_start_end_spaces(text) : false;
+    valid = (valid) ? check_for_multiple_spaces(text) : false;
+
     return valid;
 }
 
@@ -154,17 +166,6 @@ int count_sentences(string text)
         }
     }
     return sum;
-}
-
-bool validate_text_input(string text)
-{
-    bool valid;
-
-    valid = count_words(text) >= 1;
-    valid = (valid) ? check_for_start_end_spaces(text) : false;
-    valid = (valid) ? check_for_multiple_spaces(text) : false;
-
-    return valid;
 }
 
 int grade_text(string text)
