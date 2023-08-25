@@ -11,7 +11,9 @@ int main(int argc, string argv[])
     bool valid_key;
     string key, plain, cipher;
 
-    printf("argc: %d\n", argc);
+    key = argv[1];
+    printf("key: %s\n", key);
+
 }
 
 /* Helpers */
