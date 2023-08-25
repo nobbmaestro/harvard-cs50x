@@ -46,7 +46,8 @@ bool check_for_multiple_spaces(string text)
 
     for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        if (text[i] == ' ')
+        char curr_char = text[i];
+        if (curr_char == ' ')
         {
             cache = i;
         }
