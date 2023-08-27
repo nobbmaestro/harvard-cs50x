@@ -178,7 +178,7 @@ char get_char_from_key(char chr, string key)
     return cipher_chr;
 }
 
-int get_shift(char chr, string key)
+int get_relative_shift(char chr, string key)
 {
     int index = -1;
     int value = (int)chr;
@@ -186,7 +186,8 @@ int get_shift(char chr, string key)
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
     bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
 
-    if (upper)
+    if (lower)
+    
     for (int i = 0, n = strlen(key); i < n; i++)
     {
         if (upper && (chr == key[i]))
