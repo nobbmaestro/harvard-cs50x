@@ -186,6 +186,7 @@ int get_shift(char chr, string key)
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
     bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
 
+    if (upper)
     for (int i = 0, n = strlen(key); i < n; i++)
     {
         if (upper && (chr == key[i]))
