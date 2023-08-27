@@ -143,11 +143,11 @@ bool check_key_unique(string key)
 
 string encrypt_text(string text, string key)
 {
-    string cipher[strlen(text)];
+    string cipher;
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         char shifted = get_shifted_char(text[i], key);
-        cipher[i] = &shifted;
+        cipher[i] = shifted;
         printf("%c -> %c\n", text[i], shifted);
     }
     return cipher;
