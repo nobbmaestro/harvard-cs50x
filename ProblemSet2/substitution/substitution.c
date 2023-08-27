@@ -182,30 +182,35 @@ char get_char_from_key(char chr, string key)
 
 int get_relative_shift(char chr, string key)
 {
-    int shift = 0;
+    int shift;
     int value = (int)chr;
 
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
     bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
     char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
 
-    for (int i = 0; i < KEY_LEN; i++)
+    /* If chr is alphabetic, find the match from key */
+    if (upper || lower)
     {
-        if (map_chr == key[i])
+        for (int i = 0; i < KEY_LEN; i++)
         {
-            shift = i - ((int)map_chr - UPPERCASE_LO);
-            printf("map_chr: %d, index: %d, shift: %d\n", map_chr, i, shift);
-            printf("i: %d, key[i]: %d, (int)map_chr: %d\n", i, key[i], (int)map_chr);
-            break;
-        }
-        else
-        {
-            /* Do nothing */
+            if (map_chr == key[i])
+            {
+                shift = i - ((int)map_chr - UPPERCASE_LO);
+                // printf("map_chr: %d, index: %d, shift: %d\n", map_chr, i, shift);
+                // printf("i: %d, key[i]: %d, (int)map_chr: %d\n", i, key[i], (int)map_chr);
+                break;
+            }
+            else
+            {
+                /* Do nothing */
+            }
         }
     }
-
-    /* If non-alphabetic chr, do not apply any shift */
-    shift = (upper || lower) ? shift : 0;
+    else
+    {
+        shift = 0;
+    }
 
     return shift;
 }
