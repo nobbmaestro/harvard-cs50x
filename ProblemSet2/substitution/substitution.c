@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define KEY_LEN 3
+#define KEY_LEN 26
 #define UPPERCASE_LO 65
 #define UPPERCASE_HI 90
 #define LOWERCASE_LO 97
@@ -16,7 +16,6 @@ bool check_key_unique(string key);
 
 string encrypt_text(string text, string key);
 string decrypt_text(string text);
-char get_char_from_key(char chr, string key);
 int get_relative_shift(char chr, string key);
 
 /* Main function */
@@ -148,41 +147,15 @@ string encrypt_text(string text, string key)
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         // cipher[i] = get_char_from_key(text[i], key);
+
         printf("%c -> %d\n", text[i], get_relative_shift(text[i], key));
     }
     return text;
 }
 
-char get_char_from_key(char chr, string key)
-{
-    int index;
-    int value = (int)chr;
-    char cipher_chr;
-
-    if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
-    {
-        index = value - UPPERCASE_LO;
-        cipher_chr = chr + (char)key[index];
-        printf("uppercase: %c -> %c\n", chr, cipher_chr);
-    }
-    else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
-    {
-        index = value - LOWERCASE_LO;
-        cipher_chr = chr + (char)key[index];
-        printf("lowercase: %c -> %c\n", chr, cipher_chr);
-    }
-    else
-    {
-        cipher_chr = chr;
-        printf("N/A: %c -> %c\n", chr, cipher_chr);
-    }
-
-    return cipher_chr;
-}
-
 int get_relative_shift(char chr, string key)
 {
-    int shift;
+    int shift = 0;
     int value = (int)chr;
 
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
@@ -197,8 +170,6 @@ int get_relative_shift(char chr, string key)
             if (map_chr == key[i])
             {
                 shift = i - ((int)map_chr - UPPERCASE_LO);
-                // printf("map_chr: %d, index: %d, shift: %d\n", map_chr, i, shift);
-                // printf("i: %d, key[i]: %d, (int)map_chr: %d\n", i, key[i], (int)map_chr);
                 break;
             }
             else
@@ -209,7 +180,7 @@ int get_relative_shift(char chr, string key)
     }
     else
     {
-        shift = 0;
+        /* Do nothing */
     }
 
     return shift;
