@@ -156,13 +156,12 @@ string encrypt_text(string text, string key)
 char get_shifted_char(char chr, string key)
 {
     char shifted;
-    int index;
 
     bool upper = ((int)chr >= UPPERCASE_LO) && ((int)chr <= UPPERCASE_HI);
     bool lower = ((int)chr >= LOWERCASE_LO) && ((int)chr <= LOWERCASE_HI);
 
     char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
-    index = (int)map_chr - UPPERCASE_LO;
+    int index = (int)map_chr - UPPERCASE_LO;
 
     if (lower)
     {
