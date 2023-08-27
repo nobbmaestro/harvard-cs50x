@@ -22,7 +22,7 @@ char get_shifted_char(char chr, string key);
 int main(int argc, string argv[])
 {
     int exit_status;
-    string key, plain, cipher;
+    string key, plain;
 
     if ((argc == 1) || (argc > 2))
     {
@@ -141,7 +141,7 @@ bool check_key_unique(string key)
     return unique;
 }
 
-void encrypt_text(char *cipher, string text, string key)
+void encrypt_text(string text, string key)
 {
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i <= n; i++)
