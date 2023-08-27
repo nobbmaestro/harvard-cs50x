@@ -157,10 +157,9 @@ char get_shifted_char(char chr, string key)
 {
     char shifted;
     int index;
-    int value = (int)chr;
 
-    bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
-    bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
+    bool upper = ((int)chr >= UPPERCASE_LO) && ((int)chr <= UPPERCASE_HI);
+    bool lower = ((int)chr >= LOWERCASE_LO) && ((int)chr <= LOWERCASE_HI);
 
     char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
 
