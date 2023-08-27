@@ -148,7 +148,7 @@ string encrypt_text(string text, string key)
     {
         cipher[i] = apply_char_encryption(text[i], key);
     }
-    return text;
+    return cipher;
 }
 
 char apply_char_encryption(char chr, string key)
