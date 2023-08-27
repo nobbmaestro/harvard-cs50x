@@ -143,7 +143,7 @@ bool check_key_unique(string key)
 
 string encrypt_text(string text, string key)
 {
-    string cipher;
+    char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         cipher[i] = apply_char_encryption(text[i], key);
