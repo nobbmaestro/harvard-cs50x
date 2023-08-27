@@ -141,7 +141,7 @@ bool check_key_unique(string key)
     return unique;
 }
 
-void encrypt_text(string text, string key)
+void encrypt_text(char *cipher, string text, string key)
 {
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i <= n; i++)
