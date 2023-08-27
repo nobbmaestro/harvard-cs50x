@@ -15,7 +15,7 @@ bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
 string format_key(string key);
 
-void encrypt_text(string text, string key);
+string encrypt_text(string text, string key);
 string decrypt_text(string text);
 char get_shifted_char(char chr, string key);
 
@@ -173,8 +173,7 @@ string encrypt_text(string text, string key)
             cipher[i] = shifted;
         }
     }
-    printf("ciphertext: %s\n", cipher);
-    return 
+    return cipher;
 }
 
 char get_shifted_char(char chr, string key)
