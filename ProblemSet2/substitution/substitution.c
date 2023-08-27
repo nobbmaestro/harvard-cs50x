@@ -147,8 +147,8 @@ string encrypt_text(string text, string key)
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         // cipher[i] = get_char_from_key(text[i], key);
-
-        printf("%c -> %d\n", text[i], get_relative_shift(text[i], key));
+        int shift = get_relative_shift(text[i], key);
+        printf("shift: %d, %c -> %c\n", shift, text[i], text[i] + shift);
     }
     return text;
 }
