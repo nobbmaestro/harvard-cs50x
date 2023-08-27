@@ -17,6 +17,7 @@ bool check_key_unique(string key);
 string encrypt_text(string text, string key);
 string decrypt_text(string text);
 char get_char_from_key(char chr, string key);
+int get_relative_shift(char chr, string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -146,7 +147,8 @@ string encrypt_text(string text, string key)
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        cipher[i] = get_char_from_key(text[i], key);
+        // cipher[i] = get_char_from_key(text[i], key);
+        printf("%c -> %d\n", text[i], get_relative_shift(text[i], key));
     }
     return text;
 }
@@ -180,7 +182,7 @@ char get_char_from_key(char chr, string key)
 
 int get_relative_shift(char chr, string key)
 {
-    int shift;
+    int shift = 0;
     int value = (int)chr;
 
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
@@ -188,11 +190,13 @@ int get_relative_shift(char chr, string key)
 
     char map_chr = (lower) ? (char)value - (LOWERCASE_HI - UPPERCASE_HI) : chr;
 
-    for (int i = 0, n = strlen(key); i < n; i++)
+    for (int i = 0; i < KEY_LEN; i++)
     {
         if (map_chr == key[i])
         {
             shift = (int)key[i] - (int)map_chr;
+            printf("map_chr: %d, index: %d, shift: %d\n", map_chr, i, shift);
+            printf("i: %d, key[i]: %d, (int)map_chr: %d\n", i, key[i], (int)map_chr);
             break;
         }
         else
@@ -201,5 +205,6 @@ int get_relative_shift(char chr, string key)
         }
     }
     shift = (upper || lower) ? shift : 0;
+
     return shift;
 }
