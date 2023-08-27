@@ -13,6 +13,7 @@ bool validate_key(string key);
 bool check_key_length(string key);
 bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
+string format_key(string key);
 
 void encrypt_text(string text, string key);
 string decrypt_text(string text);
@@ -36,7 +37,7 @@ int main(int argc, string argv[])
     }
     else
     {
-        key = argv[1];
+        key = format_key(argv[1]);
         printf("key: %s\n", key);
 
         plain = get_string("plaintext: ");
@@ -139,6 +140,22 @@ bool check_key_unique(string key)
     }
 
     return unique;
+}
+
+string format_key(string key)
+{
+    for (int i = 0; i < KEY_LEN; i++)
+    {
+        if ((key[i] >= LOWERCASE_LO) && (key[i] <= LOWERCASE_HI))
+        {
+            key[i] -= (LOWERCASE_HI - UPPERCASE_HI);
+        }
+        else
+        {
+            /* Do nothing */
+        }
+    }
+    return key;
 }
 
 void encrypt_text(string text, string key)
