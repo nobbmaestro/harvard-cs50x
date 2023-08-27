@@ -160,14 +160,16 @@ char apply_char_encryption(char chr, string key)
     if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
     {
         index = value - UPPERCASE_LO;
+        cipher_chr = (char)key[index];
     }
     else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
     {
         index = value - LOWERCASE_LO;
+        cipher_chr = (char)key[index];
     }
     else
     {
-        /* Do nothing */
+        cipher_chr = chr;
     }
 
     return cipher_chr;
