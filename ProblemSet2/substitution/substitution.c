@@ -17,6 +17,7 @@ bool check_key_unique(string key);
 string encrypt_text(string text, string key);
 string decrypt_text(string text);
 int get_relative_shift(char chr, string key);
+char get_shifted_char(char chr, string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -146,22 +147,39 @@ string encrypt_text(string text, string key)
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        int shift = get_relative_shift(text[i], key);
-        printf("shift: %d, %c -> %c\n", shift, text[i], text[i] + shift);
+        char shifted = get_shifted_char(text[i], key);
+        printf("%c -> %c\n", text[i], shifted);
     }
     return text;
 }
 
 char get_shifted_char(char chr, string key)
 {
+    char shifted;
+    int index;
     int value = (int)chr;
+
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
     bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
 
     char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
-    int index = (int)map_chr - UPPERCASE_LO;
 
-    return key[index];
+    if (lower)
+    {
+        index = (int)map_chr - LOWERCASE_LO;
+        shifted = key[index] + (LOWERCASE_LO - UPPERCASE_LO);
+    }
+    else if (upper)
+    {
+        index = (int)map_chr - UPPERCASE_LO;
+        shifted = key[index];
+    }
+    else
+    {
+        shifted = chr;
+    }
+
+    return shifted;
 }
 
 int get_relative_shift(char chr, string key)
