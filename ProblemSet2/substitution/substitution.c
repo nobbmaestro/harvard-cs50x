@@ -146,11 +146,22 @@ string encrypt_text(string text, string key)
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        // cipher[i] = get_char_from_key(text[i], key);
         int shift = get_relative_shift(text[i], key);
         printf("shift: %d, %c -> %c\n", shift, text[i], text[i] + shift);
     }
     return text;
+}
+
+char get_shifted_char(char chr, string key)
+{
+    int value = (int)chr;
+    bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
+    bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
+
+    char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
+    int index = (int)map_chr - UPPERCASE_LO;
+
+    return key[index];
 }
 
 int get_relative_shift(char chr, string key)
