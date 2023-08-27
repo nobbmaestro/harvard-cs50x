@@ -16,7 +16,7 @@ bool check_key_unique(string key);
 
 string encrypt_text(string text, string key);
 string decrypt_text(string text);
-char apply_char_encryption(char chr, string key);
+char get_char_from_key(char chr, string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -146,12 +146,12 @@ string encrypt_text(string text, string key)
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        cipher[i] = apply_char_encryption(text[i], key);
+        cipher[i] = get_char_from_key(text[i], key);
     }
-    return cipher;
+    return text;
 }
 
-char apply_char_encryption(char chr, string key)
+char get_char_from_key(char chr, string key)
 {
     int index;
     int value = (int)chr;
