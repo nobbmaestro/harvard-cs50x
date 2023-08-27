@@ -187,7 +187,6 @@ int get_relative_shift(char chr, string key)
 
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
     bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
-
     char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
 
     for (int i = 0; i < KEY_LEN; i++)
@@ -204,6 +203,8 @@ int get_relative_shift(char chr, string key)
             /* Do nothing */
         }
     }
+
+    /* If non-alphabetic chr, do not apply any shift */
     shift = (upper || lower) ? shift : 0;
 
     return shift;
