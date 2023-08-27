@@ -194,7 +194,7 @@ int get_relative_shift(char chr, string key)
     {
         if (map_chr == key[i])
         {
-            shift = (int)key[i] - (int)map_chr;
+            shift = i - ((int)map_chr - UPPERCASE_LO);
             printf("map_chr: %d, index: %d, shift: %d\n", map_chr, i, shift);
             printf("i: %d, key[i]: %d, (int)map_chr: %d\n", i, key[i], (int)map_chr);
             break;
