@@ -3,10 +3,10 @@
 #include <string.h>
 
 #define KEY_LEN 3
-#define UPPERCASE_LO = 65
-#define UPPERCASE_HI = 90
-#define LOWERCASE_LO = 97
-#define LOWERCASE_HI = 122
+#define UPPERCASE_LO 65
+#define UPPERCASE_HI 90
+#define LOWERCASE_LO 97
+#define LOWERCASE_HI 122
 
 /* Function prototypes */
 bool validate_key(string key);
@@ -16,6 +16,7 @@ bool check_key_unique(string key);
 
 string encrypt_text(string text, string key);
 string decrypt_text(string text);
+char apply_char_encryption(char chr, string key);
 
 /* Main function */
 int main(int argc, string argv[])
@@ -116,7 +117,7 @@ bool check_key_unique(string key)
         }
         else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
         {
-            index = value - UPPERCASE_LO;
+            index = value - LOWERCASE_LO;
             key_map[index]++;
         }
         else
@@ -162,7 +163,7 @@ char apply_char_encryption(char chr, string key)
     }
     else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
     {
-        index = value - UPPERCASE_LO;
+        index = value - LOWERCASE_LO;
     }
     else
     {
