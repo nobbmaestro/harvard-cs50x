@@ -23,7 +23,7 @@ char get_shifted_char(char chr, string key);
 int main(int argc, string argv[])
 {
     int exit_status;
-    string key, plain;
+    string key, plain, cipher;
 
     if ((argc == 1) || (argc > 2))
     {
@@ -37,12 +37,13 @@ int main(int argc, string argv[])
     }
     else
     {
+
         key = format_key(argv[1]);
         printf("key: %s\n", key);
 
         plain = get_string("plaintext: ");
-        encrypt_text(plain, key);
-        // printf("ciphertext: %s\n", cipher);
+        cipher = encrypt_text(plain, key);
+        printf("ciphertext: %s\n", cipher);
 
         exit_status = 0;
     }
