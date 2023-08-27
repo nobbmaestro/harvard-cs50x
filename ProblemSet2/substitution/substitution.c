@@ -177,3 +177,19 @@ char get_char_from_key(char chr, string key)
 
     return cipher_chr;
 }
+
+int get_shift(char chr, string key)
+{
+    int index = -1;
+    int value = (int)chr;
+
+    if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
+    {
+        const
+    }
+
+    for (int i = 0, n = strlen(key); i < n; i++)
+    {
+        if (chr == )
+    }
+}
