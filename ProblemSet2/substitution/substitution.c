@@ -188,6 +188,10 @@ int get_shift(char chr, string key)
 
     for (int i = 0, n = strlen(key); i < n; i++)
     {
-        if (chr == )
+        if (upper && (chr == key[i]))
+        {
+            index = i;
+            break;
+        }
     }
 }
