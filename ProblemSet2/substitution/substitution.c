@@ -14,7 +14,7 @@ bool check_key_length(string key);
 bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
 
-string encrypt_text(string text, string key);
+void encrypt_text(string text, string key);
 string decrypt_text(string text);
 char get_shifted_char(char chr, string key);
 
@@ -141,7 +141,7 @@ bool check_key_unique(string key)
     return unique;
 }
 
-string encrypt_text(string text, string key)
+void encrypt_text(string text, string key)
 {
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
