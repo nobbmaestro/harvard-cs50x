@@ -40,8 +40,8 @@ int main(int argc, string argv[])
         printf("key: %s\n", key);
 
         plain = get_string("plaintext: ");
-        cipher = encrypt_text(plain, key);
-        printf("ciphertext: %s\n", cipher);
+        encrypt_text(plain, key);
+        // printf("ciphertext: %s\n", cipher);
 
         exit_status = 1;
     }
@@ -144,13 +144,20 @@ bool check_key_unique(string key)
 void encrypt_text(string text, string key)
 {
     char cipher[strlen(text)];
-    for (int i = 0, n = strlen(text); i < n; i++)
+    for (int i = 0, n = strlen(text); i <= n; i++)
     {
-        char shifted = get_shifted_char(text[i], key);
-        cipher[i] = shifted;
-        printf("%c -> %c\n", text[i], shifted);
+        if (i == n)
+        {
+            cipher[i] = '\0';
+        }
+        else
+        {
+            char shifted = get_shifted_char(text[i], key);
+            cipher[i] = shifted;
+            printf("%c -> %c\n", text[i], shifted);
+        }
     }
-    return cipher;
+    printf("ciphertext: %s\n", cipher);
 }
 
 char get_shifted_char(char chr, string key)
