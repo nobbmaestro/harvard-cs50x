@@ -15,7 +15,7 @@ bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
 string format_key(string key);
 
-string encrypt_text(string text, string key);
+void encrypt_text(string text, string key);
 string decrypt_text(string text);
 char get_shifted_char(char chr, string key);
 
@@ -23,7 +23,7 @@ char get_shifted_char(char chr, string key);
 int main(int argc, string argv[])
 {
     int exit_status;
-    string key, plain, cipher;
+    string key, plain;
 
     if ((argc == 1) || (argc > 2))
     {
@@ -37,12 +37,12 @@ int main(int argc, string argv[])
     }
     else
     {
+
         key = format_key(argv[1]);
         printf("key: %s\n", key);
 
         plain = get_string("plaintext: ");
-        cipher = encrypt_text(plain, key);
-        printf("ciphertext: %s\n", cipher);
+        encrypt_text(plain, key);
 
         exit_status = 0;
     }
@@ -158,7 +158,7 @@ string format_key(string key)
     return key;
 }
 
-string encrypt_text(string text, string key)
+void encrypt_text(string text, string key)
 {
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i <= n; i++)
@@ -173,7 +173,7 @@ string encrypt_text(string text, string key)
             cipher[i] = shifted;
         }
     }
-    return *cipher;
+    printf("ciphertext: %s\n", cipher);
 }
 
 char get_shifted_char(char chr, string key)
