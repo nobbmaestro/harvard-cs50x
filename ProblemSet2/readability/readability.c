@@ -111,18 +111,18 @@ bool validate_text_input(string text)
 int count_letters(string text)
 {
     int sum = 0;
-    int u_low = 65, u_high = 90;
-    int l_low = 97, l_high = 122;
+    int UPPERCASE_LO = 65, UPPERCASE_HI = 90;
+    int LOWERCASE_HI = 97, LOWERCASE_HI = 122;
 
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         int value = (int)text[i];
 
-        if ((value >= u_low) && (value <= u_high))
+        if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
         {
             sum ++;
         }
-        else if ((value >= l_low) && (value <= l_high))
+        else if ((value >= LOWERCASE_HI) && (value <= LOWERCASE_HI))
         {
             sum ++;
         }

@@ -3,6 +3,10 @@
 #include <string.h>
 
 #define KEY_LEN 3
+#define UPPERCASE_LO = 65
+#define UPPERCASE_HI = 90
+#define LOWERCASE_LO = 97
+#define LOWERCASE_HI = 122
 
 /* Function prototypes */
 bool validate_key(string key);
@@ -10,7 +14,7 @@ bool check_key_length(string key);
 bool check_key_alphabetic(string key);
 bool check_key_unique(string key);
 
-string encrypt_text(string text);
+string encrypt_text(string text, string key);
 string decrypt_text(string text);
 
 /* Main function */
@@ -35,7 +39,7 @@ int main(int argc, string argv[])
         printf("key: %s\n", key);
 
         plain = get_string("plaintext: ");
-        cipher = encrypt_text(plain);
+        cipher = encrypt_text(plain, key);
         printf("ciphertext: %s\n", cipher);
 
         exit_status = 1;
@@ -63,18 +67,16 @@ bool check_key_length(string key)
 bool check_key_alphabetic(string key)
 {
     bool valid;
-    int u_low = 65, u_high = 90;
-    int l_low = 97, l_high = 122;
 
     for (int i = 0; i < KEY_LEN; i++)
     {
         int value = (int)key[i];
 
-        if ((value >= u_low) && (value <= u_high))
+        if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
         {
             valid = true;
         }
-        else if ((value >= l_low) && (value <= l_high))
+        else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
         {
             valid = true;
         }
@@ -94,8 +96,6 @@ bool check_key_alphabetic(string key)
 bool check_key_unique(string key)
 {
     int key_map[KEY_LEN];
-    int u_low = 65, u_high = 90;
-    int l_low = 97, l_high = 122;
 
     /* Set all key_map indexes to zero */
     for (int i = 0; i < KEY_LEN; i++)
@@ -109,14 +109,14 @@ bool check_key_unique(string key)
         int index;
         int value = (int)key[i];
 
-        if ((value >= u_low) && (value <= u_high))
+        if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
         {
-            index = value - u_low;
+            index = value - UPPERCASE_LO;
             key_map[index]++;
         }
-        else if ((value >= l_low) && (value <= l_high))
+        else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
         {
-            index = value - u_low;
+            index = value - UPPERCASE_LO;
             key_map[index]++;
         }
         else
@@ -142,10 +142,16 @@ bool check_key_unique(string key)
 
 string encrypt_text(string text, string key)
 {
+    string cipher;
+    for (int i = 0, n = strlen(text); i < n; i++)
+    {
+        cipher[i] = apply_char_encryption(text[i], key);
+    }
     return text;
 }
 
 char apply_char_encryption(char chr, string key)
 {
-
+    int index;
+    return 'a';
 }
