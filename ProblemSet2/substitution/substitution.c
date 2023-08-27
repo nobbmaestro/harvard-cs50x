@@ -161,15 +161,18 @@ char apply_char_encryption(char chr, string key)
     {
         index = value - UPPERCASE_LO;
         cipher_chr = (char)key[index];
+        printf("uppercase: %c -> %c\n", chr, cipher_chr);
     }
     else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
     {
         index = value - LOWERCASE_LO;
         cipher_chr = (char)key[index];
+        printf("lowercase: %c -> %c\n", chr, cipher_chr);
     }
     else
     {
         cipher_chr = chr;
+        printf("N/A: %c -> %c\n", chr, cipher_chr);
     }
 
     return cipher_chr;
