@@ -180,23 +180,26 @@ char get_char_from_key(char chr, string key)
 
 int get_relative_shift(char chr, string key)
 {
-    int index = -1;
+    int shift;
     int value = (int)chr;
-    int 
+
     bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
     bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
 
-    if (lower)
-    {
-
-    }
+    char map_chr = (lower) ? (char)value - (LOWERCASE_HI - UPPERCASE_HI) : chr;
 
     for (int i = 0, n = strlen(key); i < n; i++)
     {
-        if (upper && (chr == key[i]))
+        if (map_chr == key[i])
         {
-            index = i;
+            shift = (int)key[i] - (int)map_chr;
             break;
         }
+        else
+        {
+            /* Do nothing */
+        }
     }
+    shift = (upper || lower) ? shift : 0;
+    return shift;
 }
