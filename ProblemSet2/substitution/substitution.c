@@ -153,5 +153,21 @@ string encrypt_text(string text, string key)
 char apply_char_encryption(char chr, string key)
 {
     int index;
-    return 'a';
+    int value = (int)chr;
+    char cipher_chr;
+
+    if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
+    {
+        index = value - UPPERCASE_LO;
+    }
+    else if ((value >= LOWERCASE_LO) && (value <= LOWERCASE_HI))
+    {
+        index = value - UPPERCASE_LO;
+    }
+    else
+    {
+        /* Do nothing */
+    }
+
+    return cipher_chr;
 }
