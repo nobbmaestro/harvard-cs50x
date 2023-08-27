@@ -160,6 +160,7 @@ char get_char_from_key(char chr, string key)
     if ((value >= UPPERCASE_LO) && (value <= UPPERCASE_HI))
     {
         index = value - UPPERCASE_LO;
+        tmp = (char)key[index];
         cipher_chr = (char)key[index];
         printf("uppercase: %c -> %c\n", chr, cipher_chr);
     }
