@@ -16,7 +16,6 @@ bool check_key_unique(string key);
 
 string encrypt_text(string text, string key);
 string decrypt_text(string text);
-int get_relative_shift(char chr, string key);
 char get_shifted_char(char chr, string key);
 
 /* Main function */
@@ -144,13 +143,14 @@ bool check_key_unique(string key)
 
 string encrypt_text(string text, string key)
 {
-    char cipher[strlen(text)];
+    string cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         char shifted = get_shifted_char(text[i], key);
+        cipher[i] = &shifted;
         printf("%c -> %c\n", text[i], shifted);
     }
-    return text;
+    return cipher;
 }
 
 char get_shifted_char(char chr, string key)
@@ -162,15 +162,14 @@ char get_shifted_char(char chr, string key)
     bool lower = ((int)chr >= LOWERCASE_LO) && ((int)chr <= LOWERCASE_HI);
 
     char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
+    index = (int)map_chr - UPPERCASE_LO;
 
     if (lower)
     {
-        index = (int)map_chr - LOWERCASE_LO;
         shifted = key[index] + (LOWERCASE_LO - UPPERCASE_LO);
     }
     else if (upper)
     {
-        index = (int)map_chr - UPPERCASE_LO;
         shifted = key[index];
     }
     else
@@ -179,37 +178,4 @@ char get_shifted_char(char chr, string key)
     }
 
     return shifted;
-}
-
-int get_relative_shift(char chr, string key)
-{
-    int shift = 0;
-    int value = (int)chr;
-
-    bool upper = (value >= UPPERCASE_LO) && (value <= UPPERCASE_HI);
-    bool lower = (value >= LOWERCASE_LO) && (value <= LOWERCASE_HI);
-    char map_chr = (lower) ? chr - (LOWERCASE_HI - UPPERCASE_HI) : chr;
-
-    /* If chr is alphabetic, find the match from key */
-    if (upper || lower)
-    {
-        for (int i = 0; i < KEY_LEN; i++)
-        {
-            if (map_chr == key[i])
-            {
-                shift = i - ((int)map_chr - UPPERCASE_LO);
-                break;
-            }
-            else
-            {
-                /* Do nothing */
-            }
-        }
-    }
-    else
-    {
-        /* Do nothing */
-    }
-
-    return shift;
 }
