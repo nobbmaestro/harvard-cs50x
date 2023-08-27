@@ -43,7 +43,7 @@ int main(int argc, string argv[])
         encrypt_text(plain, key);
         // printf("ciphertext: %s\n", cipher);
 
-        exit_status = 1;
+        exit_status = 0;
     }
     return exit_status;
 }
@@ -154,7 +154,6 @@ void encrypt_text(string text, string key)
         {
             char shifted = get_shifted_char(text[i], key);
             cipher[i] = shifted;
-            printf("%c -> %c\n", text[i], shifted);
         }
     }
     printf("ciphertext: %s\n", cipher);
