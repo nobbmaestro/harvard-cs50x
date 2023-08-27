@@ -37,7 +37,6 @@ int main(int argc, string argv[])
     }
     else
     {
-
         key = format_key(argv[1]);
         printf("key: %s\n", key);
 
@@ -159,7 +158,7 @@ string format_key(string key)
     return key;
 }
 
-void encrypt_text(string text, string key)
+string encrypt_text(string text, string key)
 {
     char cipher[strlen(text)];
     for (int i = 0, n = strlen(text); i <= n; i++)
@@ -175,6 +174,7 @@ void encrypt_text(string text, string key)
         }
     }
     printf("ciphertext: %s\n", cipher);
+    return 
 }
 
 char get_shifted_char(char chr, string key)
