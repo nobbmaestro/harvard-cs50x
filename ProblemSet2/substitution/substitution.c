@@ -37,7 +37,6 @@ int main(int argc, string argv[])
     }
     else
     {
-
         key = format_key(argv[1]);
         printf("key: %s\n", key);
 
