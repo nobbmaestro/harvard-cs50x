@@ -195,11 +195,20 @@ void lock_pairs(void)
     int votes;
     for (int i = 0; i < pair_count; i++)
     {
-        votes =
-        for (int j = i; j < pair_count; j++)
+        int winner = pairs[i].winner;
+        int loser = pairs[i].loser;
+
+        if ((locked[winner][loser] != true) || (locked[winner][loser] != true))
         {
-            
-            locked[i][j] = true;
+            locked[winner][loser] = true;
+        }
+    }
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            printf("[%d][%d]: %d\n", i, j, locked[i][j]);
         }
     }
 }
