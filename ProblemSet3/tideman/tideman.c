@@ -127,13 +127,13 @@ void record_preferences(int ranks[])
         }
     }
 
-    for (int j = 0; j < candidate_count; j++)
-    {
-        for (int k = 0; k < candidate_count; k++)
-        {
-            printf("%s > %s: %d\n", candidates[j], candidates[k], preferences[j][k]);
-        }
-    }
+    // for (int j = 0; j < candidate_count; j++)
+    // {
+    //     for (int k = 0; k < candidate_count; k++)
+    //     {
+    //         printf("%s > %s: %d\n", candidates[j], candidates[k], preferences[j][k]);
+    //     }
+    // }
 }
 
 // Record pairs of candidates where one is preferred over the other
