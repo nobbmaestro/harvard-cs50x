@@ -195,9 +195,10 @@ void lock_pairs(void)
     int votes;
     for (int i = 0; i < pair_count; i++)
     {
-        votes = 
+        votes =
         for (int j = i; j < pair_count; j++)
         {
+            
             locked[i][j] = true;
         }
     }
