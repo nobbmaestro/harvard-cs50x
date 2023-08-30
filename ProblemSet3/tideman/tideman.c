@@ -127,7 +127,6 @@ void record_preferences(int ranks[])
             }
         }
     }
-
 }
 
 // Record pairs of candidates where one is preferred over the other
@@ -148,7 +147,8 @@ void add_pairs(void)
     // printf("\nUnsorted\n");
     // for (int p = 0; p < pair_count; p++)
     // {
-    //     printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser, preferences[pairs[p].winner][pairs[p].loser]);
+    //     printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser,
+    //     preferences[pairs[p].winner][pairs[p].loser]);
     // }
 }
 
@@ -185,7 +185,8 @@ void sort_pairs(void)
     // printf("\nSorted\n");
     // for (int p = 0; p < pair_count; p++)
     // {
-    //     printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser, preferences[pairs[p].winner][pairs[p].loser]);
+    //     printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser,
+    //     preferences[pairs[p].winner][pairs[p].loser]);
     // }
 }
 
@@ -234,8 +235,8 @@ void print_winner(void)
     {
         if (!not_source[i])
         {
-            printf("source: %s\n", candidates[i]);
+            source = i;
         }
     }
-    // printf("%s\n", candidates[source]);
+    printf("%s\n", candidates[source]);
 }
