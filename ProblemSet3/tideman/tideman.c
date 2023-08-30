@@ -121,6 +121,7 @@ void record_preferences(int ranks[])
         {
             if (favorite != j)
             {
+                printf("%s > %s\n", candidates[favorite], candidates[j]);
                 preferences[favorite][j]++;
             }
         }
