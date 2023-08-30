@@ -178,6 +178,7 @@ void sort_pairs(void)
         tmp = pairs[high_index];
         pairs[i] = pairs[high_index];
         pairs[high_index] = tmp;
+        printf("Swap index: %d <-> %d\n", i, high_index);
     }
 
     printf("\nSorted\n");
