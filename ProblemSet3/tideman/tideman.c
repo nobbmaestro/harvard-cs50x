@@ -222,7 +222,7 @@ void print_winner(void)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if (locked[i][j] && (i != source))
+            if ((locked[i][j] == true) && (i != source))
             {
                 source = i;
             }
