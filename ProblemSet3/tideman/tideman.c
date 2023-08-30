@@ -144,7 +144,6 @@ void add_pairs(void)
             }
         }
     }
-    // printf("\nUnsorted\n");
     for (int p = 0; p < pair_count; p++)
     {
         printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser,
@@ -178,16 +177,8 @@ void sort_pairs(void)
             pair tmp = pairs[high_index];
             pairs[high_index] = pairs[i];
             pairs[i] = tmp;
-            // printf("Swap index: %d <-> %d (%d > %d)\n", i, high_index, high_votes, preferences[pairs[i].winner][pairs[i].loser]);
         }
     }
-
-    // printf("\nSorted\n");
-    // for (int p = 0; p < pair_count; p++)
-    // {
-    //     printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser,
-    //     preferences[pairs[p].winner][pairs[p].loser]);
-    // }
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
@@ -218,7 +209,6 @@ void lock_pairs(void)
 void print_winner(void)
 {
     bool not_source[candidate_count];
-
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
