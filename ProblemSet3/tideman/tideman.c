@@ -173,10 +173,13 @@ void sort_pairs(void)
             }
         }
 
-        pair tmp = pairs[high_index];
-        pairs[i] = pairs[high_index];
-        pairs[high_index] = tmp;
-        printf("Swap index: %d <-> %d\n", i, high_index);
+        if (high_index != i)
+        {
+            pair tmp = pairs[high_index];
+            pairs[high_index] = pairs[i];
+            pairs[i] = tmp;
+            printf("Swap index: %d <-> %d (%d > %d)\n", i, high_index, high_votes, preferences[pairs[i].winner][pairs[i].loser]);
+        }
     }
 
     printf("\nSorted\n");
