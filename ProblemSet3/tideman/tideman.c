@@ -83,10 +83,6 @@ int main(int argc, string argv[])
                 return 3;
             }
         }
-        for (int z = 0; z < candidate_count; z++)
-        {
-            printf("%d: %d\n", z, ranks[z]);
-        }
         record_preferences(ranks);
 
         printf("\n");
@@ -118,8 +114,10 @@ bool vote(int rank, string name, int ranks[])
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
-    // TODO
-    return;
+    for (int z = 0; z < candidate_count; z++)
+    {
+        printf("%d: %d\n", z, ranks[z]);
+    }
 }
 
 // Record pairs of candidates where one is preferred over the other
