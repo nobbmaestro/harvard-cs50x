@@ -148,7 +148,7 @@ void add_pairs(void)
     printf("\nUnsorted\n");
     for (int p = 0; p < pair_count; p++)
     {
-        printf("i: %d \twinner: %d, loser: %d\n", p, pairs[p].winner, pairs[p].loser);
+        printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser, preferences[pairs[p].winner][pairs[p].loser]);
     }
 }
 
@@ -173,8 +173,7 @@ void sort_pairs(void)
             }
         }
 
-        pair tmp;
-        tmp = pairs[high_index];
+        pair tmp = pairs[high_index];
         pairs[i] = pairs[high_index];
         pairs[high_index] = tmp;
         printf("Swap index: %d <-> %d\n", i, high_index);
@@ -183,7 +182,7 @@ void sort_pairs(void)
     printf("\nSorted\n");
     for (int p = 0; p < pair_count; p++)
     {
-        printf("i: %d \twinner: %d, loser: %d\n", p, pairs[p].winner, pairs[p].loser);
+        printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser, preferences[pairs[p].winner][pairs[p].loser]);
     }
 }
 
