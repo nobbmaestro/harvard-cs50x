@@ -160,7 +160,7 @@ void sort_pairs(void)
     for (int i = 0; i < pair_count; i++)
     {
         high_votes = preferences[pairs[i].winner][pairs[i].loser];
-        high_index = 0;
+        high_index = i;
 
         for (int j = i; j < pair_count; j++)
         {
