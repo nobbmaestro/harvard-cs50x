@@ -83,7 +83,10 @@ int main(int argc, string argv[])
                 return 3;
             }
         }
-
+        for (int z = 0; z < candidate_count; z++)
+        {
+            printf("%d: %d\n", z, ranks[z]);
+        }
         record_preferences(ranks);
 
         printf("\n");
