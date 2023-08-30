@@ -155,12 +155,12 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     int winner, loser;
-    int low_index = 0;
+    int high_votes = 0;
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            
+
             if (preferences[i][j] < )
         }
     }
