@@ -193,9 +193,13 @@ void lock_pairs(void)
         bool cyclic = false;
         for (int j = 0; j < pair_count; j++)
         {
-            if (locked[i][j])
+            if (locked[j][winner])
+            {
+                cyclic = true;
+            }
         }
-        if (!locked[winner][loser] && !locked[loser][winner])
+
+        if (!cyclic)
         {
             locked[winner][loser] = true;
         }
