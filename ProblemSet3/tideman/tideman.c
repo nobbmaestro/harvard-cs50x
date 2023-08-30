@@ -198,7 +198,8 @@ void lock_pairs(void)
             }
         }
 
-        if (!locked[winner][loser] && !locked[loser][winner])
+        // if (!locked[winner][loser] && !locked[loser][winner])
+        if (!cyclic)
         {
             locked[winner][loser] = true;
         }
