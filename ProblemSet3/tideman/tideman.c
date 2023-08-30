@@ -168,7 +168,7 @@ void sort_pairs(void)
             winner = pairs[j].winner;
             loser = pairs[j].loser;
 
-            if ((preferences[winner][loser] > high_votes)
+            if ((preferences[winner][loser] > high_votes) && (i != j))
             {
                 high_index = j;
             }
