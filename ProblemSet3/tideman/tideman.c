@@ -71,6 +71,10 @@ int main(int argc, string argv[])
     {
         // ranks[i] is voter's ith preference
         int ranks[candidate_count];
+        for (int j = 0; j < candidate_count; j++)
+        {
+            ranks[j] = 0;
+        }
 
         // Query for each rank
         for (int j = 0; j < candidate_count; j++)
