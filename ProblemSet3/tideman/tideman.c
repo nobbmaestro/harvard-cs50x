@@ -120,13 +120,20 @@ void record_preferences(int ranks[])
         {
             if (i != j)
             {
-                // printf("%s > %s\n", candidates[ranks[i]], candidates[ranks[j]]);
-                preferences[ranks[i]][ranks[j]]++;
+                int winner = ranks[i];
+                int loser = ranks[j];
+                preferences[winner][loser]++;
             }
         }
     }
 
-#if 0
+}
+
+// Record pairs of candidates where one is preferred over the other
+void add_pairs(void)
+{
+
+#if 1
     for (int j = 0; j < candidate_count; j++)
     {
         for (int k = 0; k < candidate_count; k++)
@@ -135,13 +142,6 @@ void record_preferences(int ranks[])
         }
     }
 #endif
-}
-
-// Record pairs of candidates where one is preferred over the other
-void add_pairs(void)
-{
-    // TODO
-    return;
 }
 
 // Sort pairs in decreasing order by strength of victory
