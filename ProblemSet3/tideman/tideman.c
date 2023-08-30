@@ -145,11 +145,11 @@ void add_pairs(void)
         }
     }
     // printf("\nUnsorted\n");
-    // for (int p = 0; p < pair_count; p++)
-    // {
-    //     printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser,
-    //     preferences[pairs[p].winner][pairs[p].loser]);
-    // }
+    for (int p = 0; p < pair_count; p++)
+    {
+        printf("i: %d \twinner: %d, loser: %d, votes: %d\n", p, pairs[p].winner, pairs[p].loser,
+        preferences[pairs[p].winner][pairs[p].loser]);
+    }
 }
 
 // Sort pairs in decreasing order by strength of victory
