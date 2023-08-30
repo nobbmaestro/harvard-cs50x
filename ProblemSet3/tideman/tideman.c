@@ -116,13 +116,12 @@ void record_preferences(int ranks[])
 {
     for (int i = 1; i < candidate_count; i++)
     {
-        int favorite = ranks[i];
         for (int j = 1; j < candidate_count; j++)
         {
-            if (favorite != j)
+            if (i != j)
             {
-                printf("%s > %s\n", candidates[favorite], candidates[j]);
-                preferences[favorite][j]++;
+                printf("%s > %s\n", candidates[i], candidates[j]);
+                preferences[i][j]++;
             }
         }
     }
