@@ -170,6 +170,7 @@ void sort_pairs(void)
 
             if ((preferences[winner][loser] > high_votes) && (i != j))
             {
+                high_votes = preferences[winner][loser];
                 high_index = j;
             }
         }
