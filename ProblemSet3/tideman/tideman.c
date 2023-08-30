@@ -139,6 +139,7 @@ void add_pairs(void)
         {
             if (preferences[i][j] != 0)
             {
+                
                 printf("%s > %s: %d\n", candidates[i], candidates[j], preferences[i][j]);
             }
         }
