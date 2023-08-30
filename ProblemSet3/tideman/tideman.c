@@ -199,7 +199,7 @@ void lock_pairs(void)
         int winner = pairs[i].winner;
         int loser = pairs[i].loser;
 
-        if ((locked[winner][loser] != true) && (locked[loser][winner] != true))
+        if (!locked[winner][loser] && !locked[loser][winner])
         {
             locked[winner][loser] = true;
         }
