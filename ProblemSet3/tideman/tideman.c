@@ -192,8 +192,10 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    // TODO
-    return;
+    for (int i = 0; i < pairs_count; i++)
+    {
+        
+    }
 }
 
 // Print the winner of the election
