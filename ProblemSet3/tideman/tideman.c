@@ -195,6 +195,10 @@ void lock_pairs(void)
     for (int i = 0; i < pairs_count; i++)
     {
         
+        for (int j = i; j < pairs_count; j++)
+        {
+
+        }
     }
 }
 
