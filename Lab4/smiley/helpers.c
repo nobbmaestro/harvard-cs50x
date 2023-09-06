@@ -10,7 +10,7 @@ void colorize(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w = 0; w < width; w++)
         {
-            if (image[h][w] == 0)
+            if (image[h][w] == 0x0)
             {
                 image[h][w] = rgbtBlue;
             }
