@@ -7,16 +7,15 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            // if (true)
-            // {
-            //     /* Apply grayscale */
-            // }
-            // else
-            // {
-            //     /* Do nothing */
-            // }
-            image[i][j].rgbtBlue = image[i][j].rgbtGreen;
-            image[i][j].rgbtRed  = image[i][j].rgbtGreen;
+            if (image[i][j] != NULL)
+            {
+                image[i][j].rgbtBlue = image[i][j].rgbtGreen;
+                image[i][j].rgbtRed  = image[i][j].rgbtGreen;
+            }
+            else
+            {
+                /* Do nothing */
+            }
         }
     }
 }
