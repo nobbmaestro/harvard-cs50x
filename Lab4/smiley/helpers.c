@@ -1,4 +1,5 @@
 #include "helpers.h"
+#include "bmp.h"
 
 #define DEFAULT_COLOR_HEX 0x00E8C6
 
@@ -9,7 +10,14 @@ void colorize(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w = 0; w < width; w++)
         {
-            if 
+            if (image[h][w] == 0)
+            {
+                image[h][w] = rgbtBlue;
+            }
+            else
+            {
+                /* Do nothing */
+            }
         }
     }
 }
