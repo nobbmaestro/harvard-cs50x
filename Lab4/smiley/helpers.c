@@ -1,7 +1,9 @@
 #include "helpers.h"
 #include "bmp.h"
 
-#define DEFAULT_COLOR_HEX 0x00E8C6
+#define RGBTb 0x00
+#define RGBTg 0xE8
+#define RGBTr 0xC6
 
 void colorize(int height, int width, RGBTRIPLE image[height][width])
 {
