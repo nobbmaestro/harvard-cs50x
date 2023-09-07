@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include "helpers.h"
 
-#define DEBUG_FLAG 0
+#define DEBUG_FLAG 1
 
 int main(int argc, char *argv[])
 {
-#if 0
+#if !DEBUG_FLAG
     // Define allowable filters
     char *filters = "begr";
 
@@ -149,7 +149,9 @@ int main(int argc, char *argv[])
     fclose(inptr);
     fclose(outptr);
     return 0;
+
 #else
     local_main();
+    return 0;
 #endif
 }
