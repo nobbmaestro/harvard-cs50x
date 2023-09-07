@@ -11,6 +11,3 @@ void edges(int height, int width, RGBTRIPLE image[height][width]);
 
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width]);
-
-// REMOVE THIS LATER
-void local_main(void);

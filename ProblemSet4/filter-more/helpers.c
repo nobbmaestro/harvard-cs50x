@@ -34,17 +34,14 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    int mid_h = (int)(height / 2);
-    int mid_w = (int)(width / 2);
-
+    int mid = (int)(width / 2);
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j < mid; j++)
         {
-            if (j < mid_w)
+            if (j < mid)
             {
                 RGBTRIPLE tmp;
-                int ri = height - i - 1;
                 int rj = width - j - 1;
 
                 tmp = image[i][rj];
@@ -69,60 +66,4 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     return;
-}
-
-void local_main()
-{
-    int h = 1;
-    int w = 3;
-    RGBTRIPLE image[h][w];
-
-    /* Row 0 */
-    image[0][0].rgbtBlue  = 10;
-    image[0][0].rgbtGreen = 10;
-    image[0][0].rgbtRed   = 10;
-
-    image[0][1].rgbtBlue  = 20;
-    image[0][1].rgbtGreen = 20;
-    image[0][1].rgbtRed   = 20;
-
-    image[0][2].rgbtBlue  = 30;
-    image[0][2].rgbtGreen = 30;
-    image[0][2].rgbtRed   = 30;
-
-    /* Row 1 */
-    // image[1][0].rgbtBlue  = 110;
-    // image[1][0].rgbtGreen = 110;
-    // image[1][0].rgbtRed   = 110;
-
-    // image[1][1].rgbtBlue  = 120;
-    // image[1][1].rgbtGreen = 120;
-    // image[1][1].rgbtRed   = 120;
-
-    // image[1][2].rgbtBlue  = 130;
-    // image[1][2].rgbtGreen = 130;
-    // image[1][2].rgbtRed   = 130;
-
-    // /* Row 2 */
-    // image[2][0].rgbtBlue  = 210;
-    // image[2][0].rgbtGreen = 210;
-    // image[2][0].rgbtRed   = 210;
-
-    // image[2][1].rgbtBlue  = 220;
-    // image[2][1].rgbtGreen = 220;
-    // image[2][1].rgbtRed   = 220;
-
-    // image[2][2].rgbtBlue  = 230;
-    // image[2][2].rgbtGreen = 230;
-    // image[2][2].rgbtRed   = 230;
-
-    reflect(h, w, image);
-
-    for (int i = 0; i < h; i++)
-    {
-        for (int j = 0; j < w; j++)
-        {
-            printf("(%d, %d): %d %d %d\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
-        }
-    }
 }
