@@ -68,6 +68,8 @@ RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, 
     int index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : height;
     int index_w_hi = (index_w < (width - 1)) ? (index_w + 1) : width;
 
+    printf("avg at (%d, %d) -> from: (%d, %d), to: (%d, %d)\n", index_h, index_w, index_h_lo, index_w_lo, index_h_hi, index_w_hi);
+
     int elements = 0;
     for (int i = index_h_lo; i < index_h_hi; i++)
     {
