@@ -68,7 +68,7 @@ RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, 
     int index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : (height - 1);
     int index_w_hi = (index_w < (width - 1))  ? (index_w + 1) : (width - 1);
 
-    // printf("avg at (%d, %d) -> from: (%d, %d), to: (%d, %d)\n", index_h, index_w, index_h_lo, index_w_lo, index_h_hi, index_w_hi);
+    printf("avg at (%d, %d) -> from: (%d, %d), to: (%d, %d)\n", index_h, index_w, index_h_lo, index_w_lo, index_h_hi, index_w_hi);
 
     int elements = 0;
     for (int i = index_h_lo; i <= index_h_hi; i++)
@@ -79,7 +79,7 @@ RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, 
             green += image[i][j].rgbtGreen;
             red   += image[i][j].rgbtRed;
             elements++;
-            // printf("(%d, %d) -> sum: (%d, %d, %d), elements: %d\n", i, j, blue, green, red, elements);
+            printf("(%d, %d) -> sum: (%d, %d, %d), elements: %d\n", i, j, blue, green, red, elements);
         }
     }
     average.rgbtBlue  = blue / elements;
@@ -124,37 +124,43 @@ void local_main()
     RGBTRIPLE image[h][w];
 
     image[0][0].rgbtBlue  = 10;
-    image[0][0].rgbtGreen = 0;
-    image[0][0].rgbtRed   = 0;
-    image[0][1].rgbtBlue  = 20;
-    image[0][1].rgbtGreen = 0;
-    image[0][1].rgbtRed   = 0;
-    image[0][2].rgbtBlue  = 30;
-    image[0][2].rgbtGreen = 0;
-    image[0][2].rgbtRed   = 0;
+    image[0][0].rgbtGreen = 20;
+    image[0][0].rgbtRed   = 30;
+
+    image[0][1].rgbtBlue  = 40;
+    image[0][1].rgbtGreen = 50;
+    image[0][1].rgbtRed   = 60;
+
+    image[0][2].rgbtBlue  = 70;
+    image[0][2].rgbtGreen = 80;
+    image[0][2].rgbtRed   = 90;
 
     image[1][0].rgbtBlue  = 110;
-    image[1][0].rgbtGreen = 0;
-    image[1][0].rgbtRed   = 0;
-    image[1][1].rgbtBlue  = 120;
-    image[1][1].rgbtGreen = 0;
-    image[1][1].rgbtRed   = 0;
-    image[1][2].rgbtBlue  = 130;
-    image[1][2].rgbtGreen = 0;
-    image[1][2].rgbtRed   = 0;
+    image[1][0].rgbtGreen = 120;
+    image[1][0].rgbtRed   = 130;
 
-    image[2][0].rgbtBlue  = 210;
-    image[2][0].rgbtGreen = 0;
-    image[2][0].rgbtRed   = 0;
+    image[1][1].rgbtBlue  = 140;
+    image[1][1].rgbtGreen = 150;
+    image[1][1].rgbtRed   = 160;
+
+    image[1][2].rgbtBlue  = 170;
+    image[1][2].rgbtGreen = 180;
+    image[1][2].rgbtRed   = 190;
+
+    image[2][0].rgbtBlue  = 200;
+    image[2][0].rgbtGreen = 210;
+    image[2][0].rgbtRed   = 220;
+
     image[2][1].rgbtBlue  = 220;
-    image[2][1].rgbtGreen = 0;
-    image[2][1].rgbtRed   = 0;
-    image[2][2].rgbtBlue  = 230;
-    image[2][2].rgbtGreen = 0;
-    image[2][2].rgbtRed   = 0;
+    image[2][1].rgbtGreen = 230;
+    image[2][1].rgbtRed   = 240;
 
-    int i = 1;
-    int j = 1;
+    image[2][2].rgbtBlue  = 240;
+    image[2][2].rgbtGreen = 250;
+    image[2][2].rgbtRed   = 255;
+
+    int i = 0;
+    int j = 0;
     RGBTRIPLE avg = get_neighbor_average(i, j, h, w, image);
     printf("avg(%d, %d) -> (%d, %d, %d)\n", i, j, avg.rgbtBlue, avg.rgbtGreen, avg.rgbtRed);
 }
