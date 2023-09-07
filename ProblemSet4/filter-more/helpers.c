@@ -31,37 +31,6 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
-int get_neighbor_average(int index_h, int index_w, int height, int width, RGBTRIPLE image[height][width])
-{
-    RGBTRIPLE average;
-    int elements, index_h_lo, index_h_hi, index_w_lo, index_w_hi;
-
-    average.rgbtBlue  = 0x00;
-    average.rgbtGreen = 0x00;
-    average.rgbtRed   = 0x00;
-
-    index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
-    index_w_lo = (index_w > 0) ? (index_w - 1) : 0;
-    index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : height;
-    index_w_hi = (index_w < (width - 1)) ? (index_w + 1) : width;
-
-    for (int i = index_h_lo; i < index_h_hi; i++)
-    {
-        for (int j = index_w_lo; j < index_w_hi; j++)
-        {
-            average.rgbtBlue  += image[i][j].rgbtBlue;
-            average.rgbtGreen += image[i][j].rgbtGreen;
-            average.rgbtRed   += image[i][j].rgbtRed;
-            elements++;
-        }
-    }
-    average.rgbtBlue  /= elements;
-    average.rgbtGreen /= elements;
-    average.rgbtRed   /= elements;
-
-    return average;
-}
-
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -87,10 +56,55 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
+RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, RGBTRIPLE image[height][width])
+{
+    RGBTRIPLE average;
+    average.rgbtBlue  = 0x00;
+    average.rgbtGreen = 0x00;
+    average.rgbtRed   = 0x00;
+
+    int index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
+    int index_w_lo = (index_w > 0) ? (index_w - 1) : 0;
+    int index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : height;
+    int index_w_hi = (index_w < (width - 1)) ? (index_w + 1) : width;
+
+    int elements = 0;
+    for (int i = index_h_lo; i < index_h_hi; i++)
+    {
+        for (int j = index_w_lo; j < index_w_hi; j++)
+        {
+            average.rgbtBlue  += image[i][j].rgbtBlue;
+            average.rgbtGreen += image[i][j].rgbtGreen;
+            average.rgbtRed   += image[i][j].rgbtRed;
+            elements++;
+        }
+    }
+    average.rgbtBlue  /= elements;
+    average.rgbtGreen /= elements;
+    average.rgbtRed   /= elements;
+
+    return average;
+}
+
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    return;
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            RGBTRIPLE avg = get_neighbor_average(i, j, height, width, image);
+
+            if ((avg > 0x00) && (avg < 0xFF))
+            {
+                image[i][j] = avg;
+            }
+            else
+            {
+                /* Do nothing */
+            }
+        }
+    }
 }
 
 // Detect edges
