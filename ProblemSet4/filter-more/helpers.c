@@ -31,13 +31,25 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
-int get_neighbor_average(int , int j, int height, int width, RGBTRIPLE image[height][width])
+int get_neighbor_average(int index_h, int index_w, int height, int width, RGBTRIPLE image[height][width])
 {
-    int average;
+    int sum, elements;
+    int index_h_lo, index_h_hi, index_w_lo, index_w_hi;
 
+    index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
+    index_w_lo = (index_w > 0) ? (index_w - 1) : 0;
+    index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : height;
+    index_w_hi = (index_w < (width - 1)) ? (index_w + 1) : width;
 
+    for (int i = index_h_lo; i < index_h_hi; i++)
+    {
+        for (int j = index_w_lo; j < index_w_hi; j++)
+        {
+            
+        }
+    }
 
-    return average;
+    return round(sum / elements);
 }
 
 // Reflect image horizontally
