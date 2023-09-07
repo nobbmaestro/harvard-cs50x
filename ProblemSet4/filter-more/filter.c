@@ -1,11 +1,13 @@
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "helpers.h"
+
+#define DEBUG_FLAG 0
 
 int main(int argc, char *argv[])
 {
+#if 0
     // Define allowable filters
     char *filters = "begr";
 
@@ -147,4 +149,7 @@ int main(int argc, char *argv[])
     fclose(inptr);
     fclose(outptr);
     return 0;
+#else
+    local_main();
+#endif
 }
