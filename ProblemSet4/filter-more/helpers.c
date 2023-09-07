@@ -94,8 +94,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             RGBTRIPLE avg = get_neighbor_average(i, j, height, width, image);
-
-            if ((avg > 0x00) && (avg < 0xFF))
+            /* Apply blue only on passed sanity check */
+            if (((avg.rgbtBlue  >= 0x00) && (avg.rgbtBlue  <= 0xFF)) &&
+                ((avg.rgbtGreen >= 0x00) && (avg.rgbtGreen <= 0xFF)) &&
+                ((avg.rgbtRed   >= 0x00) && (avg.rgbtRed   <= 0xFF)))
             {
                 image[i][j] = avg;
             }
