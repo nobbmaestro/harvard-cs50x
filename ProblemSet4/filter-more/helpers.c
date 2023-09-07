@@ -33,8 +33,12 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 
 int get_neighbor_average(int index_h, int index_w, int height, int width, RGBTRIPLE image[height][width])
 {
-    int sum, elements;
-    int index_h_lo, index_h_hi, index_w_lo, index_w_hi;
+    RGBTRIPLE sum;
+    int elements, index_h_lo, index_h_hi, index_w_lo, index_w_hi;
+
+    sum.rgbtBlue  = 0x00;
+    sum.rgbtGreen = 0x00;
+    sum.rgbtRed   = 0x00;
 
     index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
     index_w_lo = (index_w > 0) ? (index_w - 1) : 0;
@@ -45,9 +49,15 @@ int get_neighbor_average(int index_h, int index_w, int height, int width, RGBTRI
     {
         for (int j = index_w_lo; j < index_w_hi; j++)
         {
-            
+            sum.rgbtBlue  += image[i][j].rgbtBlue;
+            sum.rgbtGreen += image[i][j].rgbtGreen;
+            sum.rgbtRed   += image[i][j].rgbtRed;
+            elements++;
         }
     }
+    sum.rgbtBlue  /= elements;
+    sum.rgbtGreen /= elements;
+    sum.rgbtRed   /= elements;
 
     return round(sum / elements);
 }
