@@ -31,6 +31,15 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
+int get_neighbor_average(int , int j, int height, int width, RGBTRIPLE image[height][width])
+{
+    int average;
+
+
+
+    return average;
+}
+
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
