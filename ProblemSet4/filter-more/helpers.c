@@ -42,13 +42,13 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             if (i < mid)
             {
                 RGBTRIPLE tmp;
-                tmp.rgbtBlue  = image[height - i][width - j].rgbtBlue;
-                tmp.rgbtGreen = image[height - i][width - j].rgbtGreen;
-                tmp.rgbtRed   = image[height - i][width - j].rgbtRed;
+                tmp.rgbtBlue  = image[height - i][j].rgbtBlue;
+                tmp.rgbtGreen = image[height - i][j].rgbtGreen;
+                tmp.rgbtRed   = image[height - i][j].rgbtRed;
 
-                image[height - i][width - j].rgbtBlue  = image[i][j].rgbtBlue;
-                image[height - i][width - j].rgbtGreen = image[i][j].rgbtGreen;
-                image[height - i][width - j].rgbtRed   = image[i][j].rgbtRed;
+                image[height - i][j].rgbtBlue  = image[i][j].rgbtBlue;
+                image[height - i][j].rgbtGreen = image[i][j].rgbtGreen;
+                image[height - i][j].rgbtRed   = image[i][j].rgbtRed;
 
                 image[i][j].rgbtBlue  = tmp.rgbtBlue;
                 image[i][j].rgbtGreen = tmp.rgbtGreen;
