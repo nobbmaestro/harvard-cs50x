@@ -40,7 +40,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            if (i < mid)
+            if (i <= mid)
             {
                 RGBTRIPLE tmp;
                 int k = height - i - 1;
@@ -71,7 +71,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 void local_main()
 {
-    RGBTRIPLE image[3][3];
+    int h = 1;
+    int w = 3;
+    RGBTRIPLE image[h][w];
 
     /* Row 0 */
     image[0][0].rgbtBlue  = 10;
@@ -87,36 +89,36 @@ void local_main()
     image[0][2].rgbtRed   = 30;
 
     /* Row 1 */
-    image[1][0].rgbtBlue  = 110;
-    image[1][0].rgbtGreen = 110;
-    image[1][0].rgbtRed   = 110;
+    // image[1][0].rgbtBlue  = 110;
+    // image[1][0].rgbtGreen = 110;
+    // image[1][0].rgbtRed   = 110;
 
-    image[1][1].rgbtBlue  = 120;
-    image[1][1].rgbtGreen = 120;
-    image[1][1].rgbtRed   = 120;
+    // image[1][1].rgbtBlue  = 120;
+    // image[1][1].rgbtGreen = 120;
+    // image[1][1].rgbtRed   = 120;
 
-    image[1][2].rgbtBlue  = 130;
-    image[1][2].rgbtGreen = 130;
-    image[1][2].rgbtRed   = 130;
+    // image[1][2].rgbtBlue  = 130;
+    // image[1][2].rgbtGreen = 130;
+    // image[1][2].rgbtRed   = 130;
 
-    /* Row 2 */
-    image[2][0].rgbtBlue  = 210;
-    image[2][0].rgbtGreen = 210;
-    image[2][0].rgbtRed   = 210;
+    // /* Row 2 */
+    // image[2][0].rgbtBlue  = 210;
+    // image[2][0].rgbtGreen = 210;
+    // image[2][0].rgbtRed   = 210;
 
-    image[2][1].rgbtBlue  = 220;
-    image[2][1].rgbtGreen = 220;
-    image[2][1].rgbtRed   = 220;
+    // image[2][1].rgbtBlue  = 220;
+    // image[2][1].rgbtGreen = 220;
+    // image[2][1].rgbtRed   = 220;
 
-    image[2][2].rgbtBlue  = 230;
-    image[2][2].rgbtGreen = 230;
-    image[2][2].rgbtRed   = 230;
+    // image[2][2].rgbtBlue  = 230;
+    // image[2][2].rgbtGreen = 230;
+    // image[2][2].rgbtRed   = 230;
 
-    reflect(3, 3, image);
+    reflect(h, w, image);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < h; i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < w; j++)
         {
             printf("(%d, %d): %d %d %d\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
         }
