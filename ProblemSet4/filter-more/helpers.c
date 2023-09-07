@@ -15,6 +15,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         {
             int avg = average_rgbt(image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
 
+            /* Apply grayscale only on passed sanity check */
             if ((avg > 0x00) && (avg < 0xFF))
             {
                 image[i][j].rgbtBlue = avg;
