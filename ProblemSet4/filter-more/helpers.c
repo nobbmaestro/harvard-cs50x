@@ -71,10 +71,12 @@ RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, 
     printf("avg at (%d, %d) -> from: (%d, %d), to: (%d, %d)\n", index_h, index_w, index_h_lo, index_w_lo, index_h_hi, index_w_hi);
 
     int elements = 0;
-    for (int i = index_h_lo; i < index_h_hi; i++)
+    for (int i = index_h_lo; i <= index_h_hi; i++)
     {
-        for (int j = index_w_lo; j < index_w_hi; j++)
+        for (int j = index_w_lo; j <= index_w_hi; j++)
         {
+            printf("(i, j) -> (%d, %d)\n", i, j);
+
             average.rgbtBlue  += image[i][j].rgbtBlue;
             average.rgbtGreen += image[i][j].rgbtGreen;
             average.rgbtRed   += image[i][j].rgbtRed;
@@ -125,32 +127,35 @@ void local_main()
     image[0][0].rgbtBlue  = 10;
     image[0][0].rgbtGreen = 0;
     image[0][0].rgbtRed   = 0;
-    image[0][1].rgbtBlue  = 10;
+    image[0][1].rgbtBlue  = 20;
     image[0][1].rgbtGreen = 0;
     image[0][1].rgbtRed   = 0;
-    image[0][2].rgbtBlue  = 10;
+    image[0][2].rgbtBlue  = 30;
     image[0][2].rgbtGreen = 0;
     image[0][2].rgbtRed   = 0;
 
-    image[1][0].rgbtBlue  = 10;
+    image[1][0].rgbtBlue  = 110;
     image[1][0].rgbtGreen = 0;
     image[1][0].rgbtRed   = 0;
-    image[1][1].rgbtBlue  = 10;
+    image[1][1].rgbtBlue  = 120;
     image[1][1].rgbtGreen = 0;
     image[1][1].rgbtRed   = 0;
-    image[1][2].rgbtBlue  = 10;
+    image[1][2].rgbtBlue  = 130;
     image[1][2].rgbtGreen = 0;
     image[1][2].rgbtRed   = 0;
 
-    image[2][0].rgbtBlue  = 10;
+    image[2][0].rgbtBlue  = 210;
     image[2][0].rgbtGreen = 0;
     image[2][0].rgbtRed   = 0;
-    image[2][1].rgbtBlue  = 10;
+    image[2][1].rgbtBlue  = 220;
     image[2][1].rgbtGreen = 0;
     image[2][1].rgbtRed   = 0;
-    image[2][2].rgbtBlue  = 10;
+    image[2][2].rgbtBlue  = 230;
     image[2][2].rgbtGreen = 0;
     image[2][2].rgbtRed   = 0;
 
-    RGBTRIPLE avg = get_neighbor_average(0, 0, h, w, image);
+    int i = 0;
+    int j = 0;
+    RGBTRIPLE avg = get_neighbor_average(i, j, h, w, image);
+    printf("avg(%d, %d) -> (%d, %d, %d)\n", i, j, avg.rgbtBlue, avg.rgbtGreen, avg.rgbtRed);
 }
