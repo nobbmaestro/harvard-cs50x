@@ -1,5 +1,6 @@
 #include "helpers.h"
 #include "math.h"
+#include "stdio.h"
 
 int average_rgbt(int blue, int green, int red)
 {
@@ -74,7 +75,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
-int main()
+int local_main()
 {
     RGBTRIPLE image[3][3];
     image[0][0].rgbtBlue = 0;
@@ -107,9 +108,9 @@ int main()
 
     reflect(3, 3, image);
 
-    for (int i = 0, i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
-        for (int j = 0, j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
             printf("(%d, %d): %d %d %d\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
         }
