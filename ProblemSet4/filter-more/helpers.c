@@ -9,7 +9,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             int avg = ceil((image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3);
-            if (avg > 0x0)
+            if (avg > 0x00)
             {
                 image[i][j].rgbtBlue = avg;
                 image[i][j].rgbtGreen = avg;
