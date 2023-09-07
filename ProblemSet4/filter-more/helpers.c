@@ -76,21 +76,42 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 int main()
 {
-    RGBTRIPLE image;
-    image[0][0] = 0;
-    image[0][1] = 10;
-    image[0][2] = 20;
-    image[1][0] = 30;
-    image[1][1] = 40;
-    image[1][2] = 50;
-    image[2][0] = 60;
-    image[2][1] = 70;
-    image[2][2] = 80;
+    RGBTRIPLE image[3][3];
+    image[0][0].rgbtBlue = 0;
+    image[0][0].rgbtGreen = 0;
+    image[0][0].rgbtRed = 0;
+    image[0][1].rgbtBlue = 10;
+    image[0][1].rgbtGreen = 10;
+    image[0][1].rgbtRed = 10;
+    image[0][2].rgbtBlue = 20;
+    image[0][2].rgbtGreen = 20;
+    image[0][2].rgbtRed = 20;
+    image[1][0].rgbtBlue = 30;
+    image[1][0].rgbtGreen = 30;
+    image[1][0].rgbtRed = 30;
+    image[1][1].rgbtBlue = 40;
+    image[1][1] .rgbtGreen= 40;
+    image[1][1].rgbtRed = 40;
+    image[1][2].rgbtBlue = 50;
+    image[1][2].rgbtGreen = 50;
+    image[1][2].rgbtRed = 50;
+    image[2][0].rgbtBlue = 60;
+    image[2][0].rgbtGreen = 60;
+    image[2][0].rgbtRed = 60;
+    image[2][1].rgbtBlue = 70;
+    image[2][1].rgbtGreen = 70;
+    image[2][1].rgbtRed = 70;
+    image[2][2].rgbtBlue = 80;
+    image[2][2].rgbtGreen = 80;
+    image[2][2].rgbtRed = 80;
 
     reflect(3, 3, image);
 
     for (int i = 0, i < 3; i++)
     {
-        printf("row: %d \t (%d, %d, %d)\n", i, image[i][0], image[i][1], image[i][2])
+        for (int j = 0, j < 3; j++)
+        {
+            printf("(%d, %d): %d %d %d\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
+        }
     }
 }
