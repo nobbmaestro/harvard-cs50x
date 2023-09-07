@@ -152,5 +152,5 @@ void local_main()
     image[2][2].rgbtGreen = 0;
     image[2][2].rgbtRed   = 0;
 
-    RGBTRIPLE avg = get_neightbor_average(1, 1, h, w, image);
+    RGBTRIPLE avg = get_neighbor_average(0, 0, h, w, image);
 }
