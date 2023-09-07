@@ -76,5 +76,21 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 int main()
 {
-    RGBTRIPLE = 
+    RGBTRIPLE image;
+    image[0][0] = 0;
+    image[0][1] = 10;
+    image[0][2] = 20;
+    image[1][0] = 30;
+    image[1][1] = 40;
+    image[1][2] = 50;
+    image[2][0] = 60;
+    image[2][1] = 70;
+    image[2][2] = 80;
+
+    reflect(3, 3, image);
+
+    for (int i = 0, i < 3; i++)
+    {
+        printf("row: %d \t (%d, %d, %d)\n", i, image[i][0], image[i][1], image[i][2])
+    }
 }
