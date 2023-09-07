@@ -75,12 +75,11 @@ RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, 
     {
         for (int j = index_w_lo; j <= index_w_hi; j++)
         {
-            printf("(i, j) -> (%d, %d)\n", i, j);
-
             average.rgbtBlue  += image[i][j].rgbtBlue;
             average.rgbtGreen += image[i][j].rgbtGreen;
             average.rgbtRed   += image[i][j].rgbtRed;
             elements++;
+            printf("(%d, %d) -> sum: (%d, %d, %d), elements: %d\n", i, j, average.rgbtBlue, average.rgbtGreen, average.rgbtRed, elements);
         }
     }
     average.rgbtBlue  /= elements;
