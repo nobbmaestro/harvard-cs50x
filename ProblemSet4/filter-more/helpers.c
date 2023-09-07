@@ -1,7 +1,7 @@
 #include "helpers.h"
 #include "math.h"
 
-float average_rgbt(int blue, int green, int red)
+int average_rgbt(int blue, int green, int red)
 {
     return round((float)(blue + green + red)/ 3.0F);
 }
@@ -13,9 +13,9 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            int avg = round((float)(image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0F);
+            int avg = average_rgbt(image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
 
-            if (avg > 0)
+            if ((avg > 0x00) && (avg < 0xFF))
             {
                 image[i][j].rgbtBlue = avg;
                 image[i][j].rgbtGreen = avg;
