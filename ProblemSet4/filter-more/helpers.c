@@ -73,3 +73,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     return;
 }
+
+int main()
+{
+    RGBTRIPLE = 
+}
