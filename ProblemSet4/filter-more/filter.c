@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "helpers.h"
 
-#define DEBUG_FLAG 1
+#define DEBUG_FLAG 0
 
 int main(int argc, char *argv[])
 {
