@@ -68,7 +68,7 @@ RGBTRIPLE get_neighbor_average(int index_h, int index_w, int height, int width, 
     int index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : (height - 1);
     int index_w_hi = (index_w < (width - 1))  ? (index_w + 1) : (width - 1);
 
-    // printf("avg at (%d, %d) -> from: (%d, %d), to: (%d, %d)\n", index_h, index_w, index_h_lo, index_w_lo, index_h_hi, index_w_hi);
+    printf("avg at (%d, %d) -> from: (%d, %d), to: (%d, %d)\n", index_h, index_w, index_h_lo, index_w_lo, index_h_hi, index_w_hi);
 
     int elements = 0;
     for (int i = index_h_lo; i < index_h_hi; i++)
@@ -115,4 +115,42 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     return;
+}
+
+void local_main()
+{
+    int h = 3, w = 3;
+    RGBTRIPLE image[h][w];
+
+    image[0][0].rgbtBlue  = 10;
+    image[0][0].rgbtGreen = 0;
+    image[0][0].rgbtRed   = 0;
+    image[0][1].rgbtBlue  = 10;
+    image[0][1].rgbtGreen = 0;
+    image[0][1].rgbtRed   = 0;
+    image[0][2].rgbtBlue  = 10;
+    image[0][2].rgbtGreen = 0;
+    image[0][2].rgbtRed   = 0;
+
+    image[1][0].rgbtBlue  = 10;
+    image[1][0].rgbtGreen = 0;
+    image[1][0].rgbtRed   = 0;
+    image[1][1].rgbtBlue  = 10;
+    image[1][1].rgbtGreen = 0;
+    image[1][1].rgbtRed   = 0;
+    image[1][2].rgbtBlue  = 10;
+    image[1][2].rgbtGreen = 0;
+    image[1][2].rgbtRed   = 0;
+
+    image[2][0].rgbtBlue  = 10;
+    image[2][0].rgbtGreen = 0;
+    image[2][0].rgbtRed   = 0;
+    image[2][1].rgbtBlue  = 10;
+    image[2][1].rgbtGreen = 0;
+    image[2][1].rgbtRed   = 0;
+    image[2][2].rgbtBlue  = 10;
+    image[2][2].rgbtGreen = 0;
+    image[2][2].rgbtRed   = 0;
+
+    RGBTRIPLE avg = get_neightbor_average(1, 1, h, w, image);
 }
