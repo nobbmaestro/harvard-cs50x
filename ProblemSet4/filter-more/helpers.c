@@ -233,6 +233,7 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
             gy_blue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gy_kernel[i][j];
             gy_green += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gy_kernel[i][j];
             gy_red   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gy_kernel[i][j];
+
         }
     }
     /* Calculate sqrt of Gx^2 + Gy^2 for each color */
