@@ -84,6 +84,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             }
         }
     }
+
     /* Free memory for image copy */
     free(tmp);
 }
@@ -102,6 +103,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             image[i][j] = calculate_weighted_sum(i, j, height, width, tmp);
         }
     }
+
     /* Free memory for image copy */
     free(tmp);
 }
