@@ -239,8 +239,5 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
     weighted_sum.rgbtRed   = (int)round( sqrt( pow((float)xred,   2.0F) + pow((float)yred,   2.0F) ));
 
-    printf("pow: %d\n", (int)round(sqrt(pow((float)xblue, 2.0F) + pow((float)yblue, 2.0F))));
-    printf("Edge: (%d, %d, %d)\n", weighted_sum.rgbtBlue, weighted_sum.rgbtGreen, weighted_sum.rgbtRed);
-
     return weighted_sum;
 }
