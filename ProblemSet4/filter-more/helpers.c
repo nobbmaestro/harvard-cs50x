@@ -228,7 +228,8 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     {
         for (int j = 0; j <= 2; j++)
         {
-            
+            int curr_blue = 
+
             /* Calculate the weighted sum for x-direction */
             gx_blue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gx_kernel[i][j];
             gx_green += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gx_kernel[i][j];
