@@ -223,20 +223,16 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
         for (int j = index_w_lo; j <= index_w_hi; j++)
         {
             /* Calculate the weighted sum for x-direction */
-            xblue  += image[index_h+i][index_w+j].rgbtBlue  * gx_kernel[i][j];
-            xgreen += image[index_h+i][index_w+j].rgbtGreen * gx_kernel[i][j];
-            xred   += image[index_h+i][index_w+j].rgbtRed   * gx_kernel[i][j];
+            xblue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gx_kernel[i][j];
+            xgreen += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gx_kernel[i][j];
+            xred   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gx_kernel[i][j];
 
-            printf("(%d, %d) - pixel[i][j]: %3d, gx[i][j]: %2d -> sum: %3d\n", i, j, image[index_h_lo+i][index_w_lo+j].rgbtBlue, gx_kernel[i][j], xblue);
             /* Calculate the weighted sum for y-direction */
-            yblue  += image[index_h+i][index_w+j].rgbtBlue  * gy_kernel[i][j];
-            ygreen += image[index_h+i][index_w+j].rgbtGreen * gy_kernel[i][j];
-            yred   += image[index_h+i][index_w+j].rgbtRed   * gy_kernel[i][j];
+            yblue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gy_kernel[i][j];
+            ygreen += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gy_kernel[i][j];
+            yred   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gy_kernel[i][j];
         }
     }
-    printf("sum x: (%d, %d, %d)\n", xblue, xgreen, xred);
-    printf("sum y: (%d, %d, %d)\n", yblue, ygreen, yred);
-
     /* Calculate sqrt of Gx'^2 + Gy'^2 for each color */
     weighted_sum.rgbtBlue  = (int)round( sqrt( pow((float)xblue,  2.0F) + pow((float)yblue,  2.0F) ));
     weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
