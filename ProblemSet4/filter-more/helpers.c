@@ -148,7 +148,7 @@ void local_main()
     image[2][2].rgbtRed   = 10;
 
     int i = 1;
-    int j = 1;
+    int j = 2;
     RGBTRIPLE sum = calculate_weighted_sum(i, j, h, w, image);
     printf("\nsum(%d, %d) -> (%d, %d, %d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
 }
