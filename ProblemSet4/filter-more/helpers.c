@@ -125,10 +125,6 @@ void local_main()
     image[0][2].rgbtGreen = 60;
     image[0][2].rgbtRed   = 80;
 
-    // image[0][3].rgbtBlue  = 50;
-    // image[0][3].rgbtGreen = 60;
-    // image[0][3].rgbtRed   = 80;
-
     image[1][0].rgbtBlue  = 20;
     image[1][0].rgbtGreen = 30;
     image[1][0].rgbtRed   = 90;
@@ -141,10 +137,6 @@ void local_main()
     image[1][2].rgbtGreen = 70;
     image[1][2].rgbtRed   = 90;
 
-    // image[1][3].rgbtBlue  = 80;
-    // image[1][3].rgbtGreen = 80;
-    // image[1][3].rgbtRed   = 90;
-
     image[2][0].rgbtBlue  = 20;
     image[2][0].rgbtGreen = 20;
     image[2][0].rgbtRed   = 40;
@@ -156,26 +148,6 @@ void local_main()
     image[2][2].rgbtBlue  = 50;
     image[2][2].rgbtGreen = 40;
     image[2][2].rgbtRed   = 10;
-
-    image[2][3].rgbtBlue  = 50;
-    image[2][3].rgbtGreen = 40;
-    image[2][3].rgbtRed   = 100;
-
-    // image[3][0].rgbtBlue  = 20;
-    // image[3][0].rgbtGreen = 20;
-    // image[3][0].rgbtRed   = 40;
-
-    // image[3][1].rgbtBlue  = 30;
-    // image[3][1].rgbtGreen = 10;
-    // image[3][1].rgbtRed   = 30;
-
-    // image[3][2].rgbtBlue  = 50;
-    // image[3][2].rgbtGreen = 40;
-    // image[3][2].rgbtRed   = 10;
-
-    // image[3][3].rgbtBlue  = 50;
-    // image[3][3].rgbtGreen = 40;
-    // image[3][3].rgbtRed   = 80;
 
     int i = 1;
     int j = 1;
