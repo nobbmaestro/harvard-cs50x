@@ -234,16 +234,13 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
             yred   += image[index_h+i][index_w+j].rgbtRed   * gy_kernel[i][j];
         }
     }
-    // printf("Gx: (%d, %d, %d)\n", xblue, xgreen, xred);
-    // printf("Gy: (%d, %d, %d)\n", yblue, ygreen, yred);
-    // printf("pow: %d\n", (int)round(sqrt(pow((float)xblue, 2.0F) + pow((float)yblue, 2.0F))));
-
     /* Calculate sqrt of Gx'^2 + Gy'^2 for each color */
     weighted_sum.rgbtBlue = (int)round( sqrt( pow((float)xblue,  2.0F) + pow((float)yblue,  2.0F) ));
-    weighted_sum.rgbtBlue = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
+    weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
     weighted_sum.rgbtBlue = (int)round( sqrt( pow((float)xred,   2.0F) + pow((float)yred,   2.0F) ));
 
     printf("pow: %d\n", (int)round(sqrt(pow((float)xblue, 2.0F) + pow((float)yblue, 2.0F))));
     printf("Edge: (%d, %d, %d)\n", weighted_sum.rgbtBlue, weighted_sum.rgbtGreen, weighted_sum.rgbtRed);
+
     return weighted_sum;
 }
