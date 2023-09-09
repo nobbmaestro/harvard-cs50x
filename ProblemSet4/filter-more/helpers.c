@@ -110,7 +110,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 void local_main()
 {
-    int h = 3, w = 3;
+    int h = 4, w = 4;
     RGBTRIPLE image[h][w];
 
     image[0][0].rgbtBlue  = 0;
@@ -125,6 +125,10 @@ void local_main()
     image[0][2].rgbtGreen = 60;
     image[0][2].rgbtRed   = 80;
 
+    image[0][3].rgbtBlue  = 50;
+    image[0][3].rgbtGreen = 60;
+    image[0][3].rgbtRed   = 80;
+
     image[1][0].rgbtBlue  = 20;
     image[1][0].rgbtGreen = 30;
     image[1][0].rgbtRed   = 90;
@@ -136,6 +140,10 @@ void local_main()
     image[1][2].rgbtBlue  = 80;
     image[1][2].rgbtGreen = 70;
     image[1][2].rgbtRed   = 90;
+
+    image[1][3].rgbtBlue  = 80;
+    image[1][3].rgbtGreen = 80;
+    image[1][3].rgbtRed   = 90;
 
     image[2][0].rgbtBlue  = 20;
     image[2][0].rgbtGreen = 20;
@@ -149,10 +157,35 @@ void local_main()
     image[2][2].rgbtGreen = 40;
     image[2][2].rgbtRed   = 10;
 
-    int i = 1;
-    int j = 2;
-    RGBTRIPLE sum = calculate_weighted_sum(i, j, h, w, image);
-    printf("\nsum(%d, %d) -> (%d, %d, %d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
+    image[2][3].rgbtBlue  = 50;
+    image[2][3].rgbtGreen = 40;
+    image[2][3].rgbtRed   = 100;
+
+    image[3][0].rgbtBlue  = 20;
+    image[3][0].rgbtGreen = 20;
+    image[3][0].rgbtRed   = 40;
+
+    image[3][1].rgbtBlue  = 30;
+    image[3][1].rgbtGreen = 10;
+    image[3][1].rgbtRed   = 30;
+
+    image[3][2].rgbtBlue  = 50;
+    image[3][2].rgbtGreen = 40;
+    image[3][2].rgbtRed   = 10;
+
+    image[3][3].rgbtBlue  = 50;
+    image[3][3].rgbtGreen = 40;
+    image[3][3].rgbtRed   = 80;
+
+    edges(h, w, image);
+
+    for (int i = 0; i < h; i++)
+    {
+        for (int j = 0; j < w; j++)
+        {
+            printf("[%d, %d] -> (%3d, %3d, %3d)\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
+        }
+    }
 }
 
 /* Helper functions */
