@@ -208,7 +208,7 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     int gx_kernel[3][3] = { {-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1} };
     int gy_kernel[3][3] = { {-1, -2, -1}, {0, 0, 0}, {1, 2, 1} };
 
-    RGBTRIPLE weighted_sum, Gx, Gy;
+    RGBTRIPLE weighted_sum;
     int xblue  = 0x00, yblue  = 0x00;
     int xgreen = 0x00, ygreen = 0x00;
     int xred   = 0x00, yred   = 0x00;
@@ -236,6 +236,7 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     }
     printf("Gx: (%d, %d, %d)\n", xblue, xgreen, xred);
     printf("Gy: (%d, %d, %d)\n", yblue, ygreen, yred);
+    printf("pow: %f\n", round(pow((float)xblue, 2.0F) + pow((float)yblue, 2.0F)));
 
     weighted_sum.rgbtBlue = round(pow((float)xblue,  2.0F) + pow((float)yblue,  2.0F));
     weighted_sum.rgbtBlue = round(pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F));
