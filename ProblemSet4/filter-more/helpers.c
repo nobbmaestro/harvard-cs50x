@@ -208,9 +208,9 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     int gy_kernel[3][3] = { {-1, -2, -1}, {0, 0, 0}, {1, 2, 1} };
 
     RGBTRIPLE weighted_sum;
-    int xblue  = 0x00, yblue  = 0x00;
-    int xgreen = 0x00, ygreen = 0x00;
-    int xred   = 0x00, yred   = 0x00;
+    int gx_blue  = 0x00, gy_blue  = 0x00;
+    int gx_green = 0x00, gy_green = 0x00;
+    int gx_red   = 0x00, gy_red   = 0x00;
 
     /* Obtain the lower and upper index limits */
     int index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
@@ -223,20 +223,20 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
         for (int j = index_w_lo; j <= index_w_hi; j++)
         {
             /* Calculate the weighted sum for x-direction */
-            xblue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gx_kernel[i][j];
-            xgreen += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gx_kernel[i][j];
-            xred   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gx_kernel[i][j];
+            gx_blue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gx_kernel[i][j];
+            gx_green += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gx_kernel[i][j];
+            gx_red   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gx_kernel[i][j];
 
             /* Calculate the weighted sum for y-direction */
-            yblue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gy_kernel[i][j];
-            ygreen += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gy_kernel[i][j];
-            yred   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gy_kernel[i][j];
+            gy_blue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gy_kernel[i][j];
+            gy_green += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gy_kernel[i][j];
+            gy_red   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gy_kernel[i][j];
         }
     }
-    /* Calculate sqrt of Gx'^2 + Gy'^2 for each color */
-    weighted_sum.rgbtBlue  = (int)round( sqrt( pow((float)xblue,  2.0F) + pow((float)yblue,  2.0F) ));
-    weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
-    weighted_sum.rgbtRed   = (int)round( sqrt( pow((float)xred,   2.0F) + pow((float)yred,   2.0F) ));
+    /* Calculate sqrt of Gx^2 + Gy^2 for each color */
+    weighted_sum.rgbtBlue  = (int)round( sqrt( pow((float)gx_blue,  2.0F) + pow((float)gy_blue,  2.0F) ));
+    weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)gx_green, 2.0F) + pow((float)gy_green, 2.0F) ));
+    weighted_sum.rgbtRed   = (int)round( sqrt( pow((float)gx_red,   2.0F) + pow((float)gy_red,   2.0F) ));
 
     /* Ensure max value of 0xFF (255) */
     pixel.rgbtBlue  = pixel.rgbtBlue  > 0xFF ? 0xFF : pixel.rgbtBlue;
