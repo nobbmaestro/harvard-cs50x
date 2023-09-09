@@ -234,6 +234,9 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
             yred   += image[index_h+i][index_w+j].rgbtRed   * gy_kernel[i][j];
         }
     }
+    printf("sum x: (%d, %d, %d)\n", xblue, xgreen, xred);
+    printf("sum y: (%d, %d, %d)\n", yblue, ygreen, yred);
+
     /* Calculate sqrt of Gx'^2 + Gy'^2 for each color */
     weighted_sum.rgbtBlue  = (int)round( sqrt( pow((float)xblue,  2.0F) + pow((float)yblue,  2.0F) ));
     weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
