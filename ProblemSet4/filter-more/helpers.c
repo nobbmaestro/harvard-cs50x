@@ -218,27 +218,31 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     int gx_green = 0x00, gy_green = 0x00;
     int gx_red   = 0x00, gy_red   = 0x00;
 
-    /* Obtain the lower and upper index limits */
-    int index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
-    int index_w_lo = (index_w > 0) ? (index_w - 1) : 0;
-    int index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : (height - 1);
-    int index_w_hi = (index_w < (width - 1))  ? (index_w + 1) : (width - 1);
-
     for (int i = 0; i <= 2; i++)
     {
         for (int j = 0; j <= 2; j++)
         {
-            int curr_blue = 
+            bool overflow;
+
+            overflow = true;
+            overflow |= (index_h - 1 + i) < 0;
+            overflow |= (index_h - 1 + i) > (height - 1);
+            overflow |= (index_w - 1 + j) < 0;
+            overflow |= (index_w - 1 + j) > (height - 1);
+
+            int curr_blue  = overflow ? 0 : image[index_h - 1 + i][index_w - 1 + j].rgbtBlue;
+            int curr_green = overflow ? 0 : image[index_h - 1 + i][index_w - 1 + j].rgbtGreen;
+            int curr_red   = overflow ? 0 : image[index_h - 1 + i][index_w - 1 + j].rgbtRed;
 
             /* Calculate the weighted sum for x-direction */
-            gx_blue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gx_kernel[i][j];
-            gx_green += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gx_kernel[i][j];
-            gx_red   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gx_kernel[i][j];
+            gx_blue  += curr_blue  * gx_kernel[i][j];
+            gx_green += curr_green * gx_kernel[i][j];
+            gx_red   += curr_red   * gx_kernel[i][j];
 
             /* Calculate the weighted sum for y-direction */
-            gy_blue  += image[index_h_lo+i][index_w_lo+j].rgbtBlue  * gy_kernel[i][j];
-            gy_green += image[index_h_lo+i][index_w_lo+j].rgbtGreen * gy_kernel[i][j];
-            gy_red   += image[index_h_lo+i][index_w_lo+j].rgbtRed   * gy_kernel[i][j];
+            gy_blue  += curr_blue  * gy_kernel[i][j];
+            gy_green += curr_green * gy_kernel[i][j];
+            gy_red   += curr_red   * gy_kernel[i][j];
 
         }
     }
