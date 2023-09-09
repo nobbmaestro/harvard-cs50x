@@ -182,6 +182,9 @@ void local_main()
     RGBTRIPLE sum = calculate_weighted_sum(i, j, h, w, image);
 
     printf("sum(%d, %d): (%3d, %3d, %3d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
+
+    edges(h, w, image);
+    printf("edge(%d, %d): (%3d, %3d, %3d)\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
 }
 
 /* Helper functions */
