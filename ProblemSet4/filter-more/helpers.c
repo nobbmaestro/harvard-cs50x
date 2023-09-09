@@ -111,6 +111,10 @@ void local_main()
     int h = 3, w = 3;
     RGBTRIPLE image[h][w];
 
+first row: (0, 10, 25), (0, 10, 30), (40, 60, 80)
+second row: (20, 30, 90), (30, 40, 100), (80, 70, 90)
+third row: (20, 20, 40), (30, 10, 30), (50, 40, 10)
+
     image[0][0].rgbtBlue  = 0;
     image[0][0].rgbtGreen = 10;
     image[0][0].rgbtRed   = 25;
