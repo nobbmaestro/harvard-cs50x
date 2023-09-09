@@ -99,8 +99,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            RGBTRIPLE weighted_sum = calculate_weighted_sum(i, j, height, width, image);
-            // printf("weighted sum: (%d, %d, %d)\n", )
+            RGBTRIPLE weighted_sum = calculate_weighted_sum(i, j, height, width, tmp);
         }
     }
     /* Free memory for image copy */
@@ -151,7 +150,7 @@ void local_main()
     int i = 1;
     int j = 1;
     RGBTRIPLE sum = calculate_weighted_sum(i, j, h, w, image);
-    printf("sum(%d, %d) -> (%d, %d, %d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
+    printf("\nsum(%d, %d) -> (%d, %d, %d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
 }
 
 /* Helper functions */
