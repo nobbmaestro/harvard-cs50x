@@ -228,6 +228,7 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
             xgreen += image[index_h+i][index_w+j].rgbtGreen * gx_kernel[i][j];
             xred   += image[index_h+i][index_w+j].rgbtRed   * gx_kernel[i][j];
 
+            printf("i = %d, j = %d, pixel[i][j]: %d, gx[i][j]: %d -> sum: %d\n", i, j, image[index_h+i][index_w+j].rgbtBlue, gx_kernel[i][j], xblue);
             /* Calculate the weighted sum for y-direction */
             yblue  += image[index_h+i][index_w+j].rgbtBlue  * gy_kernel[i][j];
             ygreen += image[index_h+i][index_w+j].rgbtGreen * gy_kernel[i][j];
