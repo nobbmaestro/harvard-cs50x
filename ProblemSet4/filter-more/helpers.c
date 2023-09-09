@@ -112,41 +112,41 @@ void local_main()
     int h = 3, w = 3;
     RGBTRIPLE image[h][w];
 
-    image[0][0].rgbtBlue  = 10;
-    image[0][0].rgbtGreen = 20;
-    image[0][0].rgbtRed   = 30;
+    image[0][0].rgbtBlue  = 0;
+    image[0][0].rgbtGreen = 10;
+    image[0][0].rgbtRed   = 25;
 
-    image[0][1].rgbtBlue  = 40;
-    image[0][1].rgbtGreen = 50;
-    image[0][1].rgbtRed   = 60;
+    image[0][1].rgbtBlue  = 0;
+    image[0][1].rgbtGreen = 10;
+    image[0][1].rgbtRed   = 30;
 
-    image[0][2].rgbtBlue  = 70;
-    image[0][2].rgbtGreen = 80;
-    image[0][2].rgbtRed   = 90;
+    image[0][2].rgbtBlue  = 40;
+    image[0][2].rgbtGreen = 60;
+    image[0][2].rgbtRed   = 80;
 
-    image[1][0].rgbtBlue  = 110;
-    image[1][0].rgbtGreen = 120;
-    image[1][0].rgbtRed   = 130;
+    image[1][0].rgbtBlue  = 20;
+    image[1][0].rgbtGreen = 30;
+    image[1][0].rgbtRed   = 90;
 
-    image[1][1].rgbtBlue  = 140;
-    image[1][1].rgbtGreen = 150;
-    image[1][1].rgbtRed   = 160;
+    image[1][1].rgbtBlue  = 30;
+    image[1][1].rgbtGreen = 40;
+    image[1][1].rgbtRed   = 100;
 
-    image[1][2].rgbtBlue  = 170;
-    image[1][2].rgbtGreen = 180;
-    image[1][2].rgbtRed   = 190;
+    image[1][2].rgbtBlue  = 80;
+    image[1][2].rgbtGreen = 70;
+    image[1][2].rgbtRed   = 90;
 
-    image[2][0].rgbtBlue  = 200;
-    image[2][0].rgbtGreen = 210;
-    image[2][0].rgbtRed   = 220;
+    image[2][0].rgbtBlue  = 20;
+    image[2][0].rgbtGreen = 20;
+    image[2][0].rgbtRed   = 40;
 
-    image[2][1].rgbtBlue  = 220;
-    image[2][1].rgbtGreen = 230;
-    image[2][1].rgbtRed   = 240;
+    image[2][1].rgbtBlue  = 30;
+    image[2][1].rgbtGreen = 10;
+    image[2][1].rgbtRed   = 30;
 
-    image[2][2].rgbtBlue  = 240;
-    image[2][2].rgbtGreen = 250;
-    image[2][2].rgbtRed   = 255;
+    image[2][2].rgbtBlue  = 50;
+    image[2][2].rgbtGreen = 40;
+    image[2][2].rgbtRed   = 10;
 
     int i = 1;
     int j = 1;
