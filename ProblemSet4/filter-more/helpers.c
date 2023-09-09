@@ -147,8 +147,8 @@ void local_main()
     image[2][2].rgbtGreen = 40;
     image[2][2].rgbtRed   = 10;
 
-    int i = 0;
-    int j = 0;
+    int i = 1;
+    int j = 1;
     RGBTRIPLE sum = calculate_weighted_sum(i, j, h, w, image);
     printf("\nsum(%d, %d) -> (%d, %d, %d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
 }
@@ -239,9 +239,9 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     weighted_sum.rgbtRed   = (int)round( sqrt( pow((float)gx_red,   2.0F) + pow((float)gy_red,   2.0F) ));
 
     /* Ensure max value of 0xFF (255) */
-    pixel.rgbtBlue  = pixel.rgbtBlue  > 0xFF ? 0xFF : pixel.rgbtBlue;
-    pixel.rgbtGreen = pixel.rgbtGreen > 0xFF ? 0xFF : pixel.rgbtGreen;
-    pixel.rgbtRed   = pixel.rgbtRed   > 0xFF ? 0xFF : pixel.rgbtRed;
+    weighted_sum.rgbtBlue  = weighted_sum.rgbtBlue  > 0xFF ? 0xFF : weighted_sum.rgbtBlue;
+    weighted_sum.rgbtGreen = weighted_sum.rgbtGreen > 0xFF ? 0xFF : weighted_sum.rgbtGreen;
+    weighted_sum.rgbtRed   = weighted_sum.rgbtRed   > 0xFF ? 0xFF : weighted_sum.rgbtRed;
 
     return weighted_sum;
 }
