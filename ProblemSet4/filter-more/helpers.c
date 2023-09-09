@@ -238,5 +238,8 @@ RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width
     weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)xgreen, 2.0F) + pow((float)ygreen, 2.0F) ));
     weighted_sum.rgbtRed   = (int)round( sqrt( pow((float)xred,   2.0F) + pow((float)yred,   2.0F) ));
 
+    /* Ensure max value of 255 */
+    
+
     return weighted_sum;
 }
