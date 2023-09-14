@@ -1,7 +1,8 @@
 #include "helpers.h"
-#include "stdlib.h"
 #include "math.h"
+#include "stdbool.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 /* (Helper) Function Prototypes */
 int calculate_pixel_average(RGBTRIPLE pixel);
@@ -36,7 +37,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    int mid = (int)(width / 2);
+    int mid = (int) (width / 2);
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < mid; j++)
@@ -72,9 +73,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             RGBTRIPLE avg = calculate_neighbor_average(i, j, height, width, tmp);
 
             /* Apply blur only on passed sanity check */
-            if (((avg.rgbtBlue  >= 0x00) && (avg.rgbtBlue  <= 0xFF)) &&
-                ((avg.rgbtGreen >= 0x00) && (avg.rgbtGreen <= 0xFF)) &&
-                ((avg.rgbtRed   >= 0x00) && (avg.rgbtRed   <= 0xFF)))
+            if (((avg.rgbtBlue >= 0x00) && (avg.rgbtBlue <= 0xFF)) && ((avg.rgbtGreen >= 0x00) && (avg.rgbtGreen <= 0xFF)) &&
+                ((avg.rgbtRed >= 0x00) && (avg.rgbtRed <= 0xFF)))
             {
                 image[i][j] = avg;
             }
@@ -108,90 +108,39 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     free(tmp);
 }
 
-void local_main()
-{
-    int h = 3, w = 3;
-    RGBTRIPLE image[h][w];
-
-    image[0][0].rgbtBlue  = 0;
-    image[0][0].rgbtGreen = 10;
-    image[0][0].rgbtRed   = 25;
-
-    image[0][1].rgbtBlue  = 0;
-    image[0][1].rgbtGreen = 10;
-    image[0][1].rgbtRed   = 30;
-
-    image[0][2].rgbtBlue  = 40;
-    image[0][2].rgbtGreen = 60;
-    image[0][2].rgbtRed   = 80;
-
-    image[1][0].rgbtBlue  = 20;
-    image[1][0].rgbtGreen = 30;
-    image[1][0].rgbtRed   = 90;
-
-    image[1][1].rgbtBlue  = 30;
-    image[1][1].rgbtGreen = 40;
-    image[1][1].rgbtRed   = 100;
-
-    image[1][2].rgbtBlue  = 80;
-    image[1][2].rgbtGreen = 70;
-    image[1][2].rgbtRed   = 90;
-
-    image[2][0].rgbtBlue  = 20;
-    image[2][0].rgbtGreen = 20;
-    image[2][0].rgbtRed   = 40;
-
-    image[2][1].rgbtBlue  = 30;
-    image[2][1].rgbtGreen = 10;
-    image[2][1].rgbtRed   = 30;
-
-    image[2][2].rgbtBlue  = 50;
-    image[2][2].rgbtGreen = 40;
-    image[2][2].rgbtRed   = 10;
-
-    int i = 0;
-    int j = 0;
-    RGBTRIPLE sum = calculate_weighted_sum(i, j, h, w, image);
-
-    printf("sum(%d, %d): (%3d, %3d, %3d)\n", i, j, sum.rgbtBlue, sum.rgbtGreen, sum.rgbtRed);
-
-    edges(h, w, image);
-    printf("edge(%d, %d): (%3d, %3d, %3d)\n", i, j, image[i][j].rgbtBlue, image[i][j].rgbtGreen, image[i][j].rgbtRed);
-}
-
 /* Helper functions */
 int calculate_pixel_average(RGBTRIPLE pixel)
 {
-    return round((float)(pixel.rgbtBlue + pixel.rgbtGreen + pixel.rgbtRed)/ 3.0F);
+    return round((float) (pixel.rgbtBlue + pixel.rgbtGreen + pixel.rgbtRed) / 3.0F);
 }
 
 RGBTRIPLE calculate_neighbor_average(int index_h, int index_w, int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE average;
-    int blue  = 0x00;
+    int blue = 0x00;
     int green = 0x00;
-    int red   = 0x00;
+    int red = 0x00;
 
     /* Obtain the lower and upper index limits */
     int index_h_lo = (index_h > 0) ? (index_h - 1) : 0;
     int index_w_lo = (index_w > 0) ? (index_w - 1) : 0;
     int index_h_hi = (index_h < (height - 1)) ? (index_h + 1) : (height - 1);
-    int index_w_hi = (index_w < (width - 1))  ? (index_w + 1) : (width - 1);
+    int index_w_hi = (index_w < (width - 1)) ? (index_w + 1) : (width - 1);
 
     int elements = 0;
     for (int i = index_h_lo; i <= index_h_hi; i++)
     {
         for (int j = index_w_lo; j <= index_w_hi; j++)
         {
-            blue  += image[i][j].rgbtBlue;
+            blue += image[i][j].rgbtBlue;
             green += image[i][j].rgbtGreen;
-            red   += image[i][j].rgbtRed;
+            red += image[i][j].rgbtRed;
             elements++;
         }
     }
-    average.rgbtBlue  = round((float)blue  / (float)elements);
-    average.rgbtGreen = round((float)green / (float)elements);
-    average.rgbtRed   = round((float)red   / (float)elements);
+    average.rgbtBlue = round((float) blue / (float) elements);
+    average.rgbtGreen = round((float) green / (float) elements);
+    average.rgbtRed = round((float) red / (float) elements);
 
     return average;
 }
@@ -210,51 +159,55 @@ void copy_image(int height, int width, RGBTRIPLE src[height][width], RGBTRIPLE d
 
 RGBTRIPLE calculate_weighted_sum(int index_h, int index_w, int height, int width, RGBTRIPLE image[height][width])
 {
-    int gx_kernel[3][3] = { {-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1} };
-    int gy_kernel[3][3] = { {-1, -2, -1}, {0, 0, 0}, {1, 2, 1} };
+    int gx_kernel[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+    int gy_kernel[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 
     RGBTRIPLE weighted_sum;
-    int gx_blue  = 0x00, gy_blue  = 0x00;
+    int gx_blue = 0x00, gy_blue = 0x00;
     int gx_green = 0x00, gy_green = 0x00;
-    int gx_red   = 0x00, gy_red   = 0x00;
+    int gx_red = 0x00, gy_red = 0x00;
 
     for (int i = 0; i <= 2; i++)
     {
         for (int j = 0; j <= 2; j++)
         {
-            bool overflow;
+            bool in_range;
+            int curr_index_h = index_h - 1 + i;
+            int curr_index_w = index_w - 1 + j;
 
-            overflow = true;
-            overflow |= (index_h - 1 + i) < 0;
-            overflow |= (index_h - 1 + i) > (height - 1);
-            overflow |= (index_w - 1 + j) < 0;
-            overflow |= (index_w - 1 + j) > (height - 1);
+            /* Check whether current index is out-of-bounds */
+            in_range = true;
+            in_range &= (curr_index_h) >= 0;
+            in_range &= (curr_index_w) >= 0;
+            in_range &= (curr_index_h) < height;
+            in_range &= (curr_index_w) < width;
 
-            int curr_blue  = overflow ? 0 : image[index_h - 1 + i][index_w - 1 + j].rgbtBlue;
-            int curr_green = overflow ? 0 : image[index_h - 1 + i][index_w - 1 + j].rgbtGreen;
-            int curr_red   = overflow ? 0 : image[index_h - 1 + i][index_w - 1 + j].rgbtRed;
+            /* Obtain current pixel value. If not in range, set to zero */
+            int curr_blue = (in_range) ? image[curr_index_h][curr_index_w].rgbtBlue : 0x00;
+            int curr_green = (in_range) ? image[curr_index_h][curr_index_w].rgbtGreen : 0x00;
+            int curr_red = (in_range) ? image[curr_index_h][curr_index_w].rgbtRed : 0x00;
 
             /* Calculate the weighted sum for x-direction */
-            gx_blue  += curr_blue  * gx_kernel[i][j];
+            gx_blue += curr_blue * gx_kernel[i][j];
             gx_green += curr_green * gx_kernel[i][j];
-            gx_red   += curr_red   * gx_kernel[i][j];
+            gx_red += curr_red * gx_kernel[i][j];
 
             /* Calculate the weighted sum for y-direction */
-            gy_blue  += curr_blue  * gy_kernel[i][j];
+            gy_blue += curr_blue * gy_kernel[i][j];
             gy_green += curr_green * gy_kernel[i][j];
-            gy_red   += curr_red   * gy_kernel[i][j];
-
+            gy_red += curr_red * gy_kernel[i][j];
         }
     }
+
     /* Calculate sqrt of Gx^2 + Gy^2 for each color */
-    weighted_sum.rgbtBlue  = (int)round( sqrt( pow((float)gx_blue,  2.0F) + pow((float)gy_blue,  2.0F) ));
-    weighted_sum.rgbtGreen = (int)round( sqrt( pow((float)gx_green, 2.0F) + pow((float)gy_green, 2.0F) ));
-    weighted_sum.rgbtRed   = (int)round( sqrt( pow((float)gx_red,   2.0F) + pow((float)gy_red,   2.0F) ));
+    int blue = (int) round(sqrt(pow((float) gx_blue, 2.0F) + pow((float) gy_blue, 2.0F)));
+    int green = (int) round(sqrt(pow((float) gx_green, 2.0F) + pow((float) gy_green, 2.0F)));
+    int red = (int) round(sqrt(pow((float) gx_red, 2.0F) + pow((float) gy_red, 2.0F)));
 
     /* Ensure max value of 0xFF (255) */
-    weighted_sum.rgbtBlue  = weighted_sum.rgbtBlue  > 0xFF ? 0xFF : weighted_sum.rgbtBlue;
-    weighted_sum.rgbtGreen = weighted_sum.rgbtGreen > 0xFF ? 0xFF : weighted_sum.rgbtGreen;
-    weighted_sum.rgbtRed   = weighted_sum.rgbtRed   > 0xFF ? 0xFF : weighted_sum.rgbtRed;
+    weighted_sum.rgbtBlue = (blue <= 0xFF) ? blue : 0xFF;
+    weighted_sum.rgbtGreen = (green <= 0xFF) ? green : 0xFF;
+    weighted_sum.rgbtRed = (red <= 0xFF) ? red : 0xFF;
 
     return weighted_sum;
 }
