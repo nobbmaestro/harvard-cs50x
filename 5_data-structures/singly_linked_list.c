@@ -10,12 +10,12 @@ typedef struct sllnode
 } sllnode;
 
 /* Helper(s) function prototypes */
-sllnode *create(int value);
-sllnode *prepend(sllnode *head, int value);
-void append(sllnode *head, int value);
-sllnode *insert(sllnode *head, int value);
-sllnode *sorted_insert(sllnode *head, int value);
 bool find(sllnode *head, int value);
+sllnode *create(int value);
+sllnode *insert(sllnode *head, int value);
+sllnode *prepend(sllnode *head, int value);
+sllnode *sorted_insert(sllnode *head, int value);
+void append(sllnode *head, int value);
 void destroy(sllnode *head);
 void printout_list(sllnode *head);
 
