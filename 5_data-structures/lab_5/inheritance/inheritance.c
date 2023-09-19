@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 // Each person has two parents and two alleles
@@ -54,7 +55,7 @@ person *create_family(int generations)
         child->parents[1] = parent1;
 
         // TODO: Randomly assign current person's alleles based on the alleles of their parents
-        child->alleles = child->parents[0]->alleles;
+        strcpy(child->alleles, child->parents[0]->alleles);
     }
 
     // If there are no generations left to create
@@ -65,7 +66,8 @@ person *create_family(int generations)
         child->parents[1] = NULL;
 
         // TODO: Randomly assign alleles
-        child->alleles = random_allele();
+        child->alleles[0] = random_allele();
+        child->alleles[1] = '\0';
     }
 
     // TODO: Return newly created person
