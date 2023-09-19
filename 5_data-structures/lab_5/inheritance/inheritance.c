@@ -11,8 +11,7 @@ typedef struct person
 {
     struct person *parents[2];
     char alleles[2];
-}
-person;
+} person;
 
 const int GENERATIONS = 3;
 const int INDENT_LENGTH = 4;
@@ -93,7 +92,6 @@ void free_family(person *p)
 
     // TODO: Free child
     free(p);
-
 }
 
 // Print each family member and their alleles.
