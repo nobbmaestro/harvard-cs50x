@@ -19,7 +19,7 @@ typedef struct node
 // TODO: Choose number of buckets in hash table
 #define NUM_IN_ALPH 26
 #define NUM_HASH_CHAR 3
-const unsigned int N = NUM_IN_ALPH * NUM_IN_ALPH * NUM_IN_ALPH;
+const unsigned int N = 17576 /* NUM_IN_ALPH ^ NUM_HASH_CHAR */;
 
 // Hash table
 struct Table
