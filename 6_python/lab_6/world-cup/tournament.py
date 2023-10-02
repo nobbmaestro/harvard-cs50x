@@ -28,10 +28,10 @@ def main():
     for _ in range(N):
         winner = simulate_tournament(teams)
         try:
-            counts[winner] = counts[winner] + 1
+            counts[winner] += 1
 
         except KeyError:
-            counts[winner] = 0
+            counts[winner] = 1
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
