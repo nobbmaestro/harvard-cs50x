@@ -30,7 +30,7 @@ class ScoringColemanLiauIndex:
     def _get_num_letters(self) -> int:
         """Getter for number of letters in text helper."""
         # check whether sentences are already counted
-        if 'sum_letters' not in self._cache:
+        if "sum_letters" not in self._cache:
             count = 0
             for char in self._cache["text"]:
                 if char.isalpha():
@@ -39,34 +39,34 @@ class ScoringColemanLiauIndex:
             # add counted sum to the cache
             self._cache["sum_letters"] = count
 
-        return self._cache['sum_letters']
+        return self._cache["sum_letters"]
 
     def _get_num_sentences(self) -> int:
         """Getter for number of sentences in text helper."""
         # check whether sentences are already counted
-        if 'sum_sentences' not in self._cache:
+        if "sum_sentences" not in self._cache:
             count = 0
             for char in self._cache["text"]:
                 if char in self._sentence_delimiters:
                     count += 1
 
             # add counted sum to the cache
-            self._cache['sum_sentences'] = count
+            self._cache["sum_sentences"] = count
 
-        return self._cache['sum_sentences']
+        return self._cache["sum_sentences"]
 
     def _get_num_words(self) -> int:
         """Getter for number of words in text helper."""
         # check whether sentences are already counted
-        if 'sum_words' not in self._cache:
+        if "sum_words" not in self._cache:
             count = 0
             for char in self._cache["text"]:
                 if char in self._word_delimiters:
                     count += 1
             # add counted sum to the cache
-            self._cache['sum_words'] = count
+            self._cache["sum_words"] = count
 
-        return self._cache['sum_words']
+        return self._cache["sum_words"]
 
     def _calculate_avg_num_letters_per_100_words(self) -> float:
         """Calcalate average number of letters per 100 words."""
