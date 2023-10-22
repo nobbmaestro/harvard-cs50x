@@ -3,9 +3,8 @@ import os
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-from werkzeug.security import check_password_hash, generate_password_hash
-
 from helpers import apology, login_required, lookup, usd
+from werkzeug.security import check_password_hash, generate_password_hash
 
 # Configure application
 app = Flask(__name__)
@@ -71,10 +70,12 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE username = ?",
+                          request.form.get("username"))
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(
+                rows[0]["hash"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -109,7 +110,46 @@ def quote():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    return apology("TODO")
+
+    # Forget any user_id
+    session.clear()
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+
+        # Ensure username was submitted
+        if not username:
+            return apology("must provide username", 403)
+
+        # Ensure password was submitted
+        elif not password:
+            return apology("must provide password", 403)
+
+        # Ensure that password matches confirmation
+        elif password != confirmation:
+            return apology("password must match", 403)
+
+        # Check whether username already exists, insert to database if no matches exists
+        result = db.execute("SELECT username FROM users WHERE username=?", username)
+        if result:
+            return apology("username already exists", 403)
+
+        else:
+            # Create password hash
+            hash = generate_password_hash(password)
+
+            # Insert user into the database
+            db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
+                       username, hash)
+
+        # Redirect iser to home page
+        return redirect("/")
+
+    else:
+        return render_template("register.html")
 
 
 @app.route("/sell", methods=["GET", "POST"])
