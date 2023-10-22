@@ -1,3 +1,4 @@
 .libcs50/
 .vscode/
 .DS_Store
+__pycache__/
