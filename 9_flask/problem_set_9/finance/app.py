@@ -41,7 +41,45 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+
+        # Ensure non-empty symbol
+        if not symbol:
+            return apology("Missing symbol", 400)
+
+        # Ensure non-empty number of shares
+        elif not shares:
+            return apology("Missing shares", 400)
+
+        # Ensure valid symbol
+        data = lookup(symbol)
+        if not data:
+            return apology("Invalid symbol", 400)
+
+        # Ensure user liquidity
+        transaction = float(shares) * float(data["price"])
+        cash = db.execute("SELECT cash FROM users WHERE id=?",
+                          session["user_id"])[0].get('cash', 0.0)
+        if transaction > cash:
+            return apology("Can't afford'", 400)
+
+        # Insert transaction into user data
+        else:
+            db.execute(
+                "INSERT INTO transactions (user_id, symbol, shares, price) VALUES(?, ?, ?, ?)",
+                session["user_id"],
+                symbol,
+                float(shares),
+                float(data["price"]),
+            )
+            return redirect("/")
+
+    else:
+        return render_template("buy.html")
 
 
 @app.route("/history")
@@ -108,14 +146,14 @@ def quote():
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        data = lookup(symbol)
 
         # Ensure non-emptry symbol
         if not symbol:
             return apology("Missing symbol", 400)
 
         # Ensure valid symbol
-        elif not data:
+        data = lookup(symbol)
+        if not data:
             return apology("Invalid symbol", 400)
 
         else:
