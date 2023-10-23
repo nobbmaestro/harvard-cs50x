@@ -104,7 +104,25 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        data = lookup(symbol)
+
+        # Ensure non-emptry symbol
+        if not symbol:
+            return apology("Missing symbol", 400)
+
+        # Ensure valid symbol
+        elif not data:
+            return apology("Invalid symbol", 400)
+
+        else:
+            return render_template("/quoted.html", data=data)
+
+    else:
+        return render_template("quote.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -133,7 +151,8 @@ def register():
             return apology("password must match", 403)
 
         # Check whether username already exists, insert to database if no matches exists
-        result = db.execute("SELECT username FROM users WHERE username=?", username)
+        result = db.execute("SELECT username FROM users WHERE username=?",
+                            username)
         if result:
             return apology("username already exists", 403)
 
