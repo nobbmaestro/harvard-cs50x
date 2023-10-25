@@ -1,7 +1,8 @@
 from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
-from helpers import apology, login_required, lookup, perc, usd
+from helpers import (apology, login_required, lookup, perc, usd,
+                     validate_password)
 from werkzeug.security import check_password_hash, generate_password_hash
 
 # Configure application
@@ -224,6 +225,10 @@ def update_password():
         elif new_password != confirmation:
             return apology("password must match", 403)
 
+        # Validate password complexity
+        elif not validate_password(new_password):
+            return apology("not sufficient password", 403)
+
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
 
@@ -303,6 +308,10 @@ def register():
         # Ensure that password matches confirmation
         elif password != confirmation:
             return apology("password must match", 403)
+        
+        # Validate password complexity
+        elif not validate_password(password):
+            return apology("not sufficient password", 403)
 
         # Check whether username already exists, insert to database if no matches exists
         result = db.execute("SELECT username FROM users WHERE username=?", username)
