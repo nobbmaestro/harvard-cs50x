@@ -1,9 +1,7 @@
-import os
-
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required, lookup, perc, usd
 from werkzeug.security import check_password_hash, generate_password_hash
 
 # Configure application
@@ -11,6 +9,7 @@ app = Flask(__name__)
 
 # Custom filter
 app.jinja_env.filters["usd"] = usd
+app.jinja_env.filters["perc"] = perc
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -34,7 +33,64 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("TODO")
+
+    # Query database for the users portfolio
+    portfolio = db.execute(
+        """
+        SELECT 
+            user_id, 
+            symbol,
+            symbol AS name,
+            SUM(price * shares) / SUM(shares) AS price,
+            SUM(shares) AS shares,
+            SUM(price * shares) AS purchasing_value
+        FROM 
+            transactions
+        WHERE 
+            user_id=? AND shares > 0
+        GROUP BY 
+            user_id, 
+            symbol;
+        """,
+        session["user_id"],
+    )
+
+    # Fetch current holding value and calculate the return
+    total_curr_value = 0
+    total_purc_value = 0
+    for i in range(len(portfolio)):
+        try:
+            # Fetch current share price of the holding
+            curr_price = lookup(portfolio[i]["symbol"])["price"]
+
+            # Calculate current holding value
+            curr_value = portfolio[i]["shares"] * curr_price
+            portfolio[i]["value"] = curr_value
+            total_curr_value += curr_value
+            total_purc_value += portfolio[i]["purchasing_value"]
+
+            # Calculate current holding return
+            portfolio[i]["return"] = (curr_price / portfolio[i]["price"]) - 1
+
+        except:
+            return apology("Something went wrong", 400)
+
+    # Query database for the users cash
+    cash = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])[0]["cash"]
+
+    # Generate portfolio summary
+    summary = {
+        "cash": cash,
+        "curr_value": total_curr_value,
+        "purc_value": total_purc_value,
+        "return": (total_curr_value / total_purc_value) - 1 if total_purc_value > 0 else 0,
+        "return_cash_adj": ((total_curr_value + cash) / (total_purc_value + cash)) - 1
+        if (total_purc_value + cash) > 0
+        else 0,
+        "grand_total": total_curr_value + cash,
+    }
+
+    return render_template("index.html", portfolio=portfolio, summary=summary)
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -62,19 +118,24 @@ def buy():
 
         # Ensure user liquidity
         transaction = float(shares) * float(data["price"])
-        cash = db.execute("SELECT cash FROM users WHERE id=?",
-                          session["user_id"])[0].get('cash', 0.0)
+        cash = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])[0].get("cash", 0.0)
         if transaction > cash:
             return apology("Can't afford'", 400)
 
-        # Insert transaction into user data
         else:
+            # Insert transaction into user data
             db.execute(
                 "INSERT INTO transactions (user_id, symbol, shares, price) VALUES(?, ?, ?, ?)",
                 session["user_id"],
                 symbol,
                 float(shares),
                 float(data["price"]),
+            )
+            # Update user available cash
+            db.execute(
+                "UPDATE users SET cash=? WHERE id=?",
+                cash - transaction,
+                session["user_id"],
             )
             return redirect("/")
 
@@ -102,7 +163,6 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -112,12 +172,10 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?",
-                          request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(
-                rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -193,8 +251,7 @@ def register():
             return apology("password must match", 403)
 
         # Check whether username already exists, insert to database if no matches exists
-        result = db.execute("SELECT username FROM users WHERE username=?",
-                            username)
+        result = db.execute("SELECT username FROM users WHERE username=?", username)
         if result:
             return apology("username already exists", 403)
 
@@ -203,8 +260,7 @@ def register():
             hash = generate_password_hash(password)
 
             # Insert user into the database
-            db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
-                       username, hash)
+            db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hash)
 
         # Redirect iser to home page
         return redirect("/")
