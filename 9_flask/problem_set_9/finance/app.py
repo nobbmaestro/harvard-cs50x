@@ -133,8 +133,8 @@ def buy():
             )
             # Update user available cash
             db.execute(
-                "UPDATE users SET cash=? WHERE id=?",
-                cash - transaction,
+                "UPDATE users SET cash=cash-? WHERE id=?",
+                abs(transaction),
                 session["user_id"],
             )
             return redirect("/")
@@ -273,4 +273,91 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+
+        # Ensure symbol was submitted
+        if not symbol:
+            return apology("must provide symbol", 400)
+
+        # Ensure shares were submitted
+        elif not shares or float(shares) < 1:
+            return apology("must provide shares", 400)
+
+        # Validate sell request
+        else:
+            holding = db.execute(
+                """
+                SELECT
+                    user_id,
+                    SUM(shares) as shares
+                FROM
+                    transactions
+                WHERE
+                    user_id=? AND symbol=?
+                GROUP BY
+                    user_id, symbol;
+                """,
+                session["user_id"],
+                symbol,
+            )
+            if float(shares) > float(holding[0]["shares"]):
+                return apology("too many shares", 400)
+
+        # Ensure valid symbol
+        data = lookup(symbol)
+        if not data:
+            return apology("Invalid symbol", 400)
+
+        else:
+            # Negative number of shares due to selling
+            shares = -float(shares)
+            price = float(data["price"])
+            transaction = shares * price
+
+            # Insert transaction into user data
+            db.execute(
+                "INSERT INTO transactions (user_id, symbol, shares, price) VALUES(?, ?, ?, ?)",
+                session["user_id"],
+                symbol,
+                shares,
+                price,
+            )
+            # Update user available cash
+            db.execute(
+                "UPDATE users SET cash=cash+? WHERE id=?",
+                abs(transaction),
+                session["user_id"],
+            )
+
+            # Redirect user to home page
+            return redirect("/")
+
+    else:
+        # Query the database for user holdings
+        holdings = db.execute(
+            """
+            SELECT DISTINCT 
+                symbol 
+            FROM (
+                SELECT 
+                    user_id, 
+                    symbol, 
+                    SUM(shares) AS shares 
+                FROM 
+                    transactions 
+                WHERE 
+                    user_id=? 
+                GROUP BY 
+                    user_id, 
+                    symbol
+            ) 
+            WHERE 
+                shares > 0
+            """,
+            session["user_id"],
+        )
+        return render_template("sell.html", holdings=holdings)
