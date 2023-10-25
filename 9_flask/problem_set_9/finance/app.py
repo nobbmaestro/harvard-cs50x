@@ -195,6 +195,54 @@ def login():
         return render_template("login.html")
 
 
+@app.route("/settings")
+def settings():
+    """Get user settings."""
+    return render_template("settings.html")
+
+
+@app.route("/update_pwd", methods=["GET", "POST"])
+@login_required
+def update_password():
+    """Update user password."""
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        password = request.form.get("password")
+        new_password = request.form.get("new_password")
+        confirmation = request.form.get("confirmation")
+
+        # Ensure password was submitted
+        if not password:
+            return apology("must provide password", 403)
+
+        # Ensure password was submitted
+        elif not new_password:
+            return apology("must provide new password", 403)
+
+        # Ensure that password matches confirmation
+        elif new_password != confirmation:
+            return apology("password must match", 403)
+
+        # Query database for username
+        rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+
+        # Ensure username exists and password is correct
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+            return apology("invalid password", 403)
+
+        # Create password hash
+        hash = generate_password_hash(new_password)
+
+        # Update user password
+        db.execute("UPDATE users SET hash=? WHERE id=?", hash, session["user_id"])
+
+        return redirect("/")
+
+    else:
+        return render_template("/update_password.html")
+
+
 @app.route("/logout")
 def logout():
     """Log user out"""
