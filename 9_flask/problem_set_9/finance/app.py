@@ -37,20 +37,26 @@ def index():
     # Query database for the users portfolio
     portfolio = db.execute(
         """
-        SELECT 
-            user_id, 
-            symbol,
-            symbol AS name,
-            SUM(price * shares) / SUM(shares) AS price,
-            SUM(shares) AS shares,
-            SUM(price * shares) AS purchasing_value
-        FROM 
-            transactions
-        WHERE 
-            user_id=? AND shares > 0
-        GROUP BY 
-            user_id, 
-            symbol;
+        SELECT
+            *
+        FROM (
+            SELECT
+                user_id,
+                symbol,
+                symbol AS name,
+                SUM(price * shares) / SUM(shares) AS price,
+                SUM(shares) AS shares,
+                SUM(price * shares) AS purchasing_value
+            FROM
+                transactions
+            WHERE
+                user_id=?
+            GROUP BY
+                user_id,
+                symbol
+        )
+        WHERE
+            shares > 0;
         """,
         session["user_id"],
     )
