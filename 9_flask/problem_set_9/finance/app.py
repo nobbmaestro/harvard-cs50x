@@ -215,26 +215,26 @@ def update_password():
 
         # Ensure password was submitted
         if not password:
-            return apology("must provide password", 403)
+            return apology("must provide password", 400)
 
         # Ensure password was submitted
         elif not new_password:
-            return apology("must provide new password", 403)
+            return apology("must provide new password", 400)
 
         # Ensure that password matches confirmation
         elif new_password != confirmation:
-            return apology("password must match", 403)
+            return apology("password must match", 400)
 
         # Validate password complexity
         elif not validate_password(new_password):
-            return apology("not sufficient password", 403)
+            return apology("not sufficient password", 400)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
-            return apology("invalid password", 403)
+            return apology("invalid password", 400)
 
         # Create password hash
         hash = generate_password_hash(new_password)
@@ -299,24 +299,24 @@ def register():
 
         # Ensure username was submitted
         if not username:
-            return apology("must provide username", 403)
+            return apology("must provide username", 400)
 
         # Ensure password was submitted
         elif not password:
-            return apology("must provide password", 403)
+            return apology("must provide password", 400)
 
         # Ensure that password matches confirmation
         elif password != confirmation:
-            return apology("password must match", 403)
+            return apology("password must match", 400)
         
         # Validate password complexity
         elif not validate_password(password):
-            return apology("not sufficient password", 403)
+            return apology("not sufficient password", 400)
 
         # Check whether username already exists, insert to database if no matches exists
         result = db.execute("SELECT username FROM users WHERE username=?", username)
         if result:
-            return apology("username already exists", 403)
+            return apology("username already exists", 400)
 
         else:
             # Create password hash
