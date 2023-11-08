@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Return</th>
+                <th class="text-end">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for holding in portfolio %}
+                <tr>
+                    <td class="text-start">{{ holding["symbol"] }}</td>
+                    <td class="text-start">{{ holding["name"] }}</td>
+                    <td class="text-end">{{ holding["shares"] }}</td>
+                    <td class="text-end">{{ holding["price"] | usd }}</td>
+                    <td class="text-end">{{ holding["return"] | perc }}</td>
+                    <td class="text-end">{{ holding["value"] | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">Portfolio</td>
+                <td class="border-0 fw-bold text-end" colspan="">{{ summary["return"] | perc }}</td>
+                <td class="border-0 fw-bold text-end" colspan="">{{ summary["curr_value"] | usd }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+                <td class="border-0 fw-bold text-end" colspan="">-</td>
+                <td class="border-0 fw-bold text-end" colspan="">{{ summary["cash"] | usd }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                <td class="border-0 fw-bold text-end" colspan="">{{ summary["return_cash_adj"] | perc }}</td>
+                <td class="border-0 fw-bold text-end" colspan="">{{ summary["grand_total"] | usd }}</td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
